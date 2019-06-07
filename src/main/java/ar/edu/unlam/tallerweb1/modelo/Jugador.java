@@ -20,7 +20,19 @@ public class Jugador {
 	private Long id;
 	private String nombre;
 	private Integer edad;
+	private Date fechaDeNacimiento;
 	
+	public Jugador () {
+		
+	}
+	
+	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
 	public Long getId() {
 		return id;
 	}

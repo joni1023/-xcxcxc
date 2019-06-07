@@ -16,6 +16,15 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
+	private int valoracion;
+	private int golesAFavor;
+	private int golesEnContra;
+	private int partidosGanados;
+	private int partidosPerdidos;
+	private int partidosEmpatados;
+	private Double promedioDeEdad;
+	private String categoria;
+	private String localidad;
 	
 	public Long getId() {
 		return id;
