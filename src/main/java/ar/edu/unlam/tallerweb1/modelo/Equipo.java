@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -40,9 +40,9 @@ public class Equipo {
 	}
 	
 	@OneToMany
-	List<Jugador>listaDeJugadores = new ArrayList();
+	List <Jugador> listaDeJugadores;
 	@OneToMany
-	List<Partido>listaDePartidos = new ArrayList();
+	List <Partido> listaDePartidos;
 
 	public List<Partido> getListaDePartidos() {
 		return listaDePartidos;

@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,13 +26,13 @@ public class Partido {
 	}
 	
 	@ManyToOne
-	Equipo equipo1 = new Equipo();
+	Equipo equipo1 ;
 	@ManyToOne
-	Equipo equipo2 = new Equipo();
+	Equipo equipo2 ;
 	@OneToMany
-	List<Gol> golesEquipo1 = new ArrayList();
+	List <Gol> golesEquipo1;
 	@OneToMany
-	List<Gol> golesEquipo2 = new ArrayList();
+	List <Gol> golesEquipo2;
 
 	public Equipo getEquipo1() {
 		return equipo1;

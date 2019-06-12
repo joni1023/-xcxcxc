@@ -1,8 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -21,13 +19,14 @@ public class Jugador {
 	private String nombre;
 	private Integer edad;
 	private Date fechaDeNacimiento;
+	private Double altura;
+	private Double peso;
 	
 	public Jugador () {
 		
 	}
 	
 	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -54,11 +53,11 @@ public class Jugador {
 	}
 
 	@OneToMany
-	List<Gol>goles = new ArrayList();
+	List <Gol> goles;
 	@OneToMany
-	List<Amonestacion>amonestaciones = new ArrayList();
+	List <Amonestacion> amonestaciones ;
 	@OneToMany
-	List<Expulsion>expulsiones = new ArrayList();
+	List <Expulsion> expulsiones;
 
 	public List<Gol> getGoles() {
 		return goles;
@@ -77,6 +76,30 @@ public class Jugador {
 	}
 	public void setExpulsiones(List<Expulsion> expulsiones) {
 		this.expulsiones = expulsiones;
+	}
+
+	public Date getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
+
+	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
 	}
 	
 	}

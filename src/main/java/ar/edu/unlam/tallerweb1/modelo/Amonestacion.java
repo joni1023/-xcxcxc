@@ -21,8 +21,8 @@ public class Amonestacion {
 		this.id = id;
 	}
 	
-	@ManyToOne
-	Jugador jugador = new Jugador();
+	@ManyToOne()
+	Jugador jugador;
 	@ManyToOne
 	Partido partido = new Partido();
 	
