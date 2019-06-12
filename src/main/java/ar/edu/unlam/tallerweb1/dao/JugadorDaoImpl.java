@@ -12,27 +12,25 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Repository("JugadorDao")
 public class JugadorDaoImpl implements JugadorDao {
+	
 	@Inject
     private SessionFactory sessionFactory;
 
 	@Override
 	public List<Jugador> listaDeJugadores() {
 		List <Jugador> miLista = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
-				.add(Restrictions.isNotNull("nombre"))
-				.list();
+				                 .add(Restrictions.isNotNull("nombre"))
+				                 .list();
 		
 		return miLista;
 	}
 
 	@Override
 	public Jugador buscarJugador(Long id) {
-		Jugador miJugadorBuscado=(Jugador) sessionFactory.getCurrentSession().createCriteria(Jugador.class)
-				.add(Restrictions.eq("id", id))
-				.uniqueResult();
+		Jugador miJugadorBuscado = (Jugador) sessionFactory.getCurrentSession().createCriteria(Jugador.class)
+								   .add(Restrictions.eq("id", id))
+				                   .uniqueResult();
 		
 		return miJugadorBuscado;
 	}
-
-
-
 }

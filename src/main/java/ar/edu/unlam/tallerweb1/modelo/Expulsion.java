@@ -20,6 +20,7 @@ public class Expulsion {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	@ManyToOne
 	Jugador jugador = new Jugador();
 	@ManyToOne

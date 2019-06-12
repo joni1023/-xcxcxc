@@ -19,28 +19,36 @@ public class Jugador {
 	private String nombre;
 	private Integer edad;
 	private Date fechaDeNacimiento;
-	private Double altura;
 	private Double peso;
+	private Double altura;
+	private Integer valoracion;
 	
 	public Jugador () {
 		
 	}
 	
-	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento) {
+	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Integer valoracion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.peso = peso;
+		this.altura = altura;
+		this.valoracion = valoracion;
 	}
+	
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -48,36 +56,11 @@ public class Jugador {
 	public Integer getEdad() {
 		return edad;
 	}
+	
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
-
-	@OneToMany
-	List <Gol> goles;
-	@OneToMany
-	List <Amonestacion> amonestaciones ;
-	@OneToMany
-	List <Expulsion> expulsiones;
-
-	public List<Gol> getGoles() {
-		return goles;
-	}
-	public void setGoles(List<Gol> goles) {
-		this.goles = goles;
-	}
-	public List<Amonestacion> getAmonestaciones() {
-		return amonestaciones;
-	}
-	public void setAmonestaciones(List<Amonestacion> amonestaciones) {
-		this.amonestaciones = amonestaciones;
-	}
-	public List<Expulsion> getExpulsiones() {
-		return expulsiones;
-	}
-	public void setExpulsiones(List<Expulsion> expulsiones) {
-		this.expulsiones = expulsiones;
-	}
-
+	
 	public Date getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
@@ -102,5 +85,44 @@ public class Jugador {
 		this.peso = peso;
 	}
 	
+	public Integer getValoracion() {
+		return valoracion;
 	}
 	
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
+	}
+
+	@OneToMany
+	List <Gol> goles;
+	
+	@OneToMany
+	List <Amonestacion> amonestaciones;
+	
+	@OneToMany
+	List <Expulsion> expulsiones;
+
+	public List<Gol> getGoles() {
+		return goles;
+	}
+	
+	public void setGoles(List<Gol> goles) {
+		this.goles = goles;
+	}
+	
+	public List<Amonestacion> getAmonestaciones() {
+		return amonestaciones;
+	}
+	
+	public void setAmonestaciones(List<Amonestacion> amonestaciones) {
+		this.amonestaciones = amonestaciones;
+	}
+	
+	public List<Expulsion> getExpulsiones() {
+		return expulsiones;
+	}
+	
+	public void setExpulsiones(List<Expulsion> expulsiones) {
+		this.expulsiones = expulsiones;
+	}	
+}

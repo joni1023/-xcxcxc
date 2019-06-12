@@ -1,7 +1,5 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-
-
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,6 +14,23 @@ public class Cancha {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@OneToMany
 	private List <Horario> listaDeHorarios;
+
+	public List<Horario> getListaDeHorarios() {
+		return listaDeHorarios;
+	}
+
+	public void setListaDeHorarios(List<Horario> listaDeHorarios) {
+		this.listaDeHorarios = listaDeHorarios;
+	}
 }

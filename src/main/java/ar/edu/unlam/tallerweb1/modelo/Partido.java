@@ -26,11 +26,14 @@ public class Partido {
 	}
 	
 	@ManyToOne
-	Equipo equipo1 ;
+	Equipo equipo1;
+	
 	@ManyToOne
-	Equipo equipo2 ;
+	Equipo equipo2;
+	
 	@OneToMany
 	List <Gol> golesEquipo1;
+	
 	@OneToMany
 	List <Gol> golesEquipo2;
 
@@ -65,5 +68,4 @@ public class Partido {
 	public void setGolesEquipo2(List<Gol> golesEquipo2) {
 		this.golesEquipo2 = golesEquipo2;
 	}
-	
 }

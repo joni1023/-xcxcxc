@@ -16,15 +16,15 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private int valoracion;
-	private int golesAFavor;
-	private int golesEnContra;
-	private int partidosGanados;
-	private int partidosPerdidos;
-	private int partidosEmpatados;
+	private Integer golesAFavor;
+	private Integer golesEnContra;
+	private Integer partidosGanados;
+	private Integer partidosPerdidos;
+	private Integer partidosEmpatados;
 	private Double promedioDeEdad;
 	private String categoria;
 	private String localidad;
+	private Integer valoracion;
 	
 	public Long getId() {
 		return id;
@@ -38,7 +38,61 @@ public class Equipo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+	public Integer getGolesAFavor() {
+		return golesAFavor;
+	}
+	public void setGolesAFavor(Integer golesAFavor) {
+		this.golesAFavor = golesAFavor;
+	}
+	public Integer getGolesEnContra() {
+		return golesEnContra;
+	}
+	public void setGolesEnContra(Integer golesEnContra) {
+		this.golesEnContra = golesEnContra;
+	}
+	public Integer getPartidosGanados() {
+		return partidosGanados;
+	}
+	public void setPartidosGanados(Integer partidosGanados) {
+		this.partidosGanados = partidosGanados;
+	}
+	public Integer getPartidosPerdidos() {
+		return partidosPerdidos;
+	}
+	public void setPartidosPerdidos(Integer partidosPerdidos) {
+		this.partidosPerdidos = partidosPerdidos;
+	}
+	public Integer getPartidosEmpatados() {
+		return partidosEmpatados;
+	}
+	public void setPartidosEmpatados(Integer partidosEmpatados) {
+		this.partidosEmpatados = partidosEmpatados;
+	}
+	public Double getPromedioDeEdad() {
+		return promedioDeEdad;
+	}
+	public void setPromedioDeEdad(Double promedioDeEdad) {
+		this.promedioDeEdad = promedioDeEdad;
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	public String getLocalidad() {
+		return localidad;
+	}
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+	public Integer getValoracion() {
+		return valoracion;
+	}
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
+	}
+
 	@OneToMany
 	List <Jugador> listaDeJugadores;
 	@OneToMany
@@ -59,13 +113,12 @@ public class Equipo {
 	
 	public Double promedioDeEdad() {
 		Double edadTotal = 0.0;
+		
 		for (Jugador jugador : listaDeJugadores) {
 			edadTotal += jugador.getEdad();
 		}
-		Double promedio = (edadTotal / this.listaDeJugadores.size());
 		
+		Double promedio = (edadTotal / this.listaDeJugadores.size());
 		return promedio;
-	}
-	
-	
+	}	
 }

@@ -7,16 +7,30 @@ import javax.persistence.Entity;
 @Entity
 public class JugadorArquero extends Jugador{
 	
-	public int valoracion;
-	public int golesEnContra;
-	public int rematesAtajados;
+	private Integer golesRecibidos;
+	private Integer rematesAtajados;
 	
 	
-	public JugadorArquero(Long id, String nombre, int edad, Date fechaDeNacimiento,int valoracion, int altura, int peso, int golesEnContra, int rematesAtajados) {
-		super(id,nombre,edad,fechaDeNacimiento);
-		this.valoracion = valoracion;
+	public JugadorArquero(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Integer valoracion, Integer golesRecibidos, Integer rematesAtajados) {
+		super(id, nombre, edad, fechaDeNacimiento, peso, altura, valoracion);
 		
-		this.golesEnContra = golesEnContra;
+		this.golesRecibidos = golesRecibidos;
+		this.rematesAtajados = rematesAtajados;
+	}
+
+	public Integer getGolesRecibidos() {
+		return golesRecibidos;
+	}
+
+	public void setGolesRecibidos(Integer golesRecibidos) {
+		this.golesRecibidos = golesRecibidos;
+	}
+
+	public Integer getRematesAtajados() {
+		return rematesAtajados;
+	}
+
+	public void setRematesAtajados(Integer rematesAtajados) {
 		this.rematesAtajados = rematesAtajados;
 	}
 }
