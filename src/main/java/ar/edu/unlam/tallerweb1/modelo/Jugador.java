@@ -21,13 +21,13 @@ public class Jugador {
 	private Date fechaDeNacimiento;
 	private Double peso;
 	private Double altura;
-	private Integer valoracion;
+	private Double valoracion;
 	
 	public Jugador () {
 		
 	}
 	
-	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Integer valoracion) {
+	public Jugador(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Double valoracion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -85,11 +85,11 @@ public class Jugador {
 		this.peso = peso;
 	}
 	
-	public Integer getValoracion() {
+	public Double getValoracion() {
 		return valoracion;
 	}
 	
-	public void setValoracion(Integer valoracion) {
+	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
 

@@ -10,7 +10,9 @@ public class JugadorArquero extends Jugador{
 	private Integer golesRecibidos;
 	private Integer rematesAtajados;
 	
-	
+	public JugadorArquero() {
+		
+	}
 	public JugadorArquero(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Integer valoracion, Integer golesRecibidos, Integer rematesAtajados) {
 		super(id, nombre, edad, fechaDeNacimiento, peso, altura, valoracion);
 		
