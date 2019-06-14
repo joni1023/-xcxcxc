@@ -22,5 +22,10 @@ public class Gol {
 	}
 	
 	@ManyToOne
-	Jugador jugador = new Jugador();
+	Jugador jugador;
+	
+	@ManyToOne
+	Partido partido;
+	
+	
 }
