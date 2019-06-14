@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -101,6 +102,17 @@ public class Jugador {
 	
 	@OneToMany
 	List <Expulsion> expulsiones;
+	
+	@ManyToOne
+	Equipo equipo;
+	
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
 
 	public List<Gol> getGoles() {
 		return goles;

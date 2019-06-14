@@ -20,12 +20,27 @@ public class Gol {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@ManyToOne
+	Partido partido;
 	
 	@ManyToOne
 	Jugador jugador;
-	
-	@ManyToOne
-	Partido partido;
+
+	public Partido getPartido() {
+		return partido;
+	}
+
+	public void setPartido(Partido partido) {
+		this.partido = partido;
+	}
+
+	public Jugador getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
+	}
 	
 	
 }
