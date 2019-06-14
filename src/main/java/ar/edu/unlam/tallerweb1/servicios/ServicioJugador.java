@@ -16,5 +16,7 @@ public interface ServicioJugador {
 
 	public Double valoracionPorAltura(Jugador jugador);
 	
-	public Double valoracionPorAlturaYPesoArquero(Jugador jugador);
+	public Double valoracionPorAlturaYPeso(Jugador jugador);
+	
+	
 }
