@@ -20,6 +20,10 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	private JugadorDao servicioJugadorDao;
 	@Inject
 	private ServicioGol servicioGol;
+	@Inject
+	private ServicioAmonestacion servicioAmonestacion;
+	@Inject
+	private ServicioExpulsion servicioExpulsion;
 	
 	@Override
 	public List<Jugador> listarJugadores() {
@@ -29,38 +33,76 @@ public class ServicioJugadorImpl implements ServicioJugador {
 
 	// VALORACION DE UN ARQUERO.
 	@Override
-	public Double valoracionJugadorArquero(Long id) {
+	public Double valoracionJugador(Long id) {
 		Jugador miJugador = servicioJugadorDao.buscarJugador(id);
-		Double valorEdad = this.valoracionPorEdadJugadorArquero(miJugador);
+		Double valoracion = 0.0;
+		if(miJugador.getClass() == JugadorArquero.class) {
+			
+		Double valorEdad = this.valoracionPorEdad(miJugador);
 		Double valorAltura = this.valoracionPorAltura(miJugador);
 		Double valorPesoAltura = this.valoracionPorAlturaYPeso(miJugador);
 		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-		// Llamar al servicio gol para saber cuantos goles se comio el arquero.
-		Double valorGolesRecibidos = 0.0;
-		// Llamar al servicio partido para saber la racha de partidos sin hacerle gol.
-		Double valorPorPorteriaImbatible = 0.0;
+		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
+		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
+		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
 		
-		return valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol;
+		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
+				+ valorPorAmonestaciones + valorPorExpulsiones;
+		
+		}else if(miJugador.getClass() == JugadorDeCampo.class) {
+			
+			Double valorEdad = this.valoracionPorEdad(miJugador);
+			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+			Double valorAltura = this.valoracionPorAltura(miJugador);
+			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
+			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+			
+			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
+		}
+		return valoracion;
 	}
 
 	@Override
-	public Double valoracionPorEdadJugadorArquero(Jugador jugador) {
-		
+	public Double valoracionPorEdad(Jugador jugador) {
+		Double valoracion = 0.0;
+		if(jugador.getClass() == JugadorArquero.class) {
 		if(jugador.getEdad() < 20) {
-			return 8.0;
+			valoracion = 8.0;
 			
 		} else if(jugador.getEdad() >= 20 && jugador.getEdad() <= 25) {
-			return 9.0;
+			valoracion = 9.0;
 			
 		} else if (jugador.getEdad() > 25 && jugador.getEdad() <= 30) {
-			return 10.0;
+			valoracion = 10.0;
 			
 		} else if(jugador.getEdad() > 30 && jugador.getEdad() <= 35) {
-			return 8.0;
+			valoracion = 8.0;
 		}
-		
 		// Deberia tomar mayor a 35 años.
-		return 5.0;
+		valoracion = 5.0;
+		
+		
+		}else if(jugador.getClass() == JugadorDeCampo.class) {
+			if(jugador.getEdad() < 20) {
+				valoracion = 8.0;
+				
+			} else if(jugador.getEdad() >= 20 && jugador.getEdad() <= 25) {
+				valoracion = 9.0;
+				
+			} else if (jugador.getEdad() > 25 && jugador.getEdad() <= 30) {
+				valoracion = 10.0;
+				
+			} else if(jugador.getEdad() > 30 && jugador.getEdad() <= 35) {
+				valoracion = 8.0;
+			}
+			
+			// Deberia tomar mayor a 35 años.
+			valoracion = 5.0;
+			
+		}
+		return valoracion;
 	}
 
 	@Override
@@ -190,39 +232,5 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		
 		 return valor;	
 	}
-	
-	// VALORACION DE UN JUGADOR DE CAMPO.
-	@Override
-	public Double valoracionJugadorDeCampo(Long id) {
-		Jugador miJugador = servicioJugadorDao.buscarJugador(id);
-		Double valorEdad = this.valoracionPorEdadJugadorDeCampo(miJugador);
-		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-		Double valorAltura = this.valoracionPorAltura(miJugador);
-		Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
-		
-		return valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso;
-	}
-
-	@Override
-	public Double valoracionPorEdadJugadorDeCampo(Jugador jugador) {
-		
-		if(jugador.getEdad() < 20) {
-			return 8.0;
-			
-		} else if(jugador.getEdad() >= 20 && jugador.getEdad() <= 25) {
-			return 9.0;
-			
-		} else if (jugador.getEdad() > 25 && jugador.getEdad() <= 30) {
-			return 10.0;
-			
-		} else if(jugador.getEdad() > 30 && jugador.getEdad() <= 35) {
-			return 8.0;
-		}
-		
-		// Deberia tomar mayor a 35 años.
-		return 5.0;
-	}
-	
-	
 	
 }

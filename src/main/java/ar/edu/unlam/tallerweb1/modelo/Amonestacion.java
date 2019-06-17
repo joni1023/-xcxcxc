@@ -12,6 +12,15 @@ public class Amonestacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Integer cantidad;
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
 
 	public Long getId() {
 		return id;
@@ -22,9 +31,9 @@ public class Amonestacion {
 	}
 	
 	@ManyToOne
-	Jugador jugador = new Jugador();
+	Jugador jugador;
 	@ManyToOne
-	Partido partido = new Partido();
+	Partido partido;
 	
 	public Jugador getJugador() {
 		return jugador;

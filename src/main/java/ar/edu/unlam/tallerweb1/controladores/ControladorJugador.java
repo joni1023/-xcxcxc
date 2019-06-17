@@ -26,7 +26,7 @@ public class ControladorJugador {
 		
 		List <Jugador> miLista= servicioJugador.listarJugadores();
 		for(Jugador e:miLista) {
-			e.setValoracion(servicioJugador.valoracionJugadorArquero(e.getId()));
+			e.setValoracion(servicioJugador.valoracionJugador(e.getId()));
 		}
 		
 		modelo.put("lista", miLista);

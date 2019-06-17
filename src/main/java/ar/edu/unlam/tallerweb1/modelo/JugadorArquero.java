@@ -13,8 +13,7 @@ public class JugadorArquero extends Jugador{
 		
 	}
 
-
-	public JugadorArquero(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Double valoracion, Integer golesRecibidos, Integer rematesAtajados) {
+	public JugadorArquero(Long id, String nombre, Integer edad, Date fechaDeNacimiento, Double peso, Double altura, Double valoracion, Integer golesRecibidos) {
 		super(id, nombre, edad, fechaDeNacimiento, peso, altura, valoracion);
 		
 		this.golesRecibidos = golesRecibidos;

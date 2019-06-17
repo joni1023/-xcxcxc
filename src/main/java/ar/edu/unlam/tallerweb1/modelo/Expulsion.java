@@ -22,9 +22,9 @@ public class Expulsion {
 	}
 	
 	@ManyToOne
-	Jugador jugador = new Jugador();
+	Jugador jugador;
 	@ManyToOne
-	Partido partido = new Partido();
+	Partido partido;
 
 	public Jugador getJugador() {
 		return jugador;

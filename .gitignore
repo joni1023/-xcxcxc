@@ -1,4 +1,4 @@
 target
-src/main/resources/hibenateContex
+src/main/resources/hibenateContext
 *.xml
 
