@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -92,10 +93,9 @@ public class Equipo {
 	public void setValoracion(Integer valoracion) {
 		this.valoracion = valoracion;
 	}
-
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Jugador> listaDeJugadores;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Partido> listaDePartidos;
 
 	public List<Partido> getListaDePartidos() {
@@ -110,15 +110,4 @@ public class Equipo {
 	public void setListaDeJugadores(List<Jugador> listaDeJugadores) {
 		this.listaDeJugadores = listaDeJugadores;
 	}
-	
-	public Double promedioDeEdad() {
-		Double edadTotal = 0.0;
-		
-		for (Jugador jugador : listaDeJugadores) {
-			edadTotal += jugador.getEdad();
-		}
-		
-		Double promedio = (edadTotal / this.listaDeJugadores.size());
-		return promedio;
-	}	
 }

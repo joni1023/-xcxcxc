@@ -22,19 +22,26 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
 		List<Amonestacion> amonestaciones = miJugador.getAmonestaciones();
 		Double cantidadAmonestaciones = 0.0;
-		for (Amonestacion amonestacion : amonestaciones) {
-			cantidadAmonestaciones += amonestacion.getCantidad();
+		if(amonestaciones.isEmpty()) {
+			return 0.0;
+		}else {
+			for (Amonestacion amonestacion : amonestaciones) {
+				cantidadAmonestaciones += amonestacion.getCantidad();
+			}
+			
+			return cantidadAmonestaciones;
 		}
-		
-		return cantidadAmonestaciones;
 	}
 
 	@Override
 	public Double promedioAmonestaciones(Jugador jugador) {
 		Double cantidadAmonestaciones = this.cantidadAmonestaciones(jugador.getId());
 		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
-		
-		return cantidadAmonestaciones / partidosJugados;
+		if(partidosJugados == 0 || partidosJugados == null) {
+			return 0.0;
+		}else {
+			return cantidadAmonestaciones / partidosJugados;
+		}
 	}
 
 	@Override

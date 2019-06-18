@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,10 +30,10 @@ public class Gol {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Partido partido;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Jugador jugador;
 
 	public Partido getPartido() {

@@ -19,14 +19,15 @@ public class ControladorJugador {
 	
 	@Inject 
 	private ServicioJugador servicioJugador;
-	
+
 	@RequestMapping("/jugadores")
 	public ModelAndView mostrarJugadores() {
 		ModelMap modelo = new ModelMap();
-		
+
 		List <Jugador> miLista= servicioJugador.listarJugadores();
 		for(Jugador e:miLista) {
 			e.setValoracion(servicioJugador.valoracionJugador(e.getId()));
+			
 		}
 		
 		modelo.put("lista", miLista);

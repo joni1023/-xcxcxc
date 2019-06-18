@@ -22,17 +22,24 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	public Double cantidadExpulsiones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
 		List<Expulsion> expulsiones = miJugador.getExpulsiones();
-		Double cantidadExpulsiones = (double) expulsiones.size();
-		
-		return cantidadExpulsiones;
+		Double cantidadExpulsiones = 0.0;
+		if(expulsiones.isEmpty()) {
+			return 0.0;
+		}else {
+			cantidadExpulsiones = (double) expulsiones.size();
+			return cantidadExpulsiones;
+		}
 	}
 
 	@Override
 	public Double promedioExpulsiones(Jugador jugador) {
 		Double cantidadExpulsiones = this.cantidadExpulsiones(jugador.getId());
 		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
-		
-		return cantidadExpulsiones / partidosJugados;
+		if(partidosJugados == 0 || partidosJugados == null) {
+			return 0.0;
+		}else {
+			return cantidadExpulsiones / partidosJugados;
+		}
 	}
 
 

@@ -4,6 +4,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -94,16 +95,16 @@ public class Jugador {
 		this.valoracion = valoracion;
 	}
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Gol> goles;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Amonestacion> amonestaciones;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Expulsion> expulsiones;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo equipo;
 	
 	public Equipo getEquipo() {

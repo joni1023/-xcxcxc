@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,16 +26,16 @@ public class Partido {
 		this.id = id;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo equipo1;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo equipo2;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Gol> golesEquipo1;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	List <Gol> golesEquipo2;
 
 	public Equipo getEquipo1() {
