@@ -7,7 +7,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
-import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Repository("EquipoDao")
 public class EquipoDaoImpl implements EquipoDao {

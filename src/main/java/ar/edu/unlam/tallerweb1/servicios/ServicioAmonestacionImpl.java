@@ -15,7 +15,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 @Transactional
 public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	@Inject
-	JugadorDao jugadorDao;
+	 private JugadorDao jugadorDao;
 	
 	@Override
 	public Double cantidadAmonestaciones(Long id) {

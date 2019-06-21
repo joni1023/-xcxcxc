@@ -63,7 +63,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		}
 		return valoracion;
 	}
-
+// tipear la valoracion de tabla xq no se que carajo hizo tomas con ese claslget
 	@Override
 	public Double valoracionPorEdad(Jugador jugador) {
 		Double valoracion = 0.0;
