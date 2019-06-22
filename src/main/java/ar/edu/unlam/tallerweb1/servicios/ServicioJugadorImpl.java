@@ -24,6 +24,8 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	private ServicioAmonestacion servicioAmonestacion;
 	@Inject
 	private ServicioExpulsion servicioExpulsion;
+	@Inject
+	private ServicioValoracion servicioValoracion;
 	
 	@Override
 	public List<Jugador> listarJugadores() {
@@ -36,34 +38,43 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	public Double valoracionJugador(Long id) {
 		Jugador miJugador = servicioJugadorDao.buscarJugador(id);
 		Double valoracion = 0.0;
-		if(miJugador.getClass() == JugadorArquero.class) {
-			
-		Double valorEdad = this.valoracionPorEdad(miJugador);
-		Double valorAltura = this.valoracionPorAltura(miJugador);
-		Double valorPesoAltura = this.valoracionPorAlturaYPeso(miJugador);
-		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
-		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
-		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-		
-		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
-				+ valorPorAmonestaciones + valorPorExpulsiones;
-		
-		}else if(miJugador.getClass() == JugadorDeCampo.class) {
-			
-			Double valorEdad = this.valoracionPorEdad(miJugador);
-			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-			Double valorAltura = this.valoracionPorAltura(miJugador);
-			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
-			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-			
-			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
-		}
+//		if(miJugador.getClass() == JugadorArquero.class) {
+//			
+//		Double valorEdad = this.valoracionPorEdad(miJugador);
+//		Double valorAltura = this.valoracionPorAltura(miJugador);
+//		Double valorPesoAltura = this.valoracionPorAlturaYPeso(miJugador);
+//		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+//		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
+//		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
+//		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+//		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+//		
+//		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
+//				+ valorPorAmonestaciones + valorPorExpulsiones;
+//		
+//		}else if(miJugador.getClass() == JugadorDeCampo.class) {
+//			
+//			Double valorEdad = this.valoracionPorEdad(miJugador);
+//			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+//			Double valorAltura = this.valoracionPorAltura(miJugador);
+//			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
+//			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+//			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+//			
+//			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
+//		}
+// preguntar a seba como separa los tipos si se puede hacer un citeria para cada uno , osea pasando el id del equipo 
+		// y que de ello ejecue dos cieria , una para jugadores arquero y otra para los de campo
+		Double valorEdad = servicioValoracion.valoracionPorEdad(miJugador);
+		Double valorAltura = servicioValoracion.valoracionPorAltura(miJugador);
+		Double valorPesoAltura = servicioValoracion.valoracionPorAlturaYPeso(miJugador);
+		valoracion = valorEdad + valorAltura + valorPesoAltura;
 		return valoracion;
 	}
-// tipear la valoracion de tabla xq no se que carajo hizo tomas con ese claslget
+// valoracion por tabla
+	
+	
+///termina valoracion tabla	
 	@Override
 	public Double valoracionPorEdad(Jugador jugador) {
 		Double valoracion = 0.0;
