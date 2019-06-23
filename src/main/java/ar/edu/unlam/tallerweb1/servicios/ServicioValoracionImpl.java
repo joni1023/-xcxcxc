@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,15 +21,15 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	@Inject
 	private ValoracionDao valoracionDao;
 	private ValoracionPesoAlturaA valorPeso;
-// consulta a tabla
+// consulta a lista tabla
 	@Override
-	public ValoracionEdad verValoraciondeEdadTabla() {
+	public List<ValoracionEdad> verValoraciondeEdadTabla() {
 		
 		return valoracionDao.valoracionEdadTabla();
 	}
 
 	@Override
-	public ValoracionAltura verValoracionAlturaTabla() {	
+	public List<ValoracionAltura> verValoracionAlturaTabla() {	
 		return valoracionDao.valoracionAlturaTabla();
 	}
 	
@@ -37,7 +38,9 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 		
 		return valoracionDao.listaValoracionPesoAlturA();
 	}
-// termina consulta
+// consulta enviando jugador
+	
+	
 	
 	@Override
 	public ValoracionPesoAlturaA verValoracionPesoAlturaArqTabla() {
@@ -48,7 +51,17 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 
 	@Override
 	public Double valoracionPorEdad(Jugador jugador) {
-		ValoracionEdad valorEdad=this.verValoraciondeEdadTabla();
+		ValoracionEdad valorEdad=new ValoracionEdad();
+		String Arquero="Arquero";
+		String posicion=jugador.getPosicion();
+		if( posicion.equals(Arquero)) {
+			long id=1l;
+		valorEdad = valoracionDao.valoracionEdadTablaTipo(id);
+		}else {
+			long id=2l;
+		valorEdad=valoracionDao.valoracionEdadTablaTipo(id);
+		}
+		
 		if(jugador.getEdad()< 20) {
 			return valorEdad.getMenor20();
 		}else if(jugador.getEdad() >= 20 && jugador.getEdad() <= 25) {
@@ -66,7 +79,14 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 
 	@Override
 	public Double valoracionPorAltura(Jugador jugador) {
-		ValoracionAltura valorAltura=this.verValoracionAlturaTabla();
+		ValoracionAltura valorAltura=new ValoracionAltura();
+		String Arquero="Arquero";
+		String posicion=jugador.getPosicion();
+		if(posicion.equals(Arquero)) {
+			valorAltura = valoracionDao.valoracionAlturaTablaTipo(1l);
+		}else {
+			valorAltura=valoracionDao.valoracionAlturaTablaTipo(2l);
+		}
 		if(jugador.getAltura() < 1.50) {
 			return valorAltura.getMenor150cm();
 			
@@ -88,46 +108,56 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 
 	@Override
 	public Double valoracionPorAlturaYPeso(Jugador jugador) {
-		List<ValoracionPesoAlturaA> listaValoresPeso=valoracionDao.listaValoracionPesoAlturA();
-		for(ValoracionPesoAlturaA lista: listaValoresPeso) {
-			 valorPeso = new ValoracionPesoAlturaA();
-			if(jugador.getAltura() < 1.50) {
-				valorPeso=lista;
-				break;			
-			} else if(jugador.getAltura() >= 1.50 && jugador.getAltura() < 1.60) {
-				valorPeso=lista;
-				break;				
-			} else if(jugador.getAltura() >= 1.60 && jugador.getAltura() < 1.70) {
-				valorPeso=lista;
-				break;				
-			} else if(jugador.getAltura() >= 1.70 && jugador.getAltura() < 1.80) {
-				valorPeso=lista;
-				break;				
-			} else if(jugador.getAltura() >= 1.80 && jugador.getAltura() < 1.90) {
-				valorPeso=lista;
-				break;			
-				}
-			//Mayor o igual a 190cm
-			valorPeso=lista;
-			break;
+		List<ValoracionPesoAlturaA> listaValoresPeso = new ArrayList<ValoracionPesoAlturaA> ();
+		String Arquero="Arquero";
+		String posicion=jugador.getPosicion();
+		if( posicion.equals(Arquero)) {
+			listaValoresPeso=valoracionDao.listaValoracionPesoAlturATipo(jugador.getPosicion());
+		}else {
+			listaValoresPeso=valoracionDao.listaValoracionPesoAlturATipo(jugador.getPosicion());
 		}
+		valorPeso = new ValoracionPesoAlturaA();
+				if(jugador.getAltura() < 1.50) {
+					valorPeso=listaValoresPeso.get(0);
+						
+				} else if(jugador.getAltura() >= 1.50 && jugador.getAltura() < 1.60) {
+					valorPeso=listaValoresPeso.get(1);
+								
+				} else if(jugador.getAltura() >= 1.60 && jugador.getAltura() < 1.70) {
+					valorPeso=listaValoresPeso.get(2);
+								
+				} else if(jugador.getAltura() >= 1.70 && jugador.getAltura() < 1.80) {
+					valorPeso=listaValoresPeso.get(3);
+									
+				} else if(jugador.getAltura() >= 1.80 && jugador.getAltura() < 1.90) {
+					valorPeso=listaValoresPeso.get(4);
+								
+					}else {
+				//Mayor o igual a 190cm
+				valorPeso=listaValoresPeso.get(5);
+				
+					}
 		
-		if(jugador.getPeso()> 60.0) {
+		
+		if(jugador.getPeso()< 60.0) {
 			return valorPeso.getMenos60();
-		}else if(jugador.getPeso()<= 60.0 && jugador.getPeso() < 70.0) {
-			return valorPeso.getMenos60();
-		}else if(jugador.getPeso()<= 70.0 && jugador.getPeso() < 80.0) {
-			return valorPeso.getMenos60();
-		}else if(jugador.getPeso()<= 80.0 && jugador.getPeso() < 90.0) {
-			return valorPeso.getMenos60();
-		}else if(jugador.getPeso()<= 90.0 && jugador.getPeso() < 100.0) {
-			return valorPeso.getMenos60();
+		}else if(jugador.getPeso()>= 60.0 && jugador.getPeso() < 70.0) {
+			return valorPeso.getEntre60y70();
+		}else if(jugador.getPeso()>= 70.0 && jugador.getPeso() < 80.0) {
+			return valorPeso.getEntre70y80();
+		}else if(jugador.getPeso()>= 80.0 && jugador.getPeso() < 90.0) {
+			return valorPeso.getEntre80y90();
+		}else if(jugador.getPeso()>= 90.0 && jugador.getPeso() < 100.0) {
+			return valorPeso.getEntre90y100();
 		}
 		//// mas 100kg
 		return valorPeso.getMas100();
 	}
-	
-	
-	
 
+	@Override
+	public List<ValoracionPesoAlturaA> listaValoracionPesoAlturATipo(String tipo) {
+		
+		return valoracionDao.listaValoracionPesoAlturATipo(tipo);
+	}
+	
 }

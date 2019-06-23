@@ -9,9 +9,9 @@ import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAlturaA;
 
 public interface ServicioValoracion {
 	
-	public ValoracionEdad verValoraciondeEdadTabla();
+	public List<ValoracionEdad> verValoraciondeEdadTabla();
 	
-	public ValoracionAltura verValoracionAlturaTabla();
+	public List<ValoracionAltura> verValoracionAlturaTabla();
 	
 	public List<ValoracionPesoAlturaA> listaValoracionPesoAlturaA();
 	
@@ -23,6 +23,11 @@ public interface ServicioValoracion {
 	public Double valoracionPorAltura(Jugador jugador);
 	
 	public Double valoracionPorAlturaYPeso(Jugador jugador);
+	
+	//prueba
+	public List<ValoracionPesoAlturaA> listaValoracionPesoAlturATipo(String tipo);
+
+	
 	
 
 }

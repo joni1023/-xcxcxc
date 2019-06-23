@@ -27,8 +27,8 @@ public class ControladorValoraciones {
 		modelo.put("valoracionEdad", valorEdad);
 		modelo.put("valoracionAltura", valorAltura);
 		modelo.put("valoracionPesoAlturaA", valorPeso);
-		modelo.put("valorEdad", servicioValoracion.verValoraciondeEdadTabla());
-		modelo.put("valorAltura", servicioValoracion.verValoracionAlturaTabla());
+		modelo.put("listvalorEdad", servicioValoracion.verValoraciondeEdadTabla());
+		modelo.put("listvalorAltura", servicioValoracion.verValoracionAlturaTabla());
 		modelo.put("listaValor", servicioValoracion.listaValoracionPesoAlturaA());
 		
 		return new ModelAndView ("valoraciones",modelo);

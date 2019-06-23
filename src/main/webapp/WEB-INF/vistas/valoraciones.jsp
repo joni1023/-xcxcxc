@@ -26,6 +26,7 @@
 			      <th scope= "col">opcion</th>
 			    </tr>
 </thead>
+<c:forEach items="${listvalorEdad }" var="valorEdad">
 <tbody>
 				    <tr>
 				      <th scope= "col">${valorEdad.menor20 }</th>
@@ -40,6 +41,7 @@
 								</th>
 				    </tr>
 </tbody>
+</c:forEach>
 </table>
 <h3>  --- --  -- -- </h3>
 <br>
@@ -56,6 +58,7 @@
 			      <th scope= "col">opcion</th>
 			    </tr>
 </thead>
+<c:forEach items="${listvalorAltura }" var="valorAltura">
 <tbody>
 				    <tr>
 				      <th scope= "col">${valorAltura.menor150cm }</th>
@@ -71,6 +74,7 @@
 								</th>
 				    </tr>
 </tbody>
+</c:forEach>
 </table>
 <h3>  ---  --  --  --  --  </h3>
 <br>

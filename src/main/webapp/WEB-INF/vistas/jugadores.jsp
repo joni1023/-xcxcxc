@@ -11,7 +11,7 @@
 <h1>lista de jugadores y su valoracion</h1>
 <h3>Arquero</h3>
 <c:forEach items="${lista}" var="lista">
-<p>nombre: ${lista.nombre}, edad: ${lista.edad}, peso:${lista.peso}, altura: ${lista.altura}, valoracion ${lista.valoracion }</p>
+<p>nombre: ${lista.nombre}, edad: ${lista.edad}, peso:${lista.peso}, altura: ${lista.altura}, valoracion ${lista.valoracion }, posicion ${lista.posicion }</p>
 </c:forEach> 
 </body>
 </html>
