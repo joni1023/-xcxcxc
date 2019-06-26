@@ -7,11 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class ValoracionEdad {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
 	private Double menor20;
 	private Double de20a25;
 	private Double de26a30;
@@ -69,7 +68,4 @@ public class ValoracionEdad {
 	public void setMayor35(Double mayor35) {
 		this.mayor35 = mayor35;
 	}
-	
-	
-
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
-import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAlturaA;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
 
 public interface ServicioValoracion {
 	
@@ -13,21 +13,17 @@ public interface ServicioValoracion {
 	
 	public List<ValoracionAltura> verValoracionAlturaTabla();
 	
-	public List<ValoracionPesoAlturaA> listaValoracionPesoAlturaA();
+	public List<ValoracionPesoAltura> listaValoracionPesoAltura();
 	
-	public ValoracionPesoAlturaA verValoracionPesoAlturaArqTabla();
+	public ValoracionPesoAltura verValoracionPesoAlturaArqTabla();
 	
-	//valores de jugadores
+	// Valores de jugadores
 	public Double valoracionPorEdad(Jugador jugador);
 
 	public Double valoracionPorAltura(Jugador jugador);
 	
 	public Double valoracionPorAlturaYPeso(Jugador jugador);
 	
-	//prueba
-	public List<ValoracionPesoAlturaA> listaValoracionPesoAlturATipo(String tipo);
-
-	
-	
-
+	// Prueba
+	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo);
 }

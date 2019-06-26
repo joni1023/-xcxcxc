@@ -14,6 +14,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 @Service("ServicioAmonestacion")
 @Transactional
 public class ServicioAmonestacionImpl implements ServicioAmonestacion {
+	
 	@Inject
 	 private JugadorDao jugadorDao;
 	
@@ -24,7 +25,7 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		Double cantidadAmonestaciones = 0.0;
 		if(amonestaciones.isEmpty()) {
 			return 0.0;
-		}else {
+		} else {
 			for (Amonestacion amonestacion : amonestaciones) {
 				cantidadAmonestaciones += amonestacion.getCantidad();
 			}
@@ -39,7 +40,7 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
 		if(partidosJugados == 0 || partidosJugados == null) {
 			return 0.0;
-		}else {
+		} else {
 			return cantidadAmonestaciones / partidosJugados;
 		}
 	}
@@ -50,6 +51,5 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		Double valoracion = promedioAmonestaciones * (-5);
 		
 		return valoracion;
-	}
-	
+	}	
 }

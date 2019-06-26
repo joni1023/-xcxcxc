@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
-import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAlturaA;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
 import ar.edu.unlam.tallerweb1.servicios.ServicioValoracion;
 
 @Controller
@@ -20,21 +20,17 @@ public class ControladorValoraciones {
 	
 	@RequestMapping("/valoraciones")
 	public ModelAndView mostrarValoraciones() {
-		ModelMap modelo =new ModelMap();
-		ValoracionEdad valorEdad= new ValoracionEdad();
-		ValoracionAltura valorAltura=new ValoracionAltura();
-		ValoracionPesoAlturaA valorPeso = new ValoracionPesoAlturaA();
+		ModelMap modelo = new ModelMap();
+		ValoracionEdad valorEdad = new ValoracionEdad();
+		ValoracionAltura valorAltura =new ValoracionAltura();
+		ValoracionPesoAltura valorPeso = new ValoracionPesoAltura();
 		modelo.put("valoracionEdad", valorEdad);
 		modelo.put("valoracionAltura", valorAltura);
 		modelo.put("valoracionPesoAlturaA", valorPeso);
-		modelo.put("listvalorEdad", servicioValoracion.verValoraciondeEdadTabla());
-		modelo.put("listvalorAltura", servicioValoracion.verValoracionAlturaTabla());
-		modelo.put("listaValor", servicioValoracion.listaValoracionPesoAlturaA());
+		modelo.put("listaValorEdad", servicioValoracion.verValoraciondeEdadTabla());
+		modelo.put("listaValorAltura", servicioValoracion.verValoracionAlturaTabla());
+		modelo.put("listaValor", servicioValoracion.listaValoracionPesoAltura());
 		
-		return new ModelAndView ("valoraciones",modelo);
+		return new ModelAndView ("valoraciones", modelo);
 	}
-	
-	
-	
-
 }

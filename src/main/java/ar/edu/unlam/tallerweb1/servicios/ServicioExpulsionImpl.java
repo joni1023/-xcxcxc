@@ -14,6 +14,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 @Service("ServicioExpulsion")
 @Transactional
 public class ServicioExpulsionImpl implements ServicioExpulsion {
+	
 	@Inject
 	JugadorDao jugadorDao;
 	
@@ -24,7 +25,7 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		Double cantidadExpulsiones = 0.0;
 		if(expulsiones.isEmpty()) {
 			return 0.0;
-		}else {
+		} else {
 			cantidadExpulsiones = (double) expulsiones.size();
 			return cantidadExpulsiones;
 		}
@@ -36,7 +37,7 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
 		if(partidosJugados == 0 || partidosJugados == null) {
 			return 0.0;
-		}else {
+		} else {
 			return cantidadExpulsiones / partidosJugados;
 		}
 	}
@@ -49,5 +50,4 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		
 		return valoracion;
 	}
-
 }

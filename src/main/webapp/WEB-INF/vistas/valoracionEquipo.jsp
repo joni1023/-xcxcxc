@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Valoracion de Equipos</title>
+	<meta charset="ISO-8859-1">
+	<title>Valoracion de Equipos</title>
 </head>
 <body>
+
 	<h1>Valoracion de Equipos</h1>
 	
 </body>

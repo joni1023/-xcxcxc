@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
+import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Repository("EquipoDao")
 public class EquipoDaoImpl implements EquipoDao {
@@ -16,22 +18,43 @@ public class EquipoDaoImpl implements EquipoDao {
 	@Inject
     private SessionFactory sessionFactory;
 
+	@Override
+    public List<Equipo> listarEquipos() {
+		List <Equipo> miLista = sessionFactory.getCurrentSession().createCriteria(Equipo.class)
+                .add(Restrictions.isNotNull("nombre"))
+                .list();
 
+		return miLista;
+    }
+	
 	@Override
 	public Equipo buscarEquipo(Long id) {
 		Equipo miEquipoBuscado = (Equipo) sessionFactory.getCurrentSession().createCriteria(Equipo.class)
 				   .add(Restrictions.eq("id", id))
 				   .uniqueResult();
 
-			return miEquipoBuscado;
+		return miEquipoBuscado;
 	}
 	
 	@Override
-	public List<Equipo> listaDeEquipos(){
-		List<Equipo> listaEncontrada = sessionFactory.getCurrentSession().createCriteria(Equipo.class)
-						.add(Restrictions.isNotNull("nombre"))
-						.list();
-		return listaEncontrada;
+	public void agregarEquipo(Equipo equipo) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(equipo);
 	}
-
+	
+	@Override
+	public void editarEquipo(Equipo equipo) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(equipo);
+	}
+	
+	@Override
+	public void eliminarEquipo(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		Equipo equipo = (Equipo) session.get(Equipo.class, new Long(id));
+		
+		if(null != equipo) {
+			session.delete(equipo);
+		}
+	}
 }

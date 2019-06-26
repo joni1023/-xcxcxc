@@ -10,6 +10,4 @@ public interface ServicioJugador {
 	
 	public Double valoracionJugador(Long id);
 	
-
-	
 }
