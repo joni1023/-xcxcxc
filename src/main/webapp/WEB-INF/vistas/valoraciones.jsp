@@ -13,7 +13,7 @@
 </head>
 <body class="container">
 <h1>datos de valoraciones en tabla</h1>
-<h3>Arquero</h3>
+<h3>1 arquero , 2 campo</h3>
 <p>Valores por edad:</p>
 <table class=" table table-bordered">
 <thead >
