@@ -24,7 +24,14 @@ public class Jugador {
 	private Double peso;
 	private Double altura;
 	private Double valoracion;
+	private String posicion;
 	
+	private Integer golesConvertidos;
+	
+	private Integer golesRecibidos;
+	
+	
+
 	public Jugador () {
 		
 	}
@@ -138,4 +145,28 @@ public class Jugador {
 	public void setExpulsiones(List<Expulsion> expulsiones) {
 		this.expulsiones = expulsiones;
 	}	
+	public Integer getGolesConvertidos() {
+		return golesConvertidos;
+	}
+
+	public void setGolesConvertidos(Integer golesConvertidos) {
+		this.golesConvertidos = golesConvertidos;
+	}
+
+	public Integer getGolesRecibidos() {
+		return golesRecibidos;
+	}
+
+	public void setGolesRecibidos(Integer golesRecibidos) {
+		this.golesRecibidos = golesRecibidos;
+	}
+
+	public String getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
+	}
+	
 }

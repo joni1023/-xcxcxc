@@ -11,8 +11,8 @@ import ar.edu.unlam.tallerweb1.dao.EquipoDao;
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
-import ar.edu.unlam.tallerweb1.modelo.JugadorArquero;
-import ar.edu.unlam.tallerweb1.modelo.JugadorDeCampo;
+//import ar.edu.unlam.tallerweb1.modelo.JugadorArquero;
+//import ar.edu.unlam.tallerweb1.modelo.JugadorDeCampo;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 
 @Service("ServicioGol")
@@ -43,11 +43,13 @@ public class ServicioGolImpl implements ServicioGol{
 	public Double valoracionPorPromedioDeGol(Jugador jugador) {
 		Double promedio = this.promedioDeGol(jugador);
 		Double valoracion = promedio;
-		if(jugador.getClass()==JugadorDeCampo.class) {	
+//		if(jugador.getClass()==JugadorDeCampo.class) {	
+			if(jugador.getPosicion().equals("Campo")) {
 			if(promedio > 10.0) {
 			valoracion = 10.0;
 			}
-		}else if(jugador.getClass()==JugadorArquero.class) {
+//		}else if(jugador.getClass()==JugadorArquero.class) {
+		}else if(jugador.getPosicion().equals("Arquero")) {
 			valoracion = valoracion*3;
 			if(valoracion > 10.0) {
 				valoracion = 10.0;

@@ -10,10 +10,6 @@ public interface ServicioJugador {
 	
 	public Double valoracionJugador(Long id);
 	
-	public Double valoracionPorEdad(Jugador jugador);
 
-	public Double valoracionPorAltura(Jugador jugador);
-	
-	public Double valoracionPorAlturaYPeso(Jugador jugador);
 	
 }
