@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.SessionFactory;
@@ -22,6 +24,14 @@ public class EquipoDaoImpl implements EquipoDao {
 				   .uniqueResult();
 
 			return miEquipoBuscado;
+	}
+	
+	@Override
+	public List<Equipo> listaDeEquipos(){
+		List<Equipo> listaEncontrada = sessionFactory.getCurrentSession().createCriteria(Equipo.class)
+						.add(Restrictions.isNotNull("nombre"))
+						.list();
+		return listaEncontrada;
 	}
 
 }
