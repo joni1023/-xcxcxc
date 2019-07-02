@@ -25,7 +25,7 @@ public class Equipo {
 	private Double promedioDeEdad;
 	private String categoria;
 	private String localidad;
-	private Integer valoracion;
+	private Double valoracion;
 	
 	public Long getId() {
 		return id;
@@ -87,10 +87,10 @@ public class Equipo {
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
-	public Integer getValoracion() {
+	public Double getValoracion() {
 		return valoracion;
 	}
-	public void setValoracion(Integer valoracion) {
+	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
 	@OneToMany(cascade=CascadeType.ALL)

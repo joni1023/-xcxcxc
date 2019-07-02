@@ -33,4 +33,15 @@ public class JugadorDaoImpl implements JugadorDao {
 		
 		return miJugadorBuscado;
 	}
+
+	@Override
+	public List<Jugador> listaDeJugadoresPorEquipo( Long idDeEquipo ) {
+		List <Jugador> miListaDeJugadores = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
+                .createAlias("equipo", "equipojoin")
+				.add(Restrictions.eq("equipojoin.id",idDeEquipo))
+                .list();
+
+			return miListaDeJugadores;
+		
+	}
 }

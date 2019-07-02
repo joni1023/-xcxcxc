@@ -66,6 +66,11 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		valoracion = valorPesoAltura+valorAltura+valorEdad;
 		return valoracion;
 	}
+
+	@Override
+	public List<Jugador> listarJugadorePorEquipo(Long idEquipo) {
+		return servicioJugadorDao.listaDeJugadoresPorEquipo(idEquipo);
+	}
 	
 	
 }

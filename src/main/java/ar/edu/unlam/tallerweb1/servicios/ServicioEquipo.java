@@ -7,4 +7,6 @@ import ar.edu.unlam.tallerweb1.modelo.Equipo;
 public interface ServicioEquipo {
 	public List<Equipo>listarEquipos();
 	public Double valoracionEquipo(Long id);
+	
+	public Equipo dandoRival(Equipo equipo);
 }

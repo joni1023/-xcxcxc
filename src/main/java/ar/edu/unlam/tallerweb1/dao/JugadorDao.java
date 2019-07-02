@@ -9,4 +9,6 @@ public interface JugadorDao {
 	public List <Jugador> listaDeJugadores();
 	
 	public Jugador buscarJugador(Long id);
+	
+	public List <Jugador> listaDeJugadoresPorEquipo(Long idDeEquipo);
 }

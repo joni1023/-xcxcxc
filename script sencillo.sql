@@ -1,3 +1,4 @@
+
 -- jugadores
 -- arquero
 INSERT INTO `db`.`jugador` (`posicion`, `altura`, `edad`, `fechaDeNacimiento`, `nombre`, `peso`) VALUES ('Arquero', '1.70', '25', '1990/01/01', 'juanarquero', '80.0');
@@ -35,3 +36,35 @@ INSERT INTO `db`.`valoracionpesoalturaa` (`altura`, `entre60y70`, `entre70y80`, 
 INSERT INTO `db`.`valoracionpesoalturaa` (`altura`, `entre60y70`, `entre70y80`, `entre80y90`, `entre90y100`, `mas100`) VALUES ('entre170y180', '9.5', '10', '11', '8.0', '7.0');
 INSERT INTO `db`.`valoracionpesoalturaa` (`altura`, `entre60y70`, `entre70y80`, `entre80y90`, `entre90y100`, `mas100`) VALUES ('entre180y190', '8.0', '9.5', '10', '9.5', '8.0');
 INSERT INTO `db`.`valoracionpesoalturaa` (`altura`, `entre70y80`, `entre80y90`, `entre90y100`, `mas100`) VALUES ('mas190', '8.0', '9.0', '9.5', '10');
+-- Equipos
+INSERT INTO `db`.`equipo` (`nombre`) VALUES ('equipo1');
+INSERT INTO `db`.`equipo` (`nombre`) VALUES ('equipo2');
+
+INSERT INTO `db`.`equipo_jugador` (`Equipo_id`, `listaDeJugadores_id`) VALUES ('1', '1');
+INSERT INTO `db`.`equipo_jugador` (`Equipo_id`, `listaDeJugadores_id`) VALUES ('1', '2');
+INSERT INTO `db`.`equipo_jugador` (`Equipo_id`, `listaDeJugadores_id`) VALUES ('1', '3');
+INSERT INTO `db`.`equipo_jugador` (`Equipo_id`, `listaDeJugadores_id`) VALUES ('2', '4');
+INSERT INTO `db`.`equipo_jugador` (`Equipo_id`, `listaDeJugadores_id`) VALUES ('2', '5');
+
+UPDATE `db`.`jugador` SET `equipo_id`='1' WHERE `id`='1';
+UPDATE `db`.`jugador` SET `equipo_id`='1' WHERE `id`='2';
+UPDATE `db`.`jugador` SET `equipo_id`='1' WHERE `id`='3';
+UPDATE `db`.`jugador` SET `equipo_id`='2' WHERE `id`='4';
+UPDATE `db`.`jugador` SET `equipo_id`='2' WHERE `id`='5';
+-- nuevos para qur funcione lo de equipo
+use db;
+insert into equipo (nombre) values ("equipo1");
+insert into equipo (nombre) values ("equipo2");
+insert into equipo (nombre) values ("equipo3");
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero2",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero1",1);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.7,95,21,"juanArquero",3);
+
+insert into equipo_jugador values(1,1);
+insert into equipo_jugador values(2,2);
+
