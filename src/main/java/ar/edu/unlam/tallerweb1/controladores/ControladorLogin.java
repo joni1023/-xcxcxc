@@ -47,7 +47,9 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta.
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
-			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			if(usuarioBuscado.getEsAdmin() == true) {
+				return new ModelAndView("redirect:/homeAdmin");
+			}
 			return new ModelAndView("redirect:/home");
 		} else {
 			// Si el usuario no existe agrega un mensaje de error en el modelo.
@@ -60,6 +62,10 @@ public class ControladorLogin {
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		return new ModelAndView("home");
+	}
+	@RequestMapping(path = "/homeAdmin", method = RequestMethod.GET)
+	public ModelAndView irAHomeAministrador() {
+		return new ModelAndView("homeAdmin");
 	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.

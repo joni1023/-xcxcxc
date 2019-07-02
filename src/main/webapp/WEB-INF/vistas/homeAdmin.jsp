@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div class = "container">
-			<h1>Buscando Rival</h1>
+			<h1>Bienvenido Administrador</h1>
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
