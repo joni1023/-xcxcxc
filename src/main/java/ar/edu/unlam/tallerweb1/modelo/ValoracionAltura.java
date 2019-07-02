@@ -7,10 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class ValoracionAltura {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private Double menor150cm;
 	private Double entre150y160cm;
 	private Double entre160y170cm;
@@ -77,6 +77,4 @@ public class ValoracionAltura {
 	public void setMayor190cm(Double mayor190cm) {
 		this.mayor190cm = mayor190cm;
 	}
-	
-
 }

@@ -28,14 +28,14 @@ public class ServicioGolImpl implements ServicioGol{
 		Double golesConvertidos = 0.0;
 		if(partidosJugados == 0 || partidosJugados == null) {
 			return 0.0;
-		}else {
+		} else {
 		
 		List<Gol> goles = jugador.getGoles();		
 		for (Gol gol : goles) {
 			golesConvertidos += gol.getCantidad();
 		}
 		
-		return golesConvertidos/partidosJugados;
+			return golesConvertidos/partidosJugados;
 		}
 	}
 	
@@ -43,20 +43,19 @@ public class ServicioGolImpl implements ServicioGol{
 	public Double valoracionPorPromedioDeGol(Jugador jugador) {
 		Double promedio = this.promedioDeGol(jugador);
 		Double valoracion = promedio;
-//		if(jugador.getClass()==JugadorDeCampo.class) {	
+		// if(jugador.getClass()==JugadorDeCampo.class) {	
 			if(jugador.getPosicion().equals("Campo")) {
 			if(promedio > 10.0) {
 			valoracion = 10.0;
 			}
-//		}else if(jugador.getClass()==JugadorArquero.class) {
-		}else if(jugador.getPosicion().equals("Arquero")) {
+		// } else if(jugador.getClass()==JugadorArquero.class) {
+		} else if(jugador.getPosicion().equals("Arquero")) {
 			valoracion = valoracion*3;
 			if(valoracion > 10.0) {
 				valoracion = 10.0;
 			}
 		}
-		return valoracion;
-		
+			return valoracion;
 	}
 
 	@Override
@@ -65,15 +64,16 @@ public class ServicioGolImpl implements ServicioGol{
 		Double valoracion = 0.0;
 		if(promedioGolesEnContra == null) {
 		return 0.0;
-		}else if(promedioGolesEnContra >= 0.0 && promedioGolesEnContra <= 3.0 ) {
+		} else if(promedioGolesEnContra >= 0.0 && promedioGolesEnContra <= 3.0 ) {
 			valoracion = 10.0;
-		}else if(promedioGolesEnContra > 3.0 && promedioGolesEnContra <= 5.0) {
+		} else if(promedioGolesEnContra > 3.0 && promedioGolesEnContra <= 5.0) {
 			valoracion = 7.0;
-		}else if(promedioGolesEnContra > 5.0 && promedioGolesEnContra <= 7.0) {
+		} else if(promedioGolesEnContra > 5.0 && promedioGolesEnContra <= 7.0) {
 			valoracion = 5.0;
-		}else {
+		} else {
 			valoracion = 3.0;
 		}
+		
 		return valoracion;
 	}
 
@@ -83,7 +83,7 @@ public class ServicioGolImpl implements ServicioGol{
 		Double partidosJugados = (double)jugador.getEquipo().getListaDePartidos().size();
 		if(partidosJugados == 0 || partidosJugados == null) {
 			return null;
-		}else {
+		} else {
 			return golesEnContra / partidosJugados;
 		}
 	}
@@ -96,28 +96,29 @@ public class ServicioGolImpl implements ServicioGol{
 		if(partidos.isEmpty()) {
 			return null;
 			
-		}else {
+		} else {
 			for (Partido partido : partidos) {
 				if(equipo == partido.getEquipo1()) {
 					List<Gol> goles = partido.getGolesEquipo2();
 					if(goles.isEmpty()) {
 						return 0.0;
-					}else {
+					} else {
 						for (Gol gol : goles) {
 							golesEnContra += gol.getCantidad();
 							}
 						}
-					}else if (equipo == partido.getEquipo2()) {
+					} else if (equipo == partido.getEquipo2()) {
 						List<Gol> goles = partido.getGolesEquipo1();
 						if(goles.isEmpty()) {
 							return 0.0;
-						}else {
+						} else {
 							for (Gol gol : goles) {
 								golesEnContra += gol.getCantidad();
 						}
 					}
 				}
 			}
+			
 			return golesEnContra;
 		}
 	}
@@ -130,18 +131,19 @@ public class ServicioGolImpl implements ServicioGol{
 		if(partidos.isEmpty()) {
 			return 0.0;
 			
-		}else {
+		} else {
 			for (Partido partido : partidos) {
 				if(partido.getEquipo1() == miEquipo) {
 					if(partido.getGolesEquipo2().size() == 0 || partido.getGolesEquipo2().isEmpty()) {
 						partidosPorteriaImbatida ++;
 					}
-				}else if(partido.getEquipo2() == miEquipo) {
+				} else if(partido.getEquipo2() == miEquipo) {
 					if(partido.getGolesEquipo1().size() == 0 || partido.getGolesEquipo1().isEmpty()) {
 						partidosPorteriaImbatida ++;
 					}
 				}
 			}
+			
 			return partidosPorteriaImbatida;
 		}
 	}
@@ -153,7 +155,8 @@ public class ServicioGolImpl implements ServicioGol{
 		if(partidosJugados == 0 || partidosJugados == null) {
 			return 0.0;
 		}else {
-		return partidosPorteriaImbatible / partidosJugados;
+			
+			return partidosPorteriaImbatible / partidosJugados;
 		}
 	}		
 
@@ -164,5 +167,4 @@ public class ServicioGolImpl implements ServicioGol{
 		
 		return valoracion;
 	}
-	
 }

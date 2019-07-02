@@ -9,9 +9,7 @@ public interface ServicioJugador {
 	public List <Jugador> listarJugadores();
 	
 	public Double valoracionJugador(Long id);
-	
-	public List <Jugador> listarJugadorePorEquipo(Long idEquipo);
-	
 
-	
+	public List <Jugador> listarJugadorePorEquipo(Long idEquipo);
+
 }

@@ -5,8 +5,19 @@ import java.util.List;
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
 
 public interface ServicioEquipo {
-	public List<Equipo>listarEquipos();
 	public Double valoracionEquipo(Long id);
 	
 	public Equipo dandoRival(Equipo equipo);
+
+	public List<Equipo> listarEquipos();
+	
+    public Equipo buscarEquipo(Long id);
+
+    public void agregarEquipo(Equipo equipo);
+   
+    public void editarEquipo(Equipo equipo);
+   
+    public void eliminarEquipo(Long id);
+    
 }
+

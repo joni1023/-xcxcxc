@@ -23,5 +23,4 @@ public class PartidoDaoImpl implements PartidoDao {
 				.list();
 				return miLista;
 	}
-
 }

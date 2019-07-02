@@ -51,6 +51,4 @@ public class Gol {
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
 	}
-	
-	
 }

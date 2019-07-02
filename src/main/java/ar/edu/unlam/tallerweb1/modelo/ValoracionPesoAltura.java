@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ValoracionPesoAlturaA {
+public class ValoracionPesoAltura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -18,7 +18,7 @@ public class ValoracionPesoAlturaA {
 	private Double entre90y100;
 	private Double mas100;
 	
-	public ValoracionPesoAlturaA() {
+	public ValoracionPesoAltura() {
 		
 	}
 

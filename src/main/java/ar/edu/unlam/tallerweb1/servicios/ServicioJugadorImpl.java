@@ -16,12 +16,16 @@ public class ServicioJugadorImpl implements ServicioJugador {
 
 	@Inject
 	private JugadorDao servicioJugadorDao;
-	@Inject
-	private ServicioGol servicioGol;
-	@Inject
-	private ServicioAmonestacion servicioAmonestacion;
-	@Inject
-	private ServicioExpulsion servicioExpulsion;
+	
+	/*@Inject
+	private ServicioGol servicioGol;*/
+	
+	/*@Inject
+	private ServicioAmonestacion servicioAmonestacion;*/
+	
+	/*@Inject
+	private ServicioExpulsion servicioExpulsion;*/
+	
 	@Inject
 	private ServicioValoracion servicioValoracion;
 	
@@ -36,34 +40,34 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		Jugador miJugador = servicioJugadorDao.buscarJugador(id);
 		Double valoracion = 0.0;
 		
-//		if(miJugador.getClass() == JugadorArquero.class) {
-//		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-//		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
-//		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
-//		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-//		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-//		
-//		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
-//				+ valorPorAmonestaciones + valorPorExpulsiones;
-//		
-//		}else if(miJugador.getClass() == JugadorDeCampo.class) {
-//			
-//			Double valorEdad = this.valoracionPorEdad(miJugador);
-//			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-//			Double valorAltura = this.valoracionPorAltura(miJugador);
-//			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
-//			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-//			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-//			
-//			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
-//		}
+		/*if(miJugador.getClass() == JugadorArquero.class) {
+		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
+		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
+		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+		
+		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
+				+ valorPorAmonestaciones + valorPorExpulsiones;
+		
+		}else if(miJugador.getClass() == JugadorDeCampo.class) {
+			
+			Double valorEdad = this.valoracionPorEdad(miJugador);
+			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+			Double valorAltura = this.valoracionPorAltura(miJugador);
+			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
+			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+			
+			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
+		}*/
 
 		
-		// ---- vaoracion desde el servico valoracion tabla ---- 
+		/* Valoracion desde el servico valoracion tabla */
 		Double valorEdad = servicioValoracion.valoracionPorEdad(miJugador);
 		Double valorAltura = servicioValoracion.valoracionPorAltura(miJugador);
 		Double valorPesoAltura = servicioValoracion.valoracionPorAlturaYPeso(miJugador);
-		valoracion = valorPesoAltura+valorAltura+valorEdad;
+		valoracion = valorPesoAltura + valorAltura + valorEdad;
 		return valoracion;
 	}
 
@@ -71,6 +75,5 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	public List<Jugador> listarJugadorePorEquipo(Long idEquipo) {
 		return servicioJugadorDao.listaDeJugadoresPorEquipo(idEquipo);
 	}
-	
 	
 }
