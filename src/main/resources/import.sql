@@ -26,19 +26,19 @@ insert into valoracionedad (menor20,de20a25,de26a30,de31a35,mayor35) values(9.5,
 INSERT INTO valoracionaltura (menor150cm,entre150y160cm, entre160y170cm, entre170y180cm, entre180y190cm, mayor190cm) VALUES (6.5,7.0, 8.0, 9.5, 10, 12);
 INSERT INTO valoracionaltura (menor150cm,entre150y160cm, entre160y170cm,entre170y180cm, entre180y190cm, mayor190cm) VALUES (8,9.0,9.5,10,11,11.0);
 
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("menos150", 10, 9.5, 7,2,1,1);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre150y160",9.5, 10, 9, 8, 6, 4);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre160y170",1,9,10, 11, 8, 6);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre170y180",1, 9.5, 10, 11, 8, 7);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre180y190",1,8, 9.5, 10, 9.5,8.0);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",1,1,8,9,9.5,10);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("menos150", 10, 9.5, 7,2,1,1);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre150y160",9.5, 10, 9, 8, 6, 4);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre160y170",1,9,10, 11, 8, 6);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre170y180",1, 9.5, 10, 11, 8, 7);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre180y190",1,8, 9.5, 10, 9.5,8.0);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",1,1,8,9,9.5,10);
 -- campo
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("menos150", 10, 9.5, 7,2,1,1);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre150y160",9.5, 10, 9, 8, 6, 4);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre160y170",1,9,10, 11, 8, 6);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre170y180",1, 9.5, 10, 11, 8, 7);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre180y190",1,8, 9.5, 10, 9.5,8.0);
-INSERT INTO valoracionpesoalturaa (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",1,1,8,9,9.5,10);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("menos150", 10, 9.5, 7,2,1,1);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre150y160",9.5, 10, 9, 8, 6, 4);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre160y170",1,9,10, 11, 8, 6);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre170y180",1, 9.5, 10, 11, 8, 7);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre180y190",1,8, 9.5, 10, 9.5,8.0);
+INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",1,1,8,9,9.5,10);
 
 
 
