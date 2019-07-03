@@ -13,6 +13,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionesGenerales;
 
 @Service("ServicioValoracion")
 @Transactional
@@ -160,5 +161,11 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo) {
 		
 		return valoracionDao.listaValoracionPesoAlturaTipo(tipo);
+	}
+
+	@Override
+	public Integer valoracionGeneral() {
+		
+		return valoracionDao.valoracionGeneral().getRadioMedicion();
 	}	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionesGenerales;
 
 public interface ValoracionDao {
 	
@@ -15,5 +16,7 @@ public interface ValoracionDao {
 	public ValoracionEdad valoracionEdadTablaTipo(Long id);
 	public ValoracionAltura valoracionAlturaTablaTipo(Long id);
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo);
+	
+	public ValoracionesGenerales valoracionGeneral();
 
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionesGenerales;
 
 @Repository("ValoracionDao")
 public class ValoracionDaoImpl implements ValoracionDao {
@@ -79,5 +80,13 @@ public class ValoracionDaoImpl implements ValoracionDao {
 		}
 		
 		return misValores;
+	}
+
+	@Override
+	public ValoracionesGenerales valoracionGeneral() {
+		
+		return (ValoracionesGenerales) sessionFactory.getCurrentSession().createCriteria(ValoracionesGenerales.class)
+				.add(Restrictions.isNotNull("id"))
+				.uniqueResult();
 	}
 }
