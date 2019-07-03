@@ -1,6 +1,7 @@
 insert into equipo (nombre) values ("equipo1_joven");
 insert into equipo (nombre) values ("equipo2_viejo");
 insert into equipo (nombre) values ("equipo3_mezclado");
+insert into equipo (nombre) values ("equipo4_mezclado");
 
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"juanArquero",1);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"matiasCampo",1);
@@ -19,6 +20,12 @@ insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,19,"pabloCampo",3);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"ignacioCampo",3);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,38,"gastonCampo",3);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"juanArquero",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"matiasCampo",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,19,"pabloCampo",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"ignacioCampo",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,38,"gastonCampo",4);
 
 insert into valoracionedad (menor20,de20a25,de26a30,de31a35,mayor35) values(9,9.5,10,8.5,7.5);
 insert into valoracionedad (menor20,de20a25,de26a30,de31a35,mayor35) values(9.5,11,9,7.5,4);

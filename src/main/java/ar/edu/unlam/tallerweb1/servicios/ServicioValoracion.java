@@ -6,6 +6,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionesGenerales;
 
 public interface ServicioValoracion {
 	
@@ -26,4 +27,6 @@ public interface ServicioValoracion {
 	
 	// Prueba
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo);
+	
+	public Integer valoracionGeneral();
 }
