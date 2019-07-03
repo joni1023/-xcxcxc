@@ -28,5 +28,5 @@ public interface ServicioValoracion {
 	// Prueba
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo);
 	
-	public Integer valoracionGeneral();
+	public Integer valoracionGeneralRadio();
 }

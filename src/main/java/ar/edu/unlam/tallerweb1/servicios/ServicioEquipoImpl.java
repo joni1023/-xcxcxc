@@ -74,7 +74,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 			valoracion=this.valoracionEquipo(e.getId());
 			e.setValoracion(valoracion);
 		}
-		Integer rango = servicioValoracion.valoracionGeneral();
+		Integer rango = servicioValoracion.valoracionGeneralRadio();
 		Double valorMinimo=equipo.getValoracion()- rango;
 		Double valorMaximo=equipo.getValoracion()+ rango;
 		List <Equipo> posiblesRivales = new ArrayList <Equipo>();

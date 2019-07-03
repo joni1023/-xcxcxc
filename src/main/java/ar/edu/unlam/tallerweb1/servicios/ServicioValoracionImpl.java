@@ -164,7 +164,7 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	}
 
 	@Override
-	public Integer valoracionGeneral() {
+	public Integer valoracionGeneralRadio() {
 		
 		return valoracionDao.valoracionGeneral().getRadioMedicion();
 	}	
