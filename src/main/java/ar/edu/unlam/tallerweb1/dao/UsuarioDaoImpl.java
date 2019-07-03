@@ -31,4 +31,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
 	}
+	
+	@Override
+	public void agregarUsuario(Usuario usuario) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(usuario);
+	}
 }
