@@ -42,6 +42,7 @@
 	<p>${jugador.nombre}</p>
 	</c:forEach>
 	</c:if>
+	<c:if test="${empty rival }"><p>no hay equipos disponibles</p></c:if>
 	</div>
 
 </div>

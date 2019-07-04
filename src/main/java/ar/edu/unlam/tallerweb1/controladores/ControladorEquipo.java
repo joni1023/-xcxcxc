@@ -48,41 +48,28 @@ public class ControladorEquipo {
 	public ModelAndView mostrarEquipoRival() {
 		ModelMap modelo=new ModelMap();
 		Equipo miEquipo=servicioEquipo.buscarEquipo(1l);
-//		miEquipo.setValoracion(servicioEquipo.valoracionEquipo(miEquipo.getId()));
-//		Equipo rival=servicioEquipo.dandoRival(miEquipo);
-//		modelo.put("rival", rival);
-		Equipo equipo =new Equipo ();
+		Equipo equipo = new Equipo ();
 		modelo.put("equipo", equipo);
 		modelo.put("miEquipo", miEquipo);
 		
 		return new ModelAndView("buscandoRival",modelo);
 	}
 	
-	@RequestMapping("/buscandoRival/{id}")
-	public ModelAndView buscarEquipoRival(@PathVariable("id") Long id) {
-		ModelMap modelo=new ModelMap();
-		Equipo miEquipo=servicioEquipo.buscarEquipo(id);
-		miEquipo.setValoracion(servicioEquipo.valoracionEquipo(miEquipo.getId()));
-		Equipo rival=servicioEquipo.dandoRival(miEquipo);
-		modelo.put("rival", rival);
-		modelo.put("miEquipo", miEquipo);
-		
-		return new ModelAndView("buscandoRival",modelo);
-	}
 
 	@RequestMapping(path ="/buscandoRival", method = RequestMethod.POST)
 	public ModelAndView buscarEquipoRivalPost(@ModelAttribute("equipo") Equipo eequipo) {
 		ModelMap modelo=new ModelMap();
 		Equipo miEquipo=servicioEquipo.buscarEquipo(eequipo.getId());
 		miEquipo.setValoracion(servicioEquipo.valoracionEquipo(miEquipo.getId()));
-		Equipo rival=servicioEquipo.dandoRival(miEquipo);
-		Equipo equipo =new Equipo ();
+		Equipo rival = servicioEquipo.dandoRival(miEquipo);
+		Equipo equipo = new Equipo ();
 		modelo.put("equipo", equipo);
 		modelo.put("rival", rival);
 		modelo.put("miEquipo", miEquipo);
 		modelo.put("jugadores1", servicioJugador.listarJugadorePorEquipo(eequipo.getId()));
-		modelo.put("jugadores2", servicioJugador.listarJugadorePorEquipo(rival.getId()));
-
+		if(rival != null) {
+			modelo.put("jugadores2", servicioJugador.listarJugadorePorEquipo(rival.getId()));
+		}
 		return new ModelAndView("buscandoRival",modelo);
 	}
 
