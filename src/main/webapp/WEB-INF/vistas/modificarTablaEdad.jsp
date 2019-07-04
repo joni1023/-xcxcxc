@@ -4,16 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" >
-	<!-- Bootstrap theme -->
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Modificar los valores de la valoracion de la tabla edad</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<title>Modificar los valores de la valoración de la tabla edad</title>
 </head>
 <body class="container">
 
-	<h1>Modificar los valores de la valoracion de la tabla edad</h1>
+	<h1>Modificar los valores de la valoración de la tabla edad</h1>
 	
 	<form:form action="modificarEdadTabla" method="POST" modelAttribute="valoracionEdad">
 		<form:input path="id" type="text" value="${valorEdad.id}"/>
@@ -22,8 +19,9 @@
 		<form:input path="de26a30" type="text" value="${valorEdad.de26a30}"/>
 		<form:input path="de31a35" type="text" value="${valorEdad.de31a35}"/>
 		<form:input path="mayor35" type="text" value="${valorEdad.mayor35}"/>
-		
-		<button type="submit" class="btn btn-primar">Modificar</button>
+
+		<br><br>
+		<button type="submit" class="btn btn-info">Modificar</button>
 	</form:form>
 	
 </body>

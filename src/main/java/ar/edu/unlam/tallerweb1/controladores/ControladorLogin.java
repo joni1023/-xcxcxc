@@ -35,6 +35,11 @@ public class ControladorLogin {
 		// y se envian los datos a la misma dentro del modelo.
 		return new ModelAndView("login", modelo);
 	}
+	
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
+	public ModelAndView irARegister() {
+		return new ModelAndView("register");
+	}
 
 	// Este metodo escucha la URL validar-login siempre y cuando se invoque con metodo http POST.
 	// El metodo recibe un objeto Usuario el que tiene los datos ingresados en el form correspondiente y se corresponde con el modelAttribute definido en el
@@ -50,12 +55,23 @@ public class ControladorLogin {
 			if(usuarioBuscado.getEsAdmin() == true) {
 				return new ModelAndView("redirect:/homeAdmin");
 			}
+			
 			return new ModelAndView("redirect:/home");
 		} else {
 			// Si el usuario no existe agrega un mensaje de error en el modelo.
-			model.put("error", "Usuario o clave incorrecta");
+			model.put("error", "Los datos ingresados son incorrectos. Por favor, intente nuevamente.");
 		}
+		
 		return new ModelAndView("login", model);
+	}
+	
+	@RequestMapping(path = "/registrar-usuario", method = RequestMethod.POST)
+	public ModelAndView registrarUsuario(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		usuario.setEsAdmin(false);
+		servicioLogin.agregarUsuario(usuario);
+		
+		return new ModelAndView("redirect:/login", model);
 	}
 
 	// Escucha la URL /home por GET, y redirige a una vista.
@@ -63,6 +79,7 @@ public class ControladorLogin {
 	public ModelAndView irAHome() {
 		return new ModelAndView("home");
 	}
+	
 	@RequestMapping(path = "/homeAdmin", method = RequestMethod.GET)
 	public ModelAndView irAHomeAministrador() {
 		return new ModelAndView("homeAdmin");

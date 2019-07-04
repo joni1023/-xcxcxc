@@ -30,32 +30,33 @@ public class ControladorEquipo {
 //	public ModelAndView mostrarEquiposYValoracion() {
 //		List<Equipo>listaEquipos = 
 //	}
+	
 	@RequestMapping("/valoracionEquipo")
 	public ModelAndView mostrarEquiposYValoracion() {
-		ModelMap modelo=new ModelMap();
+		ModelMap modelo = new ModelMap();
 		List<Equipo>listaEquipos = servicioEquipo.listarEquipos();
 		Double valoracion;
 		for(Equipo e: listaEquipos) {
-			valoracion=servicioEquipo.valoracionEquipo(e.getId());
+			valoracion = servicioEquipo.valoracionEquipo(e.getId());
 			e.setValoracion(valoracion);
 		}
 		
 		modelo.put("equipos", listaEquipos);
-		return new ModelAndView("valoracionEquipo",modelo);
+		return new ModelAndView("valoracionEquipo", modelo);
 	}
 	
 	@RequestMapping("/buscandoRival")
 	public ModelAndView mostrarEquipoRival() {
+
 		ModelMap modelo=new ModelMap();
 		Equipo miEquipo=servicioEquipo.buscarEquipo(1l);
 		Equipo equipo = new Equipo ();
 		modelo.put("equipo", equipo);
 		modelo.put("miEquipo", miEquipo);
 		
-		return new ModelAndView("buscandoRival",modelo);
+		return new ModelAndView("buscandoRival", modelo);
 	}
 	
-
 	@RequestMapping(path ="/buscandoRival", method = RequestMethod.POST)
 	public ModelAndView buscarEquipoRivalPost(@ModelAttribute("equipo") Equipo eequipo) {
 		ModelMap modelo=new ModelMap();
@@ -71,8 +72,8 @@ public class ControladorEquipo {
 			modelo.put("jugadores2", servicioJugador.listarJugadorePorEquipo(rival.getId()));
 		}
 		return new ModelAndView("buscandoRival",modelo);
-	}
 
+	}
 
 	@RequestMapping(value = "/equipos", method = RequestMethod.GET)
     public String listarEquipos() {
@@ -85,7 +86,7 @@ public class ControladorEquipo {
 	@RequestMapping(value = "/agregarEquipo", method = RequestMethod.POST)
 	public String agregarEquipo(@ModelAttribute("Equipo") Equipo equipo) {
 		
-		if(equipo.getId()==null || equipo.getId() == 0) {
+		if(equipo.getId() == null || equipo.getId() == 0) {
 			servicioEquipo.agregarEquipo(equipo);
 		} else {
 			servicioEquipo.editarEquipo(equipo);
@@ -109,4 +110,3 @@ public class ControladorEquipo {
 	    return "equipo";
 	 }
 }
-

@@ -24,7 +24,7 @@ public class ControladorValoraciones {
 	public ModelAndView mostrarValoraciones() {
 		ModelMap modelo = new ModelMap();
 		ValoracionEdad valorEdad = new ValoracionEdad();
-		ValoracionAltura valorAltura =new ValoracionAltura();
+		ValoracionAltura valorAltura = new ValoracionAltura();
 		ValoracionPesoAltura valorPeso = new ValoracionPesoAltura();
 		modelo.put("valoracionEdad", valorEdad);
 		modelo.put("valoracionAltura", valorAltura);
@@ -39,11 +39,8 @@ public class ControladorValoraciones {
 	
 	@RequestMapping(path="/modificarTablaEdad", method=RequestMethod.POST)
 	public ModelAndView modificarValoracionEdad(@ModelAttribute ("valoracionEdad") ValoracionEdad valoracionEdad) {
-		ModelMap modelo=new ModelMap();
+		ModelMap modelo = new ModelMap();
 		
 		return new ModelAndView();
 	}
-	
-
 }
-

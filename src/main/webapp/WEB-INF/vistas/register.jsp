@@ -13,26 +13,23 @@
 	
 		<div class="container-fluid">
 	        <div class="row no-gutter">
-	            <div class="d-none d-md-flex col-md-4 col-lg-4 bg-image-login"></div>
+	            <div class="d-none d-md-flex col-md-4 col-lg-4 bg-image-register"></div>
 	            <div class="col-md-8 col-lg-8">
 	                <div class="main d-flex align-items-center py-5">
 	                    <div class="container">
 	                        <div class="row">
 	                            <div class="col-md-9 col-lg-8 mx-auto">
 	                                <h2 class="main-heading text-primary text-center mb-4">Buscando Rival</h2>
-	                                <form action="validar-login" method="POST" modelAttribute="usuario">
+	                                <form action="registrar-usuario" method="POST" modelAttribute="usuario">
 	                                    <div class="form-label-group">
-	                                        <input path="email" type="email" id="email" class="form-control" placeholder="Email" required autofocus>
-	                                        <label for="email">Email</label>
+	                                        <input path="email" type="email" id="emailRegistro" class="form-control" placeholder="Email" required autofocus>
+	                                        <label for="emailRegistro">Email</label>
 	                                    </div>
 	                                    <div class="form-label-group">
-	                                        <input path="password" type="password" id="password" class="form-control" placeholder="Contraseña" required>
-	                                        <label for="password">Contraseña</label>
+	                                        <input path="password" type="password" id="passwordRegistro" class="form-control" placeholder="Contraseña" required>
+	                                        <label for="passwordRegistro">Contraseña</label>
 	                                    </div>
-	                                    <button class="btn btn-lg btn-primary btn-block font-weight-bold mb-2" type="submit">Entrar</button>
-	                                    <div class="text-center">
-	                                        <a href="register">¿No tienes una cuenta? Regístrate ahora</a>
-	                                    </div>
+	                                    <button class="btn btn-lg btn-primary btn-block font-weight-bold mb-2" type="submit">Crear cuenta</button>
 	                                </form>
 	                            </div>
 	                        </div>
