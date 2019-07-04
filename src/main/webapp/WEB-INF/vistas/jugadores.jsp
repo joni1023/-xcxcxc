@@ -9,11 +9,10 @@
 </head>
 <body>
 
-	<h1>Lista de jugadores y su valoracion</h1>
-	<h3>Arquero</h3>
+	<h1>Lista de jugadores y su valoración</h1>
 	
 	<c:forEach items="${lista}" var="lista">
-		<p>Nombre: ${lista.nombre}, Edad: ${lista.edad}, Peso:${lista.peso}, Altura: ${lista.altura}, Valoracion ${lista.valoracion }, Posicion ${lista.posicion}</p>
+		<p>Nombre: ${lista.nombre}, Edad: ${lista.edad}, Peso: ${lista.peso}, Altura: ${lista.altura}, Valoración: ${lista.valoracion}, Posición: ${lista.posicion}</p>
 	</c:forEach>
 	
 </body>

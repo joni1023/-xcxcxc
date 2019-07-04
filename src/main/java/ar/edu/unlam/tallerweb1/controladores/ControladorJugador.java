@@ -24,20 +24,19 @@ public class ControladorJugador {
 	public ModelAndView mostrarJugadores() {
 		ModelMap modelo = new ModelMap();
 
-		List <Jugador> miLista= servicioJugador.listarJugadores();
+		List <Jugador> miLista = servicioJugador.listarJugadores();
 		for(Jugador e:miLista) {
 			e.setValoracion(servicioJugador.valoracionJugador(e.getId()));
 			
 		}
 		
 		modelo.put("lista", miLista);
-		return new ModelAndView("jugadores",modelo);
+		return new ModelAndView("jugadores", modelo);
 	}
 	
 	@RequestMapping("/valoracion/{id}")
 	public ModelAndView mostrarvaloracion (@PathVariable Long id) {
-		ModelMap modelo=new ModelMap();
-		return new ModelAndView("valoracion",modelo);
+		ModelMap modelo = new ModelMap();
+		return new ModelAndView("valoracion", modelo);
 	}
-
 }

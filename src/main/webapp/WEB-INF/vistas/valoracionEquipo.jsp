@@ -10,8 +10,8 @@
 <body>
 
 	<h1>Valoracion de Equipos</h1>
-<c:forEach items="${equipos }" var="equipo">
-<p>el equipo ${equipo.nombre}  tiene una valoracion :  ${equipo.valoracion } </p>
-</c:forEach>
+	<c:forEach items="${equipos }" var="equipo">
+		<p>El equipo ${equipo.nombre} tiene una valoración de: ${equipo.valoracion} </p>
+	</c:forEach>
 </body>
 </html>
