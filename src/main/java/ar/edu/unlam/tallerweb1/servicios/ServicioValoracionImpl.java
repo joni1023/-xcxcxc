@@ -167,5 +167,38 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	public Integer valoracionGeneralRadio() {
 		
 		return valoracionDao.valoracionGeneral().getRadioMedicion();
+	}
+
+	@Override
+	public ValoracionEdad trearValoracionEdadPorId(Long id) {
+		return valoracionDao.valoracionEdadTablaTipo(id);
+	}
+
+	@Override
+	public void modificarTablaEdad(ValoracionEdad nuevaValoracion) {
+		valoracionDao.modificarTablaValoracionEdad(nuevaValoracion);
+		
+	}
+
+	@Override
+	public ValoracionAltura traerValoracionAlturaPorID(Long id) {
+		return valoracionDao.valoracionAlturaTablaTipo(id);
+	}
+
+	@Override
+	public void modificarTablaAltura(ValoracionAltura nuevaValoracion) {
+		valoracionDao.modificarTablaValoracionAltura(nuevaValoracion);
+		
+	}
+
+	@Override
+	public ValoracionPesoAltura traerValoracionPesoAlturaPorID(Long id) {
+		return valoracionDao.valoracionPesoAlturaPorId(id);
+	}
+
+	@Override
+	public void modificarTablaEdad(ValoracionPesoAltura nuevaValoracion) {
+		valoracionDao.modificarTablaValoracionPesoAltura(nuevaValoracion);
+		
 	}	
 }

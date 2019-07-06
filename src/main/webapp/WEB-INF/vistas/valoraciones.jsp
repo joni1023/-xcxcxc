@@ -63,7 +63,7 @@
 		      <th scope="col">${valorAltura.entre170y180cm}</th>
 		      <th scope="col">${valorAltura.entre180y190cm}</th>
 		      <th scope="col">${valorAltura.mayor190cm}</th>
-		      <th scope="row"><form:form action="modificarTablaEdad" method="POST" modelAttribute="valoracionAltura">
+		      <th scope="row"><form:form action="modificarTablaAltura" method="POST" modelAttribute="valoracionAltura">
 									<form:input path="id" id="id" type="hidden" value="${valorAltura.id}" />
 									<button class="btn btn-info" type="submit"> Modificar</button>
 							  </form:form></th>
@@ -87,7 +87,7 @@
 		      <th scope="row">Opción</th>
 		    </tr>
 		</thead>
-	<c:forEach items="${listaValor}" var="lista">
+	<c:forEach items="${listaValorPA}" var="lista">
 		<tbody>
 		    <tr>
 		      <th scope="col">${lista.altura}</th>
@@ -97,7 +97,7 @@
 		      <th scope="col">${lista.entre80y90}</th>
 		      <th scope="col">${lista.entre90y100}</th>
 		      <th scope="col">${lista.mas100}</th>
-		      <th scope="row"><form:form action="modificarTablaEdad" method="POST" modelAttribute="valoracionPesoAlturaA">
+		      <th scope="row"><form:form action="modificarTablaPesoAltura" method="POST" modelAttribute="valoracionPesoAltura">
 									<form:input path="id" id="id" type="hidden" value="${lista.id}"/>
 									<button class="btn btn-info" type="submit"> Modificar</button>
 							  </form:form></th>

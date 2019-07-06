@@ -29,4 +29,12 @@ public interface ServicioValoracion {
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo);
 	
 	public Integer valoracionGeneralRadio();
+	
+	//admin
+	public ValoracionEdad trearValoracionEdadPorId(Long id);
+	public void modificarTablaEdad(ValoracionEdad nuevaValoracion);
+	public ValoracionAltura traerValoracionAlturaPorID(Long id);
+	public void modificarTablaAltura(ValoracionAltura nuevaValoracion);
+	public ValoracionPesoAltura traerValoracionPesoAlturaPorID(Long id);
+	public void modificarTablaEdad(ValoracionPesoAltura nuevaValoracion);
 }

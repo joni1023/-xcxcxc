@@ -1,9 +1,7 @@
-target
+/target
 src/main/resources/hibenateContext
 *.xml
 
-<<<<<<< HEAD
+
 /pom.xml
 
-=======
->>>>>>> master

@@ -28,19 +28,45 @@ public class ControladorValoraciones {
 		ValoracionPesoAltura valorPeso = new ValoracionPesoAltura();
 		modelo.put("valoracionEdad", valorEdad);
 		modelo.put("valoracionAltura", valorAltura);
-		modelo.put("valoracionPesoAlturaA", valorPeso);
+		modelo.put("valoracionPesoAltura", valorPeso);
 		modelo.put("listaValorEdad", servicioValoracion.verValoraciondeEdadTabla());
 		modelo.put("listaValorAltura", servicioValoracion.verValoracionAlturaTabla());
-		modelo.put("listaValor", servicioValoracion.listaValoracionPesoAltura());
+		modelo.put("listaValorPA", servicioValoracion.listaValoracionPesoAltura());
 		
 		return new ModelAndView ("valoraciones", modelo);
 	}
 
-	
+	// modifcar tabla edad
 	@RequestMapping(path="/modificarTablaEdad", method=RequestMethod.POST)
 	public ModelAndView modificarValoracionEdad(@ModelAttribute ("valoracionEdad") ValoracionEdad valoracionEdad) {
 		ModelMap modelo = new ModelMap();
+		ValoracionEdad valorEdad=servicioValoracion.trearValoracionEdadPorId(valoracionEdad.getId());
+		modelo.put("valorEdad", valorEdad);
+		return new ModelAndView("modificarTablaEdad",modelo);
+	}
+	
+	@RequestMapping(path="/modificarEdadT", method=RequestMethod.POST)
+	public ModelAndView modificadoEdad(@ModelAttribute ("valoracionEdad") ValoracionEdad valoracionEdad) {
 		
-		return new ModelAndView();
+		servicioValoracion.modificarTablaEdad(valoracionEdad);
+		
+		return new ModelAndView("redirect:/valoraciones");
+	}
+	// modificar tabla altura
+	@RequestMapping(path="/modificarTablaAltura", method=RequestMethod.POST)
+	public ModelAndView modificarValoracionAltura(@ModelAttribute ("valoracionAltura") ValoracionAltura valoracionAlt) {
+		ModelMap modelo = new ModelMap();
+		ValoracionAltura valorAltura=servicioValoracion.traerValoracionAlturaPorID(valoracionAlt.getId());
+		modelo.put("valorAltura", valorAltura);
+		ValoracionAltura valoracionAltura = new ValoracionAltura();
+		modelo.put("valoracionAltura",valoracionAltura);
+		return new ModelAndView("modificarTablaAltura",modelo);
+	}
+	@RequestMapping(path="/modificarAlturaT", method=RequestMethod.POST)
+	public ModelAndView modificadoAltura(@ModelAttribute ("valoracionAltura") ValoracionAltura valoracionAltura) {
+		
+		servicioValoracion.modificarTablaAltura(valoracionAltura);;
+		
+		return new ModelAndView("redirect:/valoraciones");
 	}
 }

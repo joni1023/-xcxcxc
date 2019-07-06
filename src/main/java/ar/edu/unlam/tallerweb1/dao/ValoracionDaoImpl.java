@@ -89,4 +89,33 @@ public class ValoracionDaoImpl implements ValoracionDao {
 				.add(Restrictions.isNotNull("id"))
 				.uniqueResult();
 	}
+
+	@Override
+	public void modificarTablaValoracionEdad(ValoracionEdad nuevaValoracionEdad) {
+		sessionFactory.getCurrentSession().update(nuevaValoracionEdad);
+		
+	}
+
+	@Override
+	public void modificarTablaValoracionAltura(ValoracionAltura nuevaValoracionAltura) {
+		sessionFactory.getCurrentSession().update(nuevaValoracionAltura);		
+	}
+
+	@Override
+	public void modificarTablaValoracionPesoAltura(ValoracionPesoAltura nuevaValoracionPesoAltura) {
+		sessionFactory.getCurrentSession().update(nuevaValoracionPesoAltura);		
+	}
+
+	@Override
+	public void modificarTablaValoracionGeneral(ValoracionEdad nuevaValoracionGeneral) {
+		sessionFactory.getCurrentSession().update(nuevaValoracionGeneral);		
+	}
+
+	@Override
+	public ValoracionPesoAltura valoracionPesoAlturaPorId(Long id) {
+		
+		return (ValoracionPesoAltura) sessionFactory.getCurrentSession().createCriteria(ValoracionPesoAltura.class)
+				.add(Restrictions.eq("id", id))
+				.uniqueResult();
+	}
 }
