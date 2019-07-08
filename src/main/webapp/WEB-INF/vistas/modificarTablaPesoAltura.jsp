@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 <title>Modificar Valoracion de tabla Peso y Altura</title>
 </head>
-<body>
+<body class="container" >
 	<h1>Modificar los valores de la valoración de la tabla Peso Altura</h1>
 	<table class="table table-bordered text-center">
 		<thead >
@@ -24,9 +25,9 @@
 		<tbody>
 		    <tr>
 		<form:form action="modificarPesoAlturaT" method="POST" modelAttribute="valoracionPesoAltura">
-		<form:input path="id" type="hidden" value="${valorPesoAltura.id}" />
-		<th scope="col"> <form:input path="altura" type="text" disabled value="${valorPesoAltura.altura}"/> </th>
-		<th scope="col"> <form:input path="menos60" type="text" value="${valorPesoAltura.menos60}"/> </th>
+		<form:input path="id" type="hidden" value="${valorPesoAltura.id}" />	
+		<th scope="col"><p>${valorPesoAltura.altura}</p><form:input path="altura" type="hidden" value="${valorPesoAltura.altura}" /> </th>
+		<th scope="col"><form:input path="menos60" type="text" value="${valorPesoAltura.menos60}"/> </th>
 		<th scope="col"><form:input path="entre60y70" type="text" value="${valorPesoAltura.entre60y70}"/> </th>
 		<th scope="col"><form:input path="entre70y80" type="text" value="${valorPesoAltura.entre70y80}"/> </th>
 		<th scope="col"><form:input path="entre80y90" type="text" value="${valorPesoAltura.entre80y90}"/> </th>
@@ -38,8 +39,5 @@
 		<button type="submit" class="btn btn-info">Guardar cambios</button>
 		</form:form>
 	
-	
-
-
 </body>
 </html>

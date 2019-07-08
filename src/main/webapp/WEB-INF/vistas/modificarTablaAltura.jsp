@@ -8,7 +8,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<title>Modificar los valores de la valoración de la tabla Altura</title>
 </head>
-<body >
+<body class="container" >
 
 	<h1>Modificar los valores de la valoración de la tabla Altura</h1>
 	<table class="table table-bordered text-center">
@@ -24,6 +24,7 @@
 		</thead>
 		<tbody>
 		    <tr>
+		    
 		<form:form action="modificarAlturaT" method="POST" modelAttribute="valoracionAltura">
 		<form:input path="id" type="hidden" value="${valorAltura.id}" />
 		<th scope="col"><form:input path="menor150cm" type="text" value="${valorAltura.menor150cm}"/> </th>

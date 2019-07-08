@@ -86,4 +86,5 @@ public class ControladorValoraciones {
 		
 		return new ModelAndView("redirect:/valoraciones");
 	}
+
 }
