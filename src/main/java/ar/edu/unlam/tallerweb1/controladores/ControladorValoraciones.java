@@ -69,4 +69,21 @@ public class ControladorValoraciones {
 		
 		return new ModelAndView("redirect:/valoraciones");
 	}
+	// modificar tabla peso altura
+	@RequestMapping(path="/modificarTablaPesoAltura", method=RequestMethod.POST)
+	public ModelAndView modificarValoracionPesoAltura(@ModelAttribute ("valoracionPesoAltura") ValoracionPesoAltura valoracionPA) {
+		ModelMap modelo = new ModelMap();
+		ValoracionPesoAltura valorPesoAltura=servicioValoracion.traerValoracionPesoAlturaPorID(valoracionPA.getId());
+		modelo.put("valorPesoAltura", valorPesoAltura);
+		ValoracionPesoAltura valoracionPesoAltura = new ValoracionPesoAltura();
+		modelo.put("valoracionPesoAltura",valoracionPesoAltura);
+		return new ModelAndView("modificarTablaPesoAltura",modelo);
+	}
+	@RequestMapping(path="/modificarPesoAlturaT", method=RequestMethod.POST)
+	public ModelAndView modificadoPesoAltura(@ModelAttribute ("valoracionPesoAltura") ValoracionPesoAltura valoracionPA) {
+		
+		servicioValoracion.modificarTablaPesoAltura(valoracionPA);;
+		
+		return new ModelAndView("redirect:/valoraciones");
+	}
 }

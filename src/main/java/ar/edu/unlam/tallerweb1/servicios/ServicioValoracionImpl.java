@@ -197,7 +197,7 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	}
 
 	@Override
-	public void modificarTablaEdad(ValoracionPesoAltura nuevaValoracion) {
+	public void modificarTablaPesoAltura(ValoracionPesoAltura nuevaValoracion) {
 		valoracionDao.modificarTablaValoracionPesoAltura(nuevaValoracion);
 		
 	}	
