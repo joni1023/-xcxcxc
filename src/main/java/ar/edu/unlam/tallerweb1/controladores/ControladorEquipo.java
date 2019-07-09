@@ -48,8 +48,8 @@ public class ControladorEquipo {
 	@RequestMapping("/buscandoRival")
 	public ModelAndView mostrarEquipoRival() {
 
-		ModelMap modelo=new ModelMap();
-		Equipo miEquipo=servicioEquipo.buscarEquipo(1l);
+		ModelMap modelo = new ModelMap();
+		Equipo miEquipo = servicioEquipo.buscarEquipo(1l);
 		Equipo equipo = new Equipo ();
 		modelo.put("equipo", equipo);
 		modelo.put("miEquipo", miEquipo);
@@ -59,11 +59,11 @@ public class ControladorEquipo {
 	
 	@RequestMapping(path ="/buscandoRival", method = RequestMethod.POST)
 	public ModelAndView buscarEquipoRivalPost(@ModelAttribute("equipo") Equipo eequipo) {
-		ModelMap modelo=new ModelMap();
-		Equipo miEquipo=servicioEquipo.buscarEquipo(eequipo.getId());
+		ModelMap modelo = new ModelMap();
+		Equipo miEquipo = servicioEquipo.buscarEquipo(eequipo.getId());
 		miEquipo.setValoracion(servicioEquipo.valoracionEquipo(miEquipo.getId()));
 		Equipo rival = servicioEquipo.dandoRival(miEquipo);
-		Equipo equipo = new Equipo ();
+		Equipo equipo = new Equipo();
 		modelo.put("equipo", equipo);
 		modelo.put("rival", rival);
 		modelo.put("miEquipo", miEquipo);
@@ -71,8 +71,8 @@ public class ControladorEquipo {
 		if(rival != null) {
 			modelo.put("jugadores2", servicioJugador.listarJugadorePorEquipo(rival.getId()));
 		}
-		return new ModelAndView("buscandoRival",modelo);
-
+		
+		return new ModelAndView("buscandoRival", modelo);
 	}
 
 	@RequestMapping(value = "/equipos", method = RequestMethod.GET)

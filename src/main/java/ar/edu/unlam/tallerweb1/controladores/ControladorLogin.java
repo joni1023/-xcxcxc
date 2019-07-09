@@ -51,7 +51,7 @@ public class ControladorLogin {
 		// Invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a traves de la URL correspondiente a esta.
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
-		if (usuarioBuscado != null) {
+		if(usuarioBuscado != null) {
 			if(usuarioBuscado.getEsAdmin() == true) {
 				return new ModelAndView("redirect:/homeAdmin");
 			}
