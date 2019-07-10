@@ -49,6 +49,11 @@ public class ControladorEquipo {
 		return new ModelAndView("crearEquipo");
 	}
 	
+	@RequestMapping(path = "/crearEquipo2", method = RequestMethod.GET)
+	public ModelAndView crearEquipo2() {
+		return new ModelAndView("crearEquipo2");
+	}
+	
 	@RequestMapping("/buscandoRival")
 	public ModelAndView mostrarEquipoRival() {
 
