@@ -25,7 +25,7 @@ public class ControladorJugador {
 		ModelMap modelo = new ModelMap();
 
 		List <Jugador> miLista = servicioJugador.listarJugadores();
-		for(Jugador e:miLista) {
+		for(Jugador e : miLista) {
 			e.setValoracion(servicioJugador.valoracionJugador(e.getId()));
 			
 		}

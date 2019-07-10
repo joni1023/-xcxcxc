@@ -25,13 +25,9 @@ public class Jugador {
 	private Double altura;
 	private Double valoracion;
 	private String posicion;
-	
 	private Integer golesConvertidos;
-	
 	private Integer golesRecibidos;
 	
-	
-
 	public Jugador () {
 		
 	}
@@ -168,5 +164,4 @@ public class Jugador {
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
-	
 }

@@ -25,7 +25,6 @@ public class ControladorEquipo {
 	@Inject
 	private ServicioJugador servicioJugador;
 	
-
 //	@RequestMapping("/valoracionEquipo")
 //	public ModelAndView mostrarEquiposYValoracion() {
 //		List<Equipo>listaEquipos = 
@@ -43,6 +42,11 @@ public class ControladorEquipo {
 		
 		modelo.put("equipos", listaEquipos);
 		return new ModelAndView("valoracionEquipo", modelo);
+	}
+	
+	@RequestMapping(path = "/crearEquipo", method = RequestMethod.GET)
+	public ModelAndView crearEquipo() {
+		return new ModelAndView("crearEquipo");
 	}
 	
 	@RequestMapping("/buscandoRival")
