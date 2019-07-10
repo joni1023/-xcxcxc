@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -26,19 +27,29 @@ public class Partido {
 		this.id = id;
 	}
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	/*@ManyToOne(cascade=CascadeType.ALL)
 	Equipo equipo1;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	Equipo equipo2;
+	Equipo equipo2;*/
+	@ManyToMany(mappedBy = "listaDePartidos")
+	List<Equipo> listaDeEquipos;
 	
+	public List<Equipo> getListaDeEquipos() {
+		return listaDeEquipos;
+	}
+
+	public void setListaDeEquipos(List<Equipo> listaDeEquipos) {
+		this.listaDeEquipos = listaDeEquipos;
+	}
+
 	@OneToMany(cascade=CascadeType.ALL)
 	List <Gol> golesEquipo1;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	List <Gol> golesEquipo2;
 
-	public Equipo getEquipo1() {
+	/*public Equipo getEquipo1() {
 		return equipo1;
 	}
 
@@ -53,7 +64,7 @@ public class Partido {
 	public void setEquipo2(Equipo equipo2) {
 		this.equipo2 = equipo2;
 	}
-
+*/
 	public List<Gol> getGolesEquipo1() {
 		return golesEquipo1;
 	}

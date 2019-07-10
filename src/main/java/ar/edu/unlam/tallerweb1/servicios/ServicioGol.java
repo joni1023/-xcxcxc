@@ -11,9 +11,6 @@ public interface ServicioGol {
 	public Double promedioDeGolesEnContra(Jugador jugador);
 	
 	public Double golesEnContra(Long id);
-	
-	public Double partidosPorteriaImbatible(Long id);
-	public Double promedioPorteriaImbatible(Jugador jugador);
-	public Double valoracionPorteriaImbatible(Jugador jugador);
+
 	
 }

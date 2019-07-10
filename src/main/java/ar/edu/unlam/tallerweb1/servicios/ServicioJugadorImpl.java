@@ -17,14 +17,14 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	@Inject
 	private JugadorDao servicioJugadorDao;
 	
-	/*@Inject
-	private ServicioGol servicioGol;*/
+	@Inject
+	private ServicioGol servicioGol;
 	
-	/*@Inject
-	private ServicioAmonestacion servicioAmonestacion;*/
+	@Inject
+	private ServicioAmonestacion servicioAmonestacion;
 	
-	/*@Inject
-	private ServicioExpulsion servicioExpulsion;*/
+	@Inject
+	private ServicioExpulsion servicioExpulsion;
 	
 	@Inject
 	private ServicioValoracion servicioValoracion;
@@ -67,7 +67,15 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		Double valorEdad = servicioValoracion.valoracionPorEdad(miJugador);
 		Double valorAltura = servicioValoracion.valoracionPorAltura(miJugador);
 		Double valorPesoAltura = servicioValoracion.valoracionPorAlturaYPeso(miJugador);
-		valoracion = valorPesoAltura + valorAltura + valorEdad;
+		Double valorPromedioGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
+		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
+		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
+		if(miJugador.getPosicion().equals("Arquero")){
+			Double valorPorGolesEnContra = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
+			valoracion = valorPesoAltura + valorAltura + valorEdad + valorPromedioGol + valorPorAmonestaciones + valorPorExpulsiones + valorPorGolesEnContra;
+		}else {
+			valoracion = valorPesoAltura + valorAltura + valorEdad + valorPromedioGol + valorPorAmonestaciones + valorPorExpulsiones;
+		}
 		return valoracion;
 	}
 
