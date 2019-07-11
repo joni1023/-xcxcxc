@@ -1,16 +1,17 @@
-package ar.edu.unlam.tallerweb1.dao;
+package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 
-public interface PartidoDao {
+public interface ServicioPartido {
 	
-	List<Partido> listaDePartidos();
+	public List<Partido> listaDePartidos();
 	
 	public void crearPartido (Partido partido);
 	public void elmiminarPartido(Partido partido);
 	public void modificarpertido(Partido partido);
-	public List<Partido> listaPartidoEquipoID(Long id);
+
+	public List<Partido> listaDePartidosEquipoID (long id);
 
 }

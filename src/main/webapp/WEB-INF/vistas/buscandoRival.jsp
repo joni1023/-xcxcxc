@@ -85,6 +85,11 @@
 			</div>
 		</div>
 	</div>
+	<form action="armandoPartido" method="post">
+	<input type="hidden" name="equipo1ID" value="${miEquipo.id}">
+	<input type="hidden" name="equipo2ID" value="${rival.id}">
+	<button type="submit">crear partido</button>
+	</form>
 	
 	<script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>

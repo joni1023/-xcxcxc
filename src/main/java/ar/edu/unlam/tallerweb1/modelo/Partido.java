@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.type.DateType;
 
 @Entity
 public class Partido {
@@ -17,6 +21,63 @@ public class Partido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	private Date fecha;
+	private Integer golEquipo1;
+	private Integer golEquipo2;
+	private String jugado;
+	private String confirmado;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Equipo ganador;
+	
+
+	public String getJugado() {
+		return jugado;
+	}
+
+	public void setJugado(String jugado) {
+		this.jugado = jugado;
+	}
+
+	public String getConfirmado() {
+		return confirmado;
+	}
+
+	public void setConfirmado(String confirmado) {
+		this.confirmado = confirmado;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public Equipo getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(Equipo ganador) {
+		this.ganador = ganador;
+	}
+
+	public Integer getGolEquipo1() {
+		return golEquipo1;
+	}
+
+	public void setGolEquipo1(Integer golEquipo1) {
+		this.golEquipo1 = golEquipo1;
+	}
+
+	public Integer getGolEquipo2() {
+		return golEquipo2;
+	}
+
+	public void setGolEquipo2(Integer golEquipo2) {
+		this.golEquipo2 = golEquipo2;
+	}
 
 	public Long getId() {
 		return id;
