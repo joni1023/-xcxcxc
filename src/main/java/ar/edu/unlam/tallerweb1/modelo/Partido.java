@@ -27,57 +27,48 @@ public class Partido {
 		this.id = id;
 	}
 	
-	/*@ManyToOne(cascade=CascadeType.ALL)
-	Equipo equipo1;
+	@ManyToOne(cascade=CascadeType.ALL)
+	Equipo local;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	Equipo equipo2;*/
-	@ManyToMany(mappedBy = "listaDePartidos")
-	List<Equipo> listaDeEquipos;
+	Equipo visitante;
 	
-	public List<Equipo> getListaDeEquipos() {
-		return listaDeEquipos;
-	}
-
-	public void setListaDeEquipos(List<Equipo> listaDeEquipos) {
-		this.listaDeEquipos = listaDeEquipos;
-	}
 
 	@OneToMany(cascade=CascadeType.ALL)
-	List <Gol> golesEquipo1;
+	List <Gol> golesLocal;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	List <Gol> golesEquipo2;
+	List <Gol> golesVisitante;
 
-	/*public Equipo getEquipo1() {
-		return equipo1;
+	public Equipo getLocal() {
+		return local;
 	}
 
-	public void setEquipo1(Equipo equipo1) {
-		this.equipo1 = equipo1;
+	public void setLocal(Equipo local) {
+		this.local = local;
 	}
 
-	public Equipo getEquipo2() {
-		return equipo2;
+	public Equipo getVisitante() {
+		return visitante;
 	}
 
-	public void setEquipo2(Equipo equipo2) {
-		this.equipo2 = equipo2;
-	}
-*/
-	public List<Gol> getGolesEquipo1() {
-		return golesEquipo1;
+	public void setVisitante(Equipo visitante) {
+		this.visitante = visitante;
 	}
 
-	public void setGolesEquipo1(List<Gol> golesEquipo1) {
-		this.golesEquipo1 = golesEquipo1;
+	public List<Gol> getGolesLocal() {
+		return golesLocal;
 	}
 
-	public List<Gol> getGolesEquipo2() {
-		return golesEquipo2;
+	public void setGolesLocal(List<Gol> golesLocal) {
+		this.golesLocal = golesLocal;
 	}
 
-	public void setGolesEquipo2(List<Gol> golesEquipo2) {
-		this.golesEquipo2 = golesEquipo2;
+	public List<Gol> getGolesVisitante() {
+		return golesVisitante;
+	}
+
+	public void setGolesVisitante(List<Gol> golesVisitante) {
+		this.golesVisitante = golesVisitante;
 	}
 }

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
+import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Expulsion;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
+import ar.edu.unlam.tallerweb1.modelo.Partido;
 
 @Service("ServicioExpulsion")
 @Transactional
@@ -17,6 +19,8 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	
 	@Inject
 	JugadorDao jugadorDao;
+	@Inject
+	PartidoDao partidoDao;
 	
 	@Override
 	public Double cantidadExpulsiones(Long id) {
@@ -33,13 +37,22 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 
 	@Override
 	public Double promedioExpulsiones(Jugador jugador) {
+		List<Partido> listaDePartidos = partidoDao.listaDePartidos();	
 		Double cantidadExpulsiones = this.cantidadExpulsiones(jugador.getId());
-		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
-		if(partidosJugados == 0 || partidosJugados == null) {
+		Double partidosJugados = 0.0;
+	
+		for (Partido partido : listaDePartidos) {
+			if (partido.getLocal().equals(jugador.getEquipo())
+					|| partido.getVisitante().equals(jugador.getEquipo())) {
+				partidosJugados++;
+			}
+		}
+		if(partidosJugados == 0.0) {
 			return 0.0;
-		} else {
+		}else {
 			return cantidadExpulsiones / partidosJugados;
 		}
+		
 	}
 
 

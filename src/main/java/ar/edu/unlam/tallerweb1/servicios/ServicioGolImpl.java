@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.EquipoDao;
+import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
@@ -21,20 +23,28 @@ public class ServicioGolImpl implements ServicioGol {
 
 	@Inject
 	private EquipoDao equipoDao;
+	@Inject
+	private PartidoDao partidoDao;
 
 	@Override
 	public Double promedioDeGol(Jugador jugador) {
-		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
+		List<Partido> listaDePartidos = partidoDao.listaDePartidos();
+		Double partidosJugados = 0.0;
 		Double golesConvertidos = 0.0;
-		if (partidosJugados == 0 || partidosJugados == null) {
+
+		for (Partido partido : listaDePartidos) {
+			if (partido.getLocal().equals(jugador.getEquipo()) || partido.getVisitante().equals(jugador.getEquipo())) {
+				partidosJugados++;
+			}
+		}
+
+		if (partidosJugados == 0.0) {
 			return 0.0;
 		} else {
-
 			List<Gol> goles = jugador.getGoles();
 			for (Gol gol : goles) {
 				golesConvertidos += gol.getCantidad();
 			}
-
 			return golesConvertidos / partidosJugados;
 		}
 	}
@@ -83,15 +93,19 @@ public class ServicioGolImpl implements ServicioGol {
 			return null;
 		} else {
 			Double golesEnContra = this.golesEnContra(jugador.getEquipo().getId());
-			if (jugador.getEquipo().getListaDePartidos() == null) {
+			Double partidosJugados = 0.0;
+			List<Partido> listaDePartidos = partidoDao.listaDePartidos();
+
+			for (Partido partido : listaDePartidos) {
+				if (partido.getLocal().equals(jugador.getEquipo())
+						|| partido.getVisitante().equals(jugador.getEquipo())) {
+					partidosJugados++;
+				}
+			}
+			if (partidosJugados == 0.0) {
 				return null;
 			} else {
-				Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
-				if (partidosJugados == 0.0) {
-					return null;
-				} else {
-					return golesEnContra / partidosJugados;
-				}
+				return golesEnContra / partidosJugados;
 			}
 		}
 	}
@@ -99,26 +113,32 @@ public class ServicioGolImpl implements ServicioGol {
 	@Override
 	public Double golesEnContra(Long id) {
 		Equipo equipo = equipoDao.buscarEquipo(id);
-		List<Partido> partidos = equipo.getListaDePartidos();
+		List<Partido> listaDePartidos = partidoDao.listaDePartidos();
+		List<Partido> partidos = new ArrayList<>();
 		Double golesEnContra = 0.0;
-		if (partidos == null) {
-			return null;
 
+		for (Partido partido : listaDePartidos) {
+			if (partido.getLocal().equals(equipo) || partido.getVisitante().equals(equipo)) {
+				partidos.add(partido);
+			}
+		}
+		if (partidos.size() == 0) {
+			return null;
 		} else {
 			for (Partido partido : partidos) {
-				if (equipo.equals(partido.getListaDeEquipos().get(0))) {
-					List<Gol> goles = partido.getGolesEquipo2();
-					if (goles == null){
-						return 0.0;
+				if (partido.getLocal().equals(equipo)) {
+					List<Gol> goles = partido.getGolesVisitante();
+					if (goles == null) {
+						golesEnContra += 0.0;
 					} else {
 						for (Gol gol : goles) {
 							golesEnContra += gol.getCantidad();
 						}
 					}
-				} else if (equipo.equals(partido.getListaDeEquipos().get(1))) {
-					List<Gol> goles = partido.getGolesEquipo1();
+				}else if(partido.getVisitante().equals(equipo)) {
+					List<Gol> goles = partido.getGolesLocal();
 					if (goles == null) {
-						return 0.0;
+						golesEnContra += 0.0;
 					} else {
 						for (Gol gol : goles) {
 							golesEnContra += gol.getCantidad();

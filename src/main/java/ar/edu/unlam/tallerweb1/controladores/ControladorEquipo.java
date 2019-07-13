@@ -76,9 +76,9 @@ public class ControladorEquipo {
 		modelo.put("equipo", equipo);
 		modelo.put("rival", rival);
 		modelo.put("miEquipo", miEquipo);
-		modelo.put("jugadores1", servicioJugador.listarJugadorePorEquipo(eequipo.getId()));
+		modelo.put("jugadores1", servicioJugador.listarJugadoresPorEquipo(eequipo.getId()));
 		if(rival != null) {
-			modelo.put("jugadores2", servicioJugador.listarJugadorePorEquipo(rival.getId()));
+			modelo.put("jugadores2", servicioJugador.listarJugadoresPorEquipo(rival.getId()));
 		}
 		
 		return new ModelAndView("buscandoRival", modelo);

@@ -80,7 +80,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	}
 
 	@Override
-	public List<Jugador> listarJugadorePorEquipo(Long idEquipo) {
+	public List<Jugador> listarJugadoresPorEquipo(Long idEquipo) {
 		return servicioJugadorDao.listaDeJugadoresPorEquipo(idEquipo);
 	}
 	

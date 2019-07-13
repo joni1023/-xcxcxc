@@ -122,14 +122,11 @@ public class Equipo {
 	@OneToMany(cascade=CascadeType.ALL)
 	List <Jugador> listaDeJugadores;
 
-	/*@OneToMany(cascade=CascadeType.ALL)
-	List <Partido> listaDePartidos;*/
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "local")
+	List <Partido> listaDePartidosLocal;
 	
-	@ManyToMany
-	@JoinTable(name = "equipo_partido",
-	joinColumns= @JoinColumn(name = "equipo_id"),
-	inverseJoinColumns = @JoinColumn(name = "partido_id"))
-	List<Partido> listaDePartidos;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "visitante")
+	List <Partido> listaDePartidosVisitante;
 	
 	@OneToOne
 	Usuario usuario;
@@ -142,14 +139,23 @@ public class Equipo {
 		this.usuario = usuario;
 	}
 
-	public List<Partido> getListaDePartidos() {
-		return listaDePartidos;
-	}
 	
-	public void setListaDePartidos(List<Partido> listaDePartidos) {
-		this.listaDePartidos = listaDePartidos;
+	public List<Partido> getListaDePartidosLocal() {
+		return listaDePartidosLocal;
 	}
-	
+
+	public void setListaDePartidosLocal(List<Partido> listaDePartidosLocal) {
+		this.listaDePartidosLocal = listaDePartidosLocal;
+	}
+
+	public List<Partido> getListaDePartidosVisitante() {
+		return listaDePartidosVisitante;
+	}
+
+	public void setListaDePartidosVisitante(List<Partido> listaDePartidosVisitante) {
+		this.listaDePartidosVisitante = listaDePartidosVisitante;
+	}
+
 	public List<Jugador> getListaDeJugadores() {
 		return listaDeJugadores;
 	}

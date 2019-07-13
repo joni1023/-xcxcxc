@@ -8,36 +8,48 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
+import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Amonestacion;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
+import ar.edu.unlam.tallerweb1.modelo.Partido;
 
 @Service("ServicioAmonestacion")
 @Transactional
 public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	@Inject
-	 private JugadorDao jugadorDao;
-	
+	private JugadorDao jugadorDao;
+	@Inject
+	private PartidoDao partidoDao;
+
 	@Override
 	public Double cantidadAmonestaciones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
 		List<Amonestacion> amonestaciones = miJugador.getAmonestaciones();
 		Double cantidadAmonestaciones = 0.0;
-		if(amonestaciones.isEmpty()) {
+		if (amonestaciones.isEmpty()) {
 			return 0.0;
-		}else {
+		} else {
 			for (Amonestacion amonestacion : amonestaciones) {
 				cantidadAmonestaciones += amonestacion.getCantidad();
 			}
-			
+
 			return cantidadAmonestaciones;
 		}
 	}
 
 	@Override
 	public Double promedioAmonestaciones(Jugador jugador) {
+		List<Partido> listaDePartidos = partidoDao.listaDePartidos();	
 		Double cantidadAmonestaciones = this.cantidadAmonestaciones(jugador.getId());
-		Double partidosJugados = (double) jugador.getEquipo().getListaDePartidos().size();
-		if(partidosJugados == 0 || partidosJugados == null) {
+		Double partidosJugados = 0.0;
+	
+		for (Partido partido : listaDePartidos) {
+			if (partido.getLocal().equals(jugador.getEquipo())
+					|| partido.getVisitante().equals(jugador.getEquipo())) {
+				partidosJugados++;
+			}
+		}
+		if(partidosJugados == 0.0) {
 			return 0.0;
 		}else {
 			return cantidadAmonestaciones / partidosJugados;
@@ -48,8 +60,8 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	public Double valoracionPorAmonestaciones(Jugador jugador) {
 		Double promedioAmonestaciones = this.promedioAmonestaciones(jugador);
 		Double valoracion = promedioAmonestaciones * (-5);
-		
+
 		return valoracion;
 	}
-	
+
 }

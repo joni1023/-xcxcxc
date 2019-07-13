@@ -31,7 +31,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 		Equipo miEquipo = equipoDao.buscarEquipo(id);
 
 //		List<Jugador>misJugadores = miEquipo.getListaDeJugadores();
-		List<Jugador>misJugadores = servicioJugador.listarJugadorePorEquipo(id);
+		List<Jugador>misJugadores = servicioJugador.listarJugadoresPorEquipo(id);
 		for (Jugador jugador : misJugadores) {
 
 			valoracion += servicioJugador.valoracionJugador(jugador.getId());
