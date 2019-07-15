@@ -60,7 +60,7 @@
 		  	<div class="col-md-2 my-5">
 		  		<form:form action="buscandoRival" method="POST" modelAttribute="equipo">
 					<form:input path="id" id="id" type="text" class="form-control" value="${miEquipo.id}"/><br>
-					<button class="btn btn-primary" type="submit">Buscar Rival</button>
+					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Buscar Rival</button>
 				</form:form>
 			</div>
 		  	<div id="rival" class="col-md-3">
@@ -84,12 +84,24 @@
 		  	<div class="col-md-2">
 			</div>
 		</div>
+		<div class="row text-center">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-2 my-5">
+				<form action="armandoPartido" method="post">
+					<input type="hidden" name="equipo1ID" value="${miEquipo.id}">
+					<input type="hidden" name="equipo2ID" value="${rival.id}">
+					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Crear partido</button>
+				</form>
+			</div>
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
 	</div>
-	<form action="armandoPartido" method="post">
-	<input type="hidden" name="equipo1ID" value="${miEquipo.id}">
-	<input type="hidden" name="equipo2ID" value="${rival.id}">
-	<button type="submit">crear partido</button>
-	</form>
 	
 	<script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>

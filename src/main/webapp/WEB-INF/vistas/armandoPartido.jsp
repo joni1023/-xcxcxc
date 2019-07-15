@@ -1,34 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<title>Armando partido</title>
 </head>
 <body>
-<h1>armando partido</h1>
-<p>mi ${equipo1ID }</p>
-<p>vs ${equipo2ID } </p>
-<%-- <form:form action="crearPartido" method="Post" modelAttribute="partido"> --%>
-<%-- <form:input path="equipo1" type="hidden" value="${equipo1}"/> --%>
-<%-- <form:input path="equipo2" type="hidden" value="${equipo2}"/> --%>
-<%-- <form:input path="fecha" type="date"/> --%>
-<%-- <form:button type="submit">confirmar</form:button> --%>
-<%-- </form:form> --%>
-<form action="crearPartido" method="post">
-<input type="text" value="${equipo1ID}" name="equipo1ID">
-<input type="text" value="${equipo2ID}" name="equipo2ID">
-<select type="datetime-local" name="fecha">
-<option value="2019/07/20 08:00">2019/07/20 08:00</option>
-  <option value="2019/07/20 11:00">2019/07/20 11:00</option>
-  <option value="2019/07/20 14:00">2019/07/20 14:00</option>
-  <option value="2019/07/20 17:00">2019/07/20 17:00</option>
-</select>
-<button type="submit">confirmar</button>
-
-</form>
-
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+        <a class="navbar-brand" href="home">Buscando Rival</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Salir</a>
+                </li>
+            </ul>
+        </div>
+   	</nav>
+	
+	<div class="container-fluid">
+		<div class="text-center my-5">
+			<h2>Armando partido</h2>
+			<h5>¡CONFIRMA EL PARTIDO A DISPUTAR!</h5>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-2">
+			</div>
+			<div id="miEquipo" class="col-md-3">
+				<h3>Mi equipo</h3>
+		    	<div class="card">
+		    		<div class="card-header">
+		    			<h5>${equipo1ID}</h5>
+		    		</div>
+		    	</div>
+		  	</div>
+		  	<div class="col-md-2 my-5">
+		  		<%-- <form:form action="crearPartido" method="Post" modelAttribute="partido"> --%>
+					<%-- <form:input path="equipo1" type="hidden" value="${equipo1}"/> --%>
+					<%-- <form:input path="equipo2" type="hidden" value="${equipo2}"/> --%>
+					<%-- <form:input path="fecha" type="date"/> --%>
+					<%-- <form:button type="submit">confirmar</form:button> --%>
+				<%-- </form:form> --%>
+		  		<form action="crearPartido" method="POST">
+					<input type="text" class="form-control" name="equipo1ID" value="${equipo1ID}"/><br>
+					<input type="text" class="form-control" name="equipo2ID" value="${equipo2ID}"/><br>
+					<select type="datetime-local" name="fecha">
+						<option value="2019/07/20 11:00">2019/07/20 11:00</option>
+					 	<option value="2019/07/20 14:00">2019/07/20 14:00</option>
+					    <option value="2019/07/20 17:00">2019/07/20 17:00</option>
+					</select>
+					<button class="btn btn-lg btn-primary font-weight-bold mt-5" type="submit">Confirmar</button>
+				</form>
+			</div>
+		  	<div id="rival" class="col-md-3">
+		  		<h3>Equipo rival</h3>
+		    	<div class="card">
+		    		<div class="card-header">
+		    			<h5>${equipo2ID}</h5>
+		    		</div>
+		    	</div>
+		  	</div>
+		  	<div class="col-md-2">
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
 </html>
