@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
     <title>Buscando Rival</title>
 </head>
 <body>
-
+	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
         <a class="navbar-brand" href="home">Buscando Rival</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +20,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
-                </li>
+                <c:set var="equipoBoolean" value="${tieneEquipo}"/>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+               		</li>
+                </c:if>
+                <c:if test="${equipoBoolean == false}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                	</li>
+                </c:if>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
@@ -32,8 +42,10 @@
         </div>
    	</nav>
    	
-   	<div class="container">
-   		<h4>Bienvenido Común</h4>
+   	<div class="row">
+   		<div class ="col-md-4"></div>
+   		<div class ="col-md-4 text-center"><h4>Bienvenido ${usuario.nombreUsuario}</h4></div>
+   		<div class ="col-md-4"></div>
    	</div>
    	
 	<script src="js/jquery-3.4.1.min.js"></script>

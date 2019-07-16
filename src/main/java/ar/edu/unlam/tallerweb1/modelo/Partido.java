@@ -27,17 +27,16 @@ public class Partido {
 		this.id = id;
 	}
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	Equipo local;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	Equipo visitante;
 	
-
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	List <Gol> golesLocal;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	List <Gol> golesVisitante;
 
 	public Equipo getLocal() {

@@ -93,6 +93,11 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 		int numero = (int) (Math.random() * posiblesRivales.size());
 		return posiblesRivales.get(numero);
 	}
+
+	@Override
+	public Equipo buscarEquipoNombre(String nombre) {
+		return equipoDao.buscarEquipoNombre(nombre);
+	}
 	
 
 }

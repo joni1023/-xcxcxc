@@ -22,14 +22,6 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private Integer golesAFavor;
-	private Integer golesEnContra;
-	private Integer partidosGanados;
-	private Integer partidosPerdidos;
-	private Integer partidosEmpatados;
-	private Double promedioDeEdad;
-	private String categoria;
-	private String localidad;
 	private Double valoracion;
 	
 	public Long getId() {
@@ -47,70 +39,6 @@ public class Equipo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public Integer getGolesAFavor() {
-		return golesAFavor;
-	}
-	
-	public void setGolesAFavor(Integer golesAFavor) {
-		this.golesAFavor = golesAFavor;
-	}
-	
-	public Integer getGolesEnContra() {
-		return golesEnContra;
-	}
-	
-	public void setGolesEnContra(Integer golesEnContra) {
-		this.golesEnContra = golesEnContra;
-	}
-	
-	public Integer getPartidosGanados() {
-		return partidosGanados;
-	}
-	
-	public void setPartidosGanados(Integer partidosGanados) {
-		this.partidosGanados = partidosGanados;
-	}
-	
-	public Integer getPartidosPerdidos() {
-		return partidosPerdidos;
-	}
-	
-	public void setPartidosPerdidos(Integer partidosPerdidos) {
-		this.partidosPerdidos = partidosPerdidos;
-	}
-	
-	public Integer getPartidosEmpatados() {
-		return partidosEmpatados;
-	}
-	
-	public void setPartidosEmpatados(Integer partidosEmpatados) {
-		this.partidosEmpatados = partidosEmpatados;
-	}
-	
-	public Double getPromedioDeEdad() {
-		return promedioDeEdad;
-	}
-	
-	public void setPromedioDeEdad(Double promedioDeEdad) {
-		this.promedioDeEdad = promedioDeEdad;
-	}
-	
-	public String getCategoria() {
-		return categoria;
-	}
-	
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	
-	public String getLocalidad() {
-		return localidad;
-	}
-	
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
 
 	public Double getValoracion() {
 		return valoracion;
@@ -119,14 +47,14 @@ public class Equipo {
 		this.valoracion = valoracion;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	List <Jugador> listaDeJugadores;
-
-	@OneToMany(cascade=CascadeType.ALL,mappedBy = "local")
-	List <Partido> listaDePartidosLocal;
+	@OneToMany
+	List<Jugador> listaDeJugadores;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy = "visitante")
-	List <Partido> listaDePartidosVisitante;
+	@OneToMany(mappedBy = "local")
+	List<Partido> listaDePartidosLocal;
+	
+	@OneToMany(mappedBy = "visitante")
+	List<Partido> listaDePartidosVisitante;
 	
 	@OneToOne
 	Usuario usuario;

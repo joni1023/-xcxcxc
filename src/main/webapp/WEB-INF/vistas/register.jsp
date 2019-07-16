@@ -22,7 +22,11 @@
                                 <h2 class="main-heading text-primary text-center mb-4">Buscando Rival</h2>
                                 <form action="registrar-usuario" method="POST" modelAttribute="usuario">
                                     <div class="form-label-group">
-                                        <input name="email" type="email" id="emailRegistro" class="form-control" placeholder="Email" required autofocus>
+                                        <input name="nombreUsuario" type="text" id="nombreUsuarioRegistro" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+                                        <label for="nombreUsuarioRegistro">Nombre de Usuario</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input name="email" type="email" id="emailRegistro" class="form-control" placeholder="Email" required>
                                         <label for="emailRegistro">Email</label>
                                     </div>
                                     <div class="form-label-group">

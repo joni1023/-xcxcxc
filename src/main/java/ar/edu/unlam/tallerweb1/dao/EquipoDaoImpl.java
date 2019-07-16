@@ -45,7 +45,7 @@ public class EquipoDaoImpl implements EquipoDao {
 	@Override
 	public void editarEquipo(Equipo equipo) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(equipo);
+		session.saveOrUpdate(equipo);
 	}
 	
 	@Override
@@ -56,5 +56,14 @@ public class EquipoDaoImpl implements EquipoDao {
 		if(null != equipo) {
 			session.delete(equipo);
 		}
+	}
+
+	@Override
+	public Equipo buscarEquipoNombre(String nombre) {
+		Equipo miEquipoBuscado = (Equipo) sessionFactory.getCurrentSession().createCriteria(Equipo.class)
+				   .add(Restrictions.eq("nombre",nombre))
+				   .uniqueResult();
+
+		return miEquipoBuscado;
 	}
 }

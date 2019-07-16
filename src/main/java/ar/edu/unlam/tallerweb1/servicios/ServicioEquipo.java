@@ -12,6 +12,7 @@ public interface ServicioEquipo {
 	public List<Equipo> listarEquipos();
 	
     public Equipo buscarEquipo(Long id);
+    public Equipo buscarEquipoNombre(String nombre);
 
     public void agregarEquipo(Equipo equipo);
    

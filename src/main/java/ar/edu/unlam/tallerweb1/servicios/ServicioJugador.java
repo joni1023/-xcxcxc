@@ -11,5 +11,12 @@ public interface ServicioJugador {
 	public Double valoracionJugador(Long id);
 
 	public List <Jugador> listarJugadoresPorEquipo(Long idEquipo);
+	
+	public void agregarJugador(Jugador jugador);
+	
+	public Jugador buscarJugadorID(Long id);
 
+	public void editarJugador(Jugador jugador);
+	
+	public void eliminarJugador(Jugador jugador);
 }

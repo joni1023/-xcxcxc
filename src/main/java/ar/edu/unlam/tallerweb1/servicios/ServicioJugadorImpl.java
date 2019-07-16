@@ -83,5 +83,28 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	public List<Jugador> listarJugadoresPorEquipo(Long idEquipo) {
 		return servicioJugadorDao.listaDeJugadoresPorEquipo(idEquipo);
 	}
+
+	@Override
+	public void agregarJugador(Jugador jugador) {
+		servicioJugadorDao.agregarJugador(jugador);
+		
+	}
+
+	@Override
+	public Jugador buscarJugadorID(Long id) {
+		return servicioJugadorDao.buscarJugador(id);
+	}
+
+	@Override
+	public void editarJugador(Jugador jugador) {
+		servicioJugadorDao.editarJugador(jugador);
+		
+	}
+
+	@Override
+	public void eliminarJugador(Jugador jugador) {
+		servicioJugadorDao.eliminarJugador(jugador);
+		
+	}
 	
 }

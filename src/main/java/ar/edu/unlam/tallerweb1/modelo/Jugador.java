@@ -20,13 +20,10 @@ public class Jugador {
 	private Long id;
 	private String nombre;
 	private Integer edad;
-	private Date fechaDeNacimiento;
 	private Double peso;
 	private Double altura;
-	private Double valoracion;
 	private String posicion;
-	private Integer golesConvertidos;
-	private Integer golesRecibidos;
+	private Double valoracion;
 	
 	public Jugador () {
 		
@@ -36,7 +33,6 @@ public class Jugador {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
-		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.peso = peso;
 		this.altura = altura;
 		this.valoracion = valoracion;
@@ -65,14 +61,6 @@ public class Jugador {
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
-	
-	public Date getFechaDeNacimiento() {
-		return fechaDeNacimiento;
-	}
-
-	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-		this.fechaDeNacimiento = fechaDeNacimiento;
-	}
 
 	public Double getAltura() {
 		return altura;
@@ -98,16 +86,16 @@ public class Jugador {
 		this.valoracion = valoracion;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	List <Gol> goles;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	List <Amonestacion> amonestaciones;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	List <Expulsion> expulsiones;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	Equipo equipo;
 	
 	public Equipo getEquipo() {
@@ -141,21 +129,6 @@ public class Jugador {
 	public void setExpulsiones(List<Expulsion> expulsiones) {
 		this.expulsiones = expulsiones;
 	}	
-	public Integer getGolesConvertidos() {
-		return golesConvertidos;
-	}
-
-	public void setGolesConvertidos(Integer golesConvertidos) {
-		this.golesConvertidos = golesConvertidos;
-	}
-
-	public Integer getGolesRecibidos() {
-		return golesRecibidos;
-	}
-
-	public void setGolesRecibidos(Integer golesRecibidos) {
-		this.golesRecibidos = golesRecibidos;
-	}
 
 	public String getPosicion() {
 		return posicion;

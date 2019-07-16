@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioEquipo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
@@ -21,6 +22,8 @@ public class ControladorLogin {
 	// @Service o @Repository y debe estar en un paquete de los indicados en applicationContext.xml.
 	@Inject
 	private ServicioLogin servicioLogin;
+	@Inject
+	private ServicioEquipo servicioEquipo;
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET.
 	@RequestMapping("/login")
@@ -55,7 +58,7 @@ public class ControladorLogin {
 			if(usuarioBuscado.getEsAdmin() == true) {
 				return new ModelAndView("redirect:/homeAdmin");
 			}
-			
+			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
 			return new ModelAndView("redirect:/home");
 		} else {
 			// Si el usuario no existe agrega un mensaje de error en el modelo.
@@ -69,15 +72,22 @@ public class ControladorLogin {
 	public ModelAndView registrarUsuario(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		usuario.setEsAdmin(false);
-		servicioLogin.agregarUsuario(usuario);
-		
+		servicioLogin.agregarUsuario(usuario);		
 		return new ModelAndView("redirect:/login", model);
 	}
 
 	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
-	public ModelAndView irAHome() {
-		return new ModelAndView("home");
+	public ModelAndView irAHome(HttpServletRequest request) {
+		Usuario usuarioBuscado = servicioLogin.consultarUsuarioId((Long)request.getSession().getAttribute("idUsuario"));
+		ModelMap modelo = new ModelMap();
+		Boolean tieneEquipo = false;
+		if(usuarioBuscado.getEquipo() != null) {
+			tieneEquipo = true;
+		}
+		modelo.put("usuario",usuarioBuscado);
+		modelo.put("tieneEquipo", tieneEquipo);
+		return new ModelAndView("home" , modelo);
 	}
 	
 	@RequestMapping(path = "/homeAdmin", method = RequestMethod.GET)

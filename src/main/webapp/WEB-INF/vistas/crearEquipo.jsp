@@ -38,13 +38,16 @@
 		<div class="text-center my-5">
 			<h2>Crea tu equipo</h2>
 		</div>
-		
+		<c:if test="${not empty error}">
+   		<h4><span>${error}</span></h4>
+   		<br>
+   		</c:if>
 		<!-- FORMULARIO -->
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<h5>NOMBRE DEL EQUIPO:</h5>
-				<form action="crearEquipo2">
+				<form action="registrarEquipo" method = "POST" modelAttribute="equipo">
 					<input name="nombre" type="text" id="nombre" class="form-control mb-3" placeholder="Ingrese el nombre del equipo" required autofocus>
 					<button class="btn btn-lg btn-primary float-right font-weight-bold mb-2" type="submit">Continuar</button>
 				</form>

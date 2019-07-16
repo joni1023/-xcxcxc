@@ -30,10 +30,10 @@ public class Gol {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	Partido partido;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	Jugador jugador;
 
 	public Partido getPartido() {

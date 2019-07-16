@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import javax.inject.Inject;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,5 +30,14 @@ public class ServicioLoginImpl implements ServicioLogin {
 	@Override
 	public void agregarUsuario (Usuario usuario) {
 		servicioLoginDao.agregarUsuario(usuario);
+	}
+
+	@Override
+	public Usuario consultarUsuarioId(Long id) {
+		return servicioLoginDao.consultarUsuarioId(id);
+	}
+	@Override
+	public void editarUsuario(Usuario usuario) {
+		servicioLoginDao.editarUsuario(usuario);
 	}
 }

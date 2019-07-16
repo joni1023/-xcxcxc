@@ -44,4 +44,22 @@ public class JugadorDaoImpl implements JugadorDao {
 			return miListaDeJugadores;
 		
 	}
+
+	@Override
+	public void agregarJugador(Jugador jugador) {
+		sessionFactory.getCurrentSession().save(jugador);
+		
+	}
+
+	@Override
+	public void editarJugador(Jugador jugador) {
+		sessionFactory.getCurrentSession().saveOrUpdate(jugador);
+		
+	}
+
+	@Override
+	public void eliminarJugador(Jugador jugador) {
+		sessionFactory.getCurrentSession().delete(jugador);
+		
+	}
 }
