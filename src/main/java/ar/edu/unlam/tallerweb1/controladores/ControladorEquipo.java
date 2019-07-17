@@ -64,8 +64,6 @@ public class ControladorEquipo {
 	public ModelAndView crearEquipo2(@ModelAttribute("equipo") Equipo equipo, HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		if (servicioEquipo.buscarEquipoNombre(equipo.getNombre()) == null) {
-			List<Jugador> listaDeJugadores = new ArrayList<>();
-			equipo.setListaDeJugadores(listaDeJugadores);
 			Usuario usuarioBuscado = servicioLogin
 					.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 			equipo.setUsuario(usuarioBuscado);
@@ -108,10 +106,11 @@ public class ControladorEquipo {
 	}
 
 	@RequestMapping("/buscandoRival")
-	public ModelAndView mostrarEquipoRival() {
-
+	public ModelAndView mostrarEquipoRival(HttpServletRequest request) {
+		
+		Usuario usuarioBuscado = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 		ModelMap modelo = new ModelMap();
-		Equipo miEquipo = servicioEquipo.buscarEquipo(1l);
+		Equipo miEquipo = servicioEquipo.buscarEquipo(usuarioBuscado.getEquipo().getId());
 		Equipo equipo = new Equipo();
 		modelo.put("equipo", equipo);
 		modelo.put("miEquipo", miEquipo);

@@ -47,4 +47,4 @@ INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y
 INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("entre180y190",4,6,10,8.5,7,4);
 INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",3,3,4,6,8,6);
 
-insert into valoracionesgenerales (radioMedicion) values (5);
+insert into valoracionesgenerales (radioMedicion) values (2);

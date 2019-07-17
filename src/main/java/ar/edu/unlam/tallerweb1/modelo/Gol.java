@@ -14,6 +14,15 @@ public class Gol {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer cantidad;
+	
+	public Gol() {
+		
+	}
+	public Gol(Integer cantidad, Partido partido, Jugador jugador) {
+		this.cantidad = cantidad;
+		this.partido = partido;
+		this.jugador = jugador;
+	}
 
 	public Integer getCantidad() {
 		return cantidad;

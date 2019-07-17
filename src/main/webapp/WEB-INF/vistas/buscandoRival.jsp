@@ -47,6 +47,7 @@
 		    	<div class="card">
 		    		<div class="card-header">
 		    			<h5>${miEquipo.nombre}</h5>
+		    			<h6>Valoracion promedio: ${miEquipo.valoracion}</h6>
 		    		</div>
 		      		<div class="card-body">
 		        		<p class="card-text">
@@ -58,10 +59,10 @@
 		    	</div>
 		  	</div>
 		  	<div class="col-md-2 my-5">
-		  		<form:form action="buscandoRival" method="POST" modelAttribute="equipo">
-					<form:input path="id" id="id" type="text" class="form-control" value="${miEquipo.id}"/><br>
+		  		<form action="buscandoRival" method="POST" modelAttribute="equipo">
+					<input name="id" id="id" type="hidden" class="form-control" value="${miEquipo.id}"/><br>
 					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Buscar Rival</button>
-				</form:form>
+				</form>
 			</div>
 		  	<div id="rival" class="col-md-3">
 		  		<h3>Equipo rival</h3>
@@ -69,6 +70,7 @@
 		    		<c:if test="${not empty rival.nombre}">
 		    		<div class="card-header">
 		    			<h5>${rival.nombre}</h5>
+		    			<h6>Valoracion promedio: ${rival.valoracion}</h6>
 		    		</div>
 		    		</c:if>
 		      		<div class="card-body">
@@ -90,11 +92,13 @@
 			<div class="col-md-3">
 			</div>
 			<div class="col-md-2 my-5">
-				<form action="armandoPartido" method="post">
-					<input type="hidden" name="equipo1ID" value="${miEquipo.id}">
-					<input type="hidden" name="equipo2ID" value="${rival.id}">
-					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Crear partido</button>
-				</form>
+				<c:if test="${not empty rival}">
+					<form action="armandoPartido" method="post">
+						<input type="hidden" name="local" value="${miEquipo.id}">
+						<input type="hidden" name="visitante" value="${rival.id}">
+						<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Crear partido</button>
+					</form>
+				</c:if>
 			</div>
 			<div class="col-md-3">
 			</div>

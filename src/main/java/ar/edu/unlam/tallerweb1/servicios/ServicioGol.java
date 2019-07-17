@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 public interface ServicioGol {
@@ -11,6 +12,7 @@ public interface ServicioGol {
 	public Double promedioDeGolesEnContra(Jugador jugador);
 	
 	public Double golesEnContra(Long id);
-
+	
+	public void guardarGol(Gol gol);
 	
 }

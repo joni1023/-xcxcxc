@@ -86,15 +86,6 @@ public class Jugador {
 		this.valoracion = valoracion;
 	}
 
-	@OneToMany
-	List <Gol> goles;
-	
-	@OneToMany
-	List <Amonestacion> amonestaciones;
-	
-	@OneToMany
-	List <Expulsion> expulsiones;
-	
 	@ManyToOne
 	Equipo equipo;
 	
@@ -105,30 +96,6 @@ public class Jugador {
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
-
-	public List<Gol> getGoles() {
-		return goles;
-	}
-	
-	public void setGoles(List<Gol> goles) {
-		this.goles = goles;
-	}
-	
-	public List<Amonestacion> getAmonestaciones() {
-		return amonestaciones;
-	}
-	
-	public void setAmonestaciones(List<Amonestacion> amonestaciones) {
-		this.amonestaciones = amonestaciones;
-	}
-	
-	public List<Expulsion> getExpulsiones() {
-		return expulsiones;
-	}
-	
-	public void setExpulsiones(List<Expulsion> expulsiones) {
-		this.expulsiones = expulsiones;
-	}	
 
 	public String getPosicion() {
 		return posicion;

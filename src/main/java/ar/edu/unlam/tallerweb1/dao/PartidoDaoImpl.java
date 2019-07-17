@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Gol;
+import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 
 @Repository("PartidoDao")
@@ -36,8 +38,8 @@ public class PartidoDaoImpl implements PartidoDao {
 	}
 
 	@Override
-	public void modificarpertido(Partido partido) {
-		sessionFactory.getCurrentSession().update(partido);
+	public void modificarPartido(Partido partido) {
+		sessionFactory.getCurrentSession().saveOrUpdate(partido);
 		
 	}
 
@@ -48,6 +50,66 @@ public class PartidoDaoImpl implements PartidoDao {
 				.add(Restrictions.eq("equipo1join.id", id))
 				.list();
 		return miLista;
+	}
+
+	@Override
+	public List<Partido> listaDePartidosSinCargar() {
+		List<Partido> miLista=sessionFactory.getCurrentSession().createCriteria(Partido.class)
+				.add(Restrictions.isNotNull("id"))
+				.add(Restrictions.eq("datosCargados",false))
+				.list();
+				return miLista;
+	}
+
+	@Override
+	public Partido buscarPartido(Long id) {
+		return (Partido) sessionFactory.getCurrentSession().createCriteria(Partido.class)
+				.add(Restrictions.eq("id",id))
+				.uniqueResult();
+	}
+
+	@Override
+	public List<Jugador> listaDeJugadoresLocal(Partido partido) {
+		List <Jugador> miListaDeJugadores = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
+                .createAlias("equipo", "equipo")
+				.add(Restrictions.eq("equipo.id",partido.getLocal().getId()))
+                .list();
+
+			return miListaDeJugadores;
+	}
+
+	@Override
+	public List<Jugador> listaDeJugadoresVisitante(Partido partido) {
+		List <Jugador> miListaDeJugadores = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
+                .createAlias("equipo", "equipo")
+				.add(Restrictions.eq("equipo.id",partido.getVisitante().getId()))
+                .list();
+
+			return miListaDeJugadores;
+	}
+
+	@Override
+	public List<Gol> listaGolesLocal(Partido partido) {
+		List<Gol> listaGolesLocal = sessionFactory.getCurrentSession().createCriteria(Gol.class)
+				.createAlias("partido","partido")
+				.add(Restrictions.eq("partido.id",partido.getId()))
+				.createAlias("partido.local","local")
+				.add(Restrictions.eq("local.id",partido.getLocal().getId()))
+				.list();
+		
+		return listaGolesLocal;
+	}
+
+	@Override
+	public List<Gol> listaGolesVisitante(Partido partido) {
+		List<Gol> listaGolesVisitante = sessionFactory.getCurrentSession().createCriteria(Gol.class)
+				.createAlias("partido","partido")
+				.add(Restrictions.eq("partido.id",partido.getId()))
+				.createAlias("partido.visitante","visitante")
+				.add(Restrictions.eq("visitante.id",partido.getVisitante().getId()))
+				.list();
+		
+		return listaGolesVisitante;
 	}
 	
 	

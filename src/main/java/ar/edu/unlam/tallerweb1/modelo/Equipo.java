@@ -46,16 +46,7 @@ public class Equipo {
 	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
-	
-	@OneToMany
-	List<Jugador> listaDeJugadores;
-	
-	@OneToMany(mappedBy = "local")
-	List<Partido> listaDePartidosLocal;
-	
-	@OneToMany(mappedBy = "visitante")
-	List<Partido> listaDePartidosVisitante;
-	
+
 	@OneToOne
 	Usuario usuario;
 	
@@ -67,28 +58,5 @@ public class Equipo {
 		this.usuario = usuario;
 	}
 
-	
-	public List<Partido> getListaDePartidosLocal() {
-		return listaDePartidosLocal;
-	}
 
-	public void setListaDePartidosLocal(List<Partido> listaDePartidosLocal) {
-		this.listaDePartidosLocal = listaDePartidosLocal;
-	}
-
-	public List<Partido> getListaDePartidosVisitante() {
-		return listaDePartidosVisitante;
-	}
-
-	public void setListaDePartidosVisitante(List<Partido> listaDePartidosVisitante) {
-		this.listaDePartidosVisitante = listaDePartidosVisitante;
-	}
-
-	public List<Jugador> getListaDeJugadores() {
-		return listaDeJugadores;
-	}
-	
-	public void setListaDeJugadores(List<Jugador> listaDeJugadores) {
-		this.listaDeJugadores = listaDeJugadores;
-	}
 }

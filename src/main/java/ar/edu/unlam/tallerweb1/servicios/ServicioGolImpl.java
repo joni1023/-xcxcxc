@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.EquipoDao;
+import ar.edu.unlam.tallerweb1.dao.GolDao;
 import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
@@ -25,7 +26,9 @@ public class ServicioGolImpl implements ServicioGol {
 	private EquipoDao equipoDao;
 	@Inject
 	private PartidoDao partidoDao;
-
+	@Inject
+	private GolDao golDao;
+	
 	@Override
 	public Double promedioDeGol(Jugador jugador) {
 		List<Partido> listaDePartidos = partidoDao.listaDePartidos();
@@ -41,7 +44,7 @@ public class ServicioGolImpl implements ServicioGol {
 		if (partidosJugados == 0.0) {
 			return 0.0;
 		} else {
-			List<Gol> goles = jugador.getGoles();
+			List<Gol> goles = golDao.listaGolesJugador(jugador);
 			for (Gol gol : goles) {
 				golesConvertidos += gol.getCantidad();
 			}
@@ -127,7 +130,7 @@ public class ServicioGolImpl implements ServicioGol {
 		} else {
 			for (Partido partido : partidos) {
 				if (partido.getLocal().equals(equipo)) {
-					List<Gol> goles = partido.getGolesVisitante();
+					List<Gol> goles = partidoDao.listaGolesVisitante(partido);
 					if (goles == null) {
 						golesEnContra += 0.0;
 					} else {
@@ -136,7 +139,7 @@ public class ServicioGolImpl implements ServicioGol {
 						}
 					}
 				}else if(partido.getVisitante().equals(equipo)) {
-					List<Gol> goles = partido.getGolesLocal();
+					List<Gol> goles = partidoDao.listaGolesLocal(partido);
 					if (goles == null) {
 						golesEnContra += 0.0;
 					} else {
@@ -149,5 +152,11 @@ public class ServicioGolImpl implements ServicioGol {
 
 			return golesEnContra;
 		}
+	}
+
+	@Override
+	public void guardarGol(Gol gol) {
+		golDao.guardarGol(gol);
+		
 	}
 }

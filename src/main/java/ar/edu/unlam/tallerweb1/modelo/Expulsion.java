@@ -12,6 +12,14 @@ public class Expulsion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	public Expulsion() {
+		
+	}
+	public Expulsion(Jugador jugador, Partido partido) {
+		this.jugador = jugador;
+		this.partido = partido;
+	}
 
 	public Long getId() {
 		return id;

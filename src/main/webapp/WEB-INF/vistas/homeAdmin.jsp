@@ -20,7 +20,7 @@
                     <a class="nav-link" href="valoraciones">Valoraciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">XXXXXX</a>
+                    <a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">XXXXXX</a>
