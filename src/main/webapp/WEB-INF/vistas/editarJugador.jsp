@@ -21,6 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
+                <li class="nav-item">
                     <a class="nav-link" href="miEquipo">Mi Equipo</a>
                 </li>
                 <li class="nav-item">
@@ -43,35 +44,35 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h5>¡COMPLETA LOS SIGUIENTES DATOS!</h5>
-					<table class="table table-bordered text-center">
-					  <thead>
-					    <tr>
-					      <th scope="col">#</th>
-					      <th scope="col">Posicion</th>
-					      <th scope="col">Nombre</th>
-					      <th scope="col">Edad</th>
-					      <th scope="col">Peso</th>
-					      <th scope="col">Altura</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <form action="editarJugador" method= "POST" modelAttribute="jugador">
-					    <tr>
-					      <th scope="row">1</th>
-					      <td><select name="posicion" id="posicion" class="form-control" value="${jugador.posicion}" required autofocus>
-					      <option value="Arquero">Arquero</option>
-					      <option value="Campo">Campo</option>
-					      </select></td>
-					      <td><input name="nombre" type="text" id="nombre" class="form-control" value="${jugador.nombre}" required ></td>
-					      <td><input name="edad" type="number" id="edad" class="form-control" value="${jugador.edad}" required></td>
-					      <td><input name="peso" type="number" step="any" id="peso" class="form-control" value="${jugador.peso}" required></td>
-					      <td><input name="altura" type="number" step="any" id="altura" class="form-control" value="${jugador.altura}" required></td>					   
-					    </tr>
-					  </tbody>
-					</table>
-					<input name="id" type="hidden" id="id" value="${jugador.id}">
-					<button class="btn btn-lg btn-primary float-right font-weight-bold mb-2" type="submit">Editar</button>
-					</form>
+				<table class="table table-bordered text-center">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Posicion</th>
+				      <th scope="col">Nombre</th>
+				      <th scope="col">Edad</th>
+				      <th scope="col">Peso</th>
+				      <th scope="col">Altura</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <form action="editarJugador" method= "POST" modelAttribute="jugador">
+				    <tr>
+				      <th scope="row">1</th>
+				      <td><select name="posicion" id="posicion" class="form-control" value="${jugador.posicion}" required autofocus>
+				      <option value="Arquero">Arquero</option>
+				      <option value="Campo">Campo</option>
+				      </select></td>
+				      <td><input name="nombre" type="text" id="nombre" class="form-control" value="${jugador.nombre}" required ></td>
+				      <td><input name="edad" type="number" id="edad" class="form-control" value="${jugador.edad}" required></td>
+				      <td><input name="peso" type="number" step="any" id="peso" class="form-control" value="${jugador.peso}" required></td>
+				      <td><input name="altura" type="number" step="any" id="altura" class="form-control" value="${jugador.altura}" required></td>					   
+				    </tr>
+				  </tbody>
+				</table>
+				<input name="id" type="hidden" id="id" value="${jugador.id}">
+				<button class="btn btn-lg btn-primary float-right font-weight-bold mb-2" type="submit">Editar</button>
+				</form>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

@@ -20,7 +20,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
+                
                 <c:set var="equipoBoolean" value="${tieneEquipo}"/>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="buscandoRival">Buscar Rival</a>
+                	</li>
+                </c:if>
                 <c:if test="${equipoBoolean == true}">
                 	<li class="nav-item">
                     	<a class="nav-link" href="miEquipo">Mi Equipo</a>
@@ -31,10 +37,12 @@
                     	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
                 	</li>
                 </c:if>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+                	</li>
+                </c:if>
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
@@ -42,9 +50,9 @@
         </div>
    	</nav>
    	
-   	<div class="row">
+   	<div class="row mt-5">
    		<div class ="col-md-4"></div>
-   		<div class ="col-md-4 text-center"><h4>Bienvenido ${usuario.nombreUsuario}</h4></div>
+   		<div class ="col-md-4 text-center"><h4>¡Bienvenido ${usuario.nombreUsuario}, disfruta de nuestra aplicación!</h4></div>
    		<div class ="col-md-4"></div>
    	</div>
    	

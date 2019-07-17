@@ -21,15 +21,20 @@ import ar.edu.unlam.tallerweb1.modelo.Expulsion;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioAmonestacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEquipo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioExpulsion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioGol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioJugador;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
 
 @Controller
 public class ControladorPartido {
+	
+	@Inject
+	private ServicioLogin servicioLogin;
 	@Inject
 	private ServicioPartido servicioPartido;
 	@Inject
@@ -62,10 +67,13 @@ public class ControladorPartido {
 	}
 
 	@RequestMapping("misPartidos")
-	public ModelAndView misPartidos() {
+	public ModelAndView misPartidos(HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
-		Equipo equipo1 = servicioEquipo.buscarEquipo(1L);
+		Usuario usuario = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
+		Equipo equipo1 = servicioEquipo.buscarEquipo(usuario.getEquipo().getId());
 		modelo.put("local", equipo1);
+		List<Partido> misPartidos = servicioPartido.listaDePartidosEquipoID(equipo1.getId());
+		modelo.put("misPartidos", misPartidos);
 		return new ModelAndView("misPartidos", modelo);
 	}
 

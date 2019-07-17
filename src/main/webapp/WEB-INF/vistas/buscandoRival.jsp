@@ -22,11 +22,14 @@
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="miEquipo">Mi Equipo</a>
+                </li>
+                <li class="nav-item">
+                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+               	</li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
