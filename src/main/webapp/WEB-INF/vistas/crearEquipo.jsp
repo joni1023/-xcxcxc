@@ -21,12 +21,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
-                </li>
+                
+                <c:set var="equipoBoolean" value="${tieneEquipo}"/>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+               		</li>
+                </c:if>
+                <c:if test="${equipoBoolean == false}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                	</li>
+                </c:if>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>

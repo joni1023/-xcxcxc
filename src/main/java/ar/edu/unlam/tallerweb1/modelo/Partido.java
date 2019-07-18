@@ -19,6 +19,15 @@ public class Partido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Boolean datosCargados;
+
+	public Boolean getDatosCargados() {
+		return datosCargados;
+	}
+
+	public void setDatosCargados(Boolean datosCargados) {
+		this.datosCargados = datosCargados;
+	}
 
 
 	public Long getId() {
@@ -35,12 +44,6 @@ public class Partido {
 	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo visitante;
 	
-	@OneToMany
-	List <Gol> golesLocal;
-	
-	@OneToMany
-	List <Gol> golesVisitante;
-
 	public Equipo getLocal() {
 		return local;
 	}
@@ -57,19 +60,4 @@ public class Partido {
 		this.visitante = visitante;
 	}
 
-	public List<Gol> getGolesLocal() {
-		return golesLocal;
-	}
-
-	public void setGolesLocal(List<Gol> golesLocal) {
-		this.golesLocal = golesLocal;
-	}
-
-	public List<Gol> getGolesVisitante() {
-		return golesVisitante;
-	}
-
-	public void setGolesVisitante(List<Gol> golesVisitante) {
-		this.golesVisitante = golesVisitante;
-	}
 }

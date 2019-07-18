@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.PartidoDao;
+import ar.edu.unlam.tallerweb1.modelo.Gol;
+import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 @Service("ServicioPartido")
 @Transactional
@@ -34,8 +36,8 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	}
 
 	@Override
-	public void modificarpertido(Partido partido) {
-		partidoDao.modificarpertido(partido);
+	public void modificarPartido(Partido partido) {
+		partidoDao.modificarPartido(partido);
 
 	}
 
@@ -53,5 +55,37 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		}
 		return miListanueva;
 	}
-	
+
+	@Override
+	public List<Partido> listaDePartidosSinCargar() {
+		return partidoDao.listaDePartidosSinCargar();
+	}
+
+	@Override
+	public Partido buscarPartido(Long id) {
+		return partidoDao.buscarPartido(id);
+	}
+
+	@Override
+	public List<Jugador> listaDeJugadoresLocal(Partido partido) {
+
+		return partidoDao.listaDeJugadoresLocal(partido);
+	}
+
+	@Override
+	public List<Jugador> listaDeJugadoresVisitante(Partido partido) {
+		return partidoDao.listaDeJugadoresVisitante(partido);
+	}
+
+	@Override
+	public List<Gol> listaGolesLocal(Partido partido) {
+		return partidoDao.listaGolesLocal(partido);
+	}
+
+	@Override
+	public List<Gol> listaGolesVisitante(Partido partido) {
+		return partidoDao.listaGolesVisitante(partido);
+	}
+
+
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.dao.AmonestacionDao;
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
 import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Amonestacion;
@@ -20,11 +21,13 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	private JugadorDao jugadorDao;
 	@Inject
 	private PartidoDao partidoDao;
-
+	@Inject
+	private AmonestacionDao amonestacionDao;
+	
 	@Override
 	public Double cantidadAmonestaciones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
-		List<Amonestacion> amonestaciones = miJugador.getAmonestaciones();
+		List<Amonestacion> amonestaciones = amonestacionDao.amonestacionesJugador(miJugador);
 		Double cantidadAmonestaciones = 0.0;
 		if (amonestaciones.isEmpty()) {
 			return 0.0;
@@ -62,6 +65,17 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		Double valoracion = promedioAmonestaciones * (-5);
 
 		return valoracion;
+	}
+
+	@Override
+	public void guardarAmonestacion(Amonestacion amonestacion) {
+		amonestacionDao.guardarAmonestacion(amonestacion);
+		
+	}
+
+	@Override
+	public List<Amonestacion> amonestacionesJugador(Jugador jugador) {
+		return amonestacionDao.amonestacionesJugador(jugador);
 	}
 
 }

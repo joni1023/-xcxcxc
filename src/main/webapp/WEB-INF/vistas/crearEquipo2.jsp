@@ -21,11 +21,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
-                </li>
+                
+                <c:set var="equipoBoolean" value="${tieneEquipo}"/>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+               		</li>
+                </c:if>
+                <c:if test="${equipoBoolean == false}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                	</li>
+                </c:if>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
@@ -35,7 +43,7 @@
 	
 	<div class="container-fluid">
 		<div class="text-center my-5">
-			<h2>Ingresar Jugador</h2>
+			<h2>Crea tu equipo</h2>
 		</div>
 		
 		<!-- FORMULARIO -->
@@ -46,7 +54,6 @@
 					<table class="table table-bordered text-center">
 					  <thead>
 					    <tr>
-					      <th scope="col">#</th>
 					      <th scope="col">Posicion</th>
 					      <th scope="col">Nombre</th>
 					      <th scope="col">Edad</th>
@@ -57,7 +64,6 @@
 					  <tbody>
 					    <form action="registrarJugadores" method= "POST" modelAttribute="jugador">
 					    <tr>
-					      <th scope="row">1</th>
 					      <td><select name="posicion" id="posicion" class="form-control" required autofocus>
 					      <option value="Arquero">Arquero</option>
 					      <option value="Campo">Campo</option>

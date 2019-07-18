@@ -20,10 +20,7 @@
                     <a class="nav-link" href="valoraciones">Valoraciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">XXXXXX</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">XXXXXX</a>
+                    <a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
@@ -32,8 +29,10 @@
         </div>
    	</nav>
    	
-   	<div class="container">
-   		<h4>Bienvenido Administrador</h4>
+   	<div class="row mt-5">
+   		<div class ="col-md-4"></div>
+   		<div class ="col-md-4 text-center"><h4>¡Bienvenido ${usuario.nombreUsuario}!</h4></div>
+   		<div class ="col-md-4"></div>
    	</div>
    	
 	<script src="js/jquery-3.4.1.min.js"></script>

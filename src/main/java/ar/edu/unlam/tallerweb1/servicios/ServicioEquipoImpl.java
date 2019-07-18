@@ -37,7 +37,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 			valoracion += servicioJugador.valoracionJugador(jugador.getId());
 		}
 		
-		return valoracion;
+		return valoracion / 5;
 	}
 	
 	@Override

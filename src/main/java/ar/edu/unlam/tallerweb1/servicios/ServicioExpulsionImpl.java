@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.dao.ExpulsionDao;
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
 import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Expulsion;
@@ -21,11 +22,12 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	JugadorDao jugadorDao;
 	@Inject
 	PartidoDao partidoDao;
-	
+	@Inject
+	ExpulsionDao expulsionDao;
 	@Override
 	public Double cantidadExpulsiones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
-		List<Expulsion> expulsiones = miJugador.getExpulsiones();
+		List<Expulsion> expulsiones = expulsionDao.expulsionesJugador(miJugador);
 		Double cantidadExpulsiones = 0.0;
 		if(expulsiones.isEmpty()) {
 			return 0.0;
@@ -62,5 +64,10 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		Double valoracion = promedioExpulsiones * (-10);
 		
 		return valoracion;
+	}
+
+	@Override
+	public void guardarExpulsion(Expulsion expulsion) {
+		expulsionDao.guardarExpulsion(expulsion);
 	}
 }

@@ -13,6 +13,15 @@ public class Amonestacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer cantidad;
+	
+	public Amonestacion() {
+		
+	}
+	public Amonestacion(Integer cantidad, Jugador jugador, Partido partido) {
+		this.cantidad = cantidad;
+		this.jugador = jugador;
+		this.partido = partido;
+	}
 
 	public Integer getCantidad() {
 		return cantidad;
