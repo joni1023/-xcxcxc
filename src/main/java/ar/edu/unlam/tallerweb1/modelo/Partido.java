@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,6 +20,7 @@ public class Partido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+
 	public Long getId() {
 		return id;
 	}
@@ -27,10 +29,10 @@ public class Partido {
 		this.id = id;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo local;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	Equipo visitante;
 	
 	@OneToMany

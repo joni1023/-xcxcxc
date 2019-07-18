@@ -21,9 +21,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="crearEquipo">Crear Equipo</a>
-                </li>
+                <c:set var="equipoBoolean" value="${tieneEquipo}"/>
+                <c:if test="${equipoBoolean == true}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+               		</li>
+                </c:if>
+                <c:if test="${equipoBoolean == false}">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                	</li>
+                </c:if>
                 <li class="nav-item">
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
@@ -46,20 +54,14 @@
 				<h3>Mi equipo</h3>
 		    	<div class="card">
 		    		<div class="card-header">
-		    			<h5>${equipo1ID}</h5>
+		    			<h5>${equipo1.nombre}</h5>
 		    		</div>
 		    	</div>
 		  	</div>
 		  	<div class="col-md-2 my-5">
-		  		<%-- <form:form action="crearPartido" method="Post" modelAttribute="partido"> --%>
-					<%-- <form:input path="equipo1" type="hidden" value="${equipo1}"/> --%>
-					<%-- <form:input path="equipo2" type="hidden" value="${equipo2}"/> --%>
-					<%-- <form:input path="fecha" type="date"/> --%>
-					<%-- <form:button type="submit">confirmar</form:button> --%>
-				<%-- </form:form> --%>
 		  		<form action="crearPartido" method="POST">
-					<input type="text" class="form-control" name="equipo1ID" value="${equipo1ID}"/><br>
-					<input type="text" class="form-control" name="equipo2ID" value="${equipo2ID}"/><br>
+					<input type="text" class="form-control" name="equipo1ID" value="${equipo1.id}"/><br>
+					<input type="text" class="form-control" name="equipo2ID" value="${equipo2.id}"/><br>
 					<select type="datetime-local" name="fecha">
 						<option value="2019/07/20 11:00">2019/07/20 11:00</option>
 					 	<option value="2019/07/20 14:00">2019/07/20 14:00</option>
@@ -72,7 +74,7 @@
 		  		<h3>Equipo rival</h3>
 		    	<div class="card">
 		    		<div class="card-header">
-		    			<h5>${equipo2ID}</h5>
+		    			<h5>${equipo2.nombre}</h5>
 		    		</div>
 		    	</div>
 		  	</div>

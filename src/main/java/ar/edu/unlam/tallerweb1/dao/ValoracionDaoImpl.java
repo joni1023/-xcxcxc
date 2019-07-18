@@ -107,7 +107,7 @@ public class ValoracionDaoImpl implements ValoracionDao {
 	}
 
 	@Override
-	public void modificarTablaValoracionGeneral(ValoracionEdad nuevaValoracionGeneral) {
+	public void modificarTablaValoracionGeneral(ValoracionesGenerales nuevaValoracionGeneral) {
 		sessionFactory.getCurrentSession().update(nuevaValoracionGeneral);		
 	}
 

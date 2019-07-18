@@ -37,5 +37,6 @@ public interface ServicioValoracion {
 	public void modificarTablaAltura(ValoracionAltura nuevaValoracion);
 	public ValoracionPesoAltura traerValoracionPesoAlturaPorID(Long id);
 	public void modificarTablaPesoAltura(ValoracionPesoAltura nuevaValoracion);
-	
+	public ValoracionesGenerales traerVAloracionesGenerales();
+	public void modificarValoracionesGenerales(ValoracionesGenerales nuevoValor);
 }

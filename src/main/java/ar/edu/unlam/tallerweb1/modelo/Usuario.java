@@ -57,7 +57,7 @@ public class Usuario {
 		this.esAdmin = esAdmin;
 	}
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	Equipo equipo;
 
 	public Equipo getEquipo() {

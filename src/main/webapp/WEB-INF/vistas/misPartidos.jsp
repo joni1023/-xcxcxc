@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>listo</h1>
+<h1>mis partidos</h1>
 <c:forEach items="${misPartidos}" var="partido">
-<p>${partido.fecha}</p>
+<p> id de partido: ${partido.id} local :  ${partido.local.nombre} vs visitante ${partido.visitante.nombre }</p>
 </c:forEach>
 </body>
 </html>

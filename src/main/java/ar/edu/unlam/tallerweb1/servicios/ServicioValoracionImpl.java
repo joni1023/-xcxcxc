@@ -200,5 +200,16 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	public void modificarTablaPesoAltura(ValoracionPesoAltura nuevaValoracion) {
 		valoracionDao.modificarTablaValoracionPesoAltura(nuevaValoracion);
 		
+	}
+
+	@Override
+	public ValoracionesGenerales traerVAloracionesGenerales() {
+		return valoracionDao.valoracionGeneral();
+	}
+
+	@Override
+	public void modificarValoracionesGenerales(ValoracionesGenerales nuevoValor) {
+		valoracionDao.modificarTablaValoracionGeneral(nuevoValor);
+		
 	}	
 }

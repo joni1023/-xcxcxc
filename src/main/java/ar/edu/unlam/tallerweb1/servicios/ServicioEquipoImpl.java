@@ -67,22 +67,23 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 
 
 	@Override
-	public Equipo dandoRival(Equipo equipo) {
+	public Equipo dandoRival(Equipo equipo,Long idrival) {
 		List <Equipo> miLista =this.listarEquipos();
+		
 		Double valoracion;
 		for(Equipo e:miLista) {
 			valoracion=this.valoracionEquipo(e.getId());
 			e.setValoracion(valoracion);
 		}
+		
 		Integer rango = servicioValoracion.valoracionGeneralRadio();
 		Double valorMinimo=equipo.getValoracion()- rango;
 		Double valorMaximo=equipo.getValoracion()+ rango;
 		List <Equipo> posiblesRivales = new ArrayList <Equipo>();
 		Equipo miRivalEquipo= null;
 		for(Equipo e:miLista) {
-			if(e.getValoracion()>=valorMinimo && e.getValoracion()<=valorMaximo && e.getId()!=equipo.getId()) {
+			if(e.getValoracion()>=valorMinimo && e.getValoracion()<=valorMaximo && e.getId()!=equipo.getId() && e.getId()!=idrival) {
 				posiblesRivales.add(e);
-				miRivalEquipo=e;
 			}
 		}
 		

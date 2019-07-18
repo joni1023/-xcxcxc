@@ -134,10 +134,43 @@
 					</tbody>
 				</c:forEach>
 				</table>
+				<h3 class="text-center"> -- -- -- -- -- </h3>
 			</div>
 			<div class="col-md-2">
 			</div>
 		</div>
+		<!--CUARTA ROW -->
+		<div class="row mt-5">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<p>Valores Generales:</p>
+				<table class="table table-bordered text-center">
+					<thead >
+					    <tr>
+					      <th scope="col">Rango de Medicion</th>
+					      <th scope="col">Opción</th>
+					    </tr>
+					</thead>
+					<tbody>
+					    <tr>
+					      <th scope="col">${valorGeneral.radioMedicion}</th>
+					     
+					      <th scope="row"><form:form action="modificarValoresGenerales" method="POST" modelAttribute="valoracionesGenerales">
+												<form:input path="id" id="id" type="hidden" value="${valorGeneral.id}"/>
+												<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit"> Modificar</button>
+										  </form:form></th>
+					    </tr>
+					</tbody>
+				
+				</table>
+				<h3 class="text-center"> -- -- -- -- -- </h3>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+		
 	</div>
+	<p> ${valorGeneral.radioMedicion}</p>
 </body>
 </html>

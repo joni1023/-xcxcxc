@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -41,7 +42,16 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	@Override
 	public List<Partido> listaDePartidosEquipoID(long id) {
 		
-		return partidoDao.listaPartidoEquipoID(id);
+		List <Partido> miLista = this.listaDePartidos();
+		List <Partido> miListanueva = new ArrayList <Partido> ();
+		for (Partido e:miLista) {
+			if(e.getLocal().getId()==id) {
+				miListanueva.add(e);
+			}else if(e.getVisitante().getId()==id) {
+				miListanueva.add(e);
+			}
+		}
+		return miListanueva;
 	}
-
+	
 }

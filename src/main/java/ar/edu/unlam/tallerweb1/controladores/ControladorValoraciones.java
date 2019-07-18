@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionAltura;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionEdad;
 import ar.edu.unlam.tallerweb1.modelo.ValoracionPesoAltura;
+import ar.edu.unlam.tallerweb1.modelo.ValoracionesGenerales;
 import ar.edu.unlam.tallerweb1.servicios.ServicioValoracion;
 
 @Controller
@@ -26,12 +27,15 @@ public class ControladorValoraciones {
 		ValoracionEdad valorEdad = new ValoracionEdad();
 		ValoracionAltura valorAltura = new ValoracionAltura();
 		ValoracionPesoAltura valorPeso = new ValoracionPesoAltura();
+		ValoracionesGenerales valorGeneral = new ValoracionesGenerales(); 
 		modelo.put("valoracionEdad", valorEdad);
 		modelo.put("valoracionAltura", valorAltura);
 		modelo.put("valoracionPesoAltura", valorPeso);
+		modelo.put("valoracionesGenerales", valorGeneral);
 		modelo.put("listaValorEdad", servicioValoracion.verValoraciondeEdadTabla());
 		modelo.put("listaValorAltura", servicioValoracion.verValoracionAlturaTabla());
 		modelo.put("listaValorPA", servicioValoracion.listaValoracionPesoAltura());
+		modelo.put("valorGeneral", servicioValoracion.traerVAloracionesGenerales());
 		
 		return new ModelAndView ("valoraciones", modelo);
 	}
@@ -87,6 +91,25 @@ public class ControladorValoraciones {
 	public ModelAndView modificadoPesoAltura(@ModelAttribute ("valoracionPesoAltura") ValoracionPesoAltura valoracionPA) {
 		
 		servicioValoracion.modificarTablaPesoAltura(valoracionPA);
+		
+		return new ModelAndView("redirect:/valoraciones");
+	}
+	
+	// modificar valores generales
+	@RequestMapping(path = "/modificarValoresGenerales", method = RequestMethod.POST)
+	public ModelAndView modificarValoracionGeneral(@ModelAttribute ("valoracionesGenerales") ValoracionesGenerales valoracionG) {
+		ModelMap modelo = new ModelMap();
+		ValoracionesGenerales valorG = servicioValoracion.traerVAloracionesGenerales();
+		modelo.put("valorGeneral", valorG);
+		ValoracionesGenerales ValoracionesGen = new ValoracionesGenerales();
+		modelo.put("valoracionesGenerales", ValoracionesGen);
+		return new ModelAndView("modificarValoresGenerales", modelo);
+	}
+	
+	@RequestMapping(path = "/modificarValoresGeneralesT", method = RequestMethod.POST)
+	public ModelAndView modificadoValoresGenerales(@ModelAttribute ("valoracionesGenerales") ValoracionesGenerales valoracionNuevo) {
+		
+		servicioValoracion.modificarValoracionesGenerales(valoracionNuevo);;
 		
 		return new ModelAndView("redirect:/valoraciones");
 	}
