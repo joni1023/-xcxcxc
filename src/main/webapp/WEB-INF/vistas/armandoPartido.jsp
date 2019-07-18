@@ -36,6 +36,9 @@
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
             </ul>

@@ -72,6 +72,10 @@ public class ControladorPartido {
 		Equipo equipo1 = servicioEquipo.buscarEquipo(usuario.getEquipo().getId());
 		modelo.put("local",equipo1);
 		List <Partido> misPartidos = servicioPartido.listaDePartidosEquipoID(equipo1.getId());
+		for (Partido partido : misPartidos) {
+			partido.setGolesLocal(servicioPartido.golesLocal(partido.getId()));
+			partido.setGolesVisitante(servicioPartido.golesVisitante(partido.getId()));
+		}
 		modelo.put("misPartidos", misPartidos);
 		return new ModelAndView("misPartidos",modelo);
 	}
@@ -147,19 +151,19 @@ public class ControladorPartido {
 			Expulsion expulsion1 = new Expulsion(jugador1, partidoBuscado);
 			servicioExpulsion.guardarExpulsion(expulsion1);
 		}
-		if (expulsion1Cantidad == 1) {
+		if (expulsion2Cantidad == 1) {
 			Expulsion expulsion2 = new Expulsion(jugador2, partidoBuscado);
 			servicioExpulsion.guardarExpulsion(expulsion2);
 		}
-		if (expulsion1Cantidad == 1) {
+		if (expulsion3Cantidad == 1) {
 			Expulsion expulsion3 = new Expulsion(jugador3, partidoBuscado);
 			servicioExpulsion.guardarExpulsion(expulsion3);
 		}
-		if (expulsion1Cantidad == 1) {
+		if (expulsion4Cantidad == 1) {
 			Expulsion expulsion4 = new Expulsion(jugador4, partidoBuscado);
 			servicioExpulsion.guardarExpulsion(expulsion4);
 		}
-		if (expulsion1Cantidad == 1) {
+		if (expulsion5Cantidad == 1) {
 			Expulsion expulsion5 = new Expulsion(jugador5, partidoBuscado);
 			servicioExpulsion.guardarExpulsion(expulsion5);
 		}

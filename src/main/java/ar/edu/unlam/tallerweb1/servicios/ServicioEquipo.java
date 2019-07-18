@@ -19,6 +19,6 @@ public interface ServicioEquipo {
     public void editarEquipo(Equipo equipo);
    
     public void eliminarEquipo(Long id);
-    
+
 }
 

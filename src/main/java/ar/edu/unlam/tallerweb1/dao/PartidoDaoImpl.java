@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,7 +40,7 @@ public class PartidoDaoImpl implements PartidoDao {
 
 	@Override
 	public void modificarPartido(Partido partido) {
-		sessionFactory.getCurrentSession().saveOrUpdate(partido);
+		sessionFactory.getCurrentSession().update(partido);
 		
 	}
 
@@ -90,25 +91,32 @@ public class PartidoDaoImpl implements PartidoDao {
 
 	@Override
 	public List<Gol> listaGolesLocal(Partido partido) {
-		List<Gol> listaGolesLocal = sessionFactory.getCurrentSession().createCriteria(Gol.class)
+		List<Gol> listaGoles = sessionFactory.getCurrentSession().createCriteria(Gol.class)
 				.createAlias("partido","partido")
 				.add(Restrictions.eq("partido.id",partido.getId()))
-				.createAlias("partido.local","local")
-				.add(Restrictions.eq("local.id",partido.getLocal().getId()))
 				.list();
 		
+		List<Gol> listaGolesLocal = new ArrayList<>();
+		for (Gol gol : listaGoles) {
+			if(gol.getJugador().getEquipo().equals(partido.getLocal())) {
+				listaGolesLocal.add(gol);
+			}
+		}
 		return listaGolesLocal;
 	}
 
 	@Override
 	public List<Gol> listaGolesVisitante(Partido partido) {
-		List<Gol> listaGolesVisitante = sessionFactory.getCurrentSession().createCriteria(Gol.class)
+		List<Gol> listaGoles = sessionFactory.getCurrentSession().createCriteria(Gol.class)
 				.createAlias("partido","partido")
 				.add(Restrictions.eq("partido.id",partido.getId()))
-				.createAlias("partido.visitante","visitante")
-				.add(Restrictions.eq("visitante.id",partido.getVisitante().getId()))
 				.list();
-		
+		List<Gol> listaGolesVisitante = new ArrayList<>();
+		for (Gol gol : listaGoles) {
+			if(gol.getJugador().getEquipo().equals(partido.getVisitante())) {
+				listaGolesVisitante.add(gol);
+			}
+		}
 		return listaGolesVisitante;
 	}
 	

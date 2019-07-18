@@ -19,4 +19,10 @@ public interface ServicioJugador {
 	public void editarJugador(Jugador jugador);
 	
 	public void eliminarJugador(Jugador jugador);
+	
+	public Integer goles(Jugador jugador);
+	
+	public Integer amonestaciones(Jugador jugador);
+	
+	public Integer expulsiones(Jugador jugador);
 }

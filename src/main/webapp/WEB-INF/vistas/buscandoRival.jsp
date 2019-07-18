@@ -44,6 +44,9 @@
                 <li class="nav-item">
                    	<a class="nav-link" href="misPartidos">Mis Partidos</a>
                	</li>
+               	<li class="nav-item">
+                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>

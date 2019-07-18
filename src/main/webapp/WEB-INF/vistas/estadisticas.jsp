@@ -20,18 +20,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
+                <c:if test="${esAdmin == true}">
+                	<li class="nav-item">
+                    <a class="nav-link" href="valoraciones">Valoraciones</a>
                 </li>
                 <li class="nav-item">
-                   	<a class="nav-link" href="miEquipo">Mi Equipo</a>
-            	</li>
+                    <a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
+                </li>
+               </c:if>
+               <c:if test="${esAdmin == false}">
+               		<c:if test="${tieneEquipo == true}">
+		                <li class="nav-item">
+		                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
+		                </li>
+		                <li class="nav-item">
+		                   	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+		            	</li>
+		               	<li class="nav-item">
+		                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+		               	</li>
+		             </c:if>
+		             <c:if test="${tieneEquipo == false}">
+                		<li class="nav-item">
+                    		<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                		</li>
+                	</c:if>
+               	</c:if>
                	<li class="nav-item">
-                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+               	<a class="nav-link" href="estadistcas">Estadisticas</a>
                	</li>
-               	<li class="nav-item">
-                    <a class="nav-link" href="estadisticas">Estadisticas</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
@@ -41,7 +58,7 @@
 
 	<div class="container-fluid">
 		<div class="text-center my-5">
-			<h2>${miEquipo.nombre}</h2>
+			<h2>Estadisticas de Equipos</h2>
 		</div>
 
 		<div class="row mt-5">
@@ -50,41 +67,33 @@
 				<table class="table table-bordered text-center">
 					<thead>
 						<tr>
-							<th scope="col">Posicion</th>
 							<th scope="col">Nombre</th>
-							<th scope="col">Edad</th>
-							<th scope="col">Peso</th>
-							<th scope="col">Altura</th>
-							<th scope="col">Modificar</th>
-							<th scope="col">Eliminar</th>
+							<th scope="col">PJ</th>
+							<th scope="col">PG</th>
+							<th scope="col">PE</th>
+							<th scope="col">PP</th>
+							<th scope="col">Valoracion</th>
+							<th scope="col">Jugadores</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${jugadores}" var="jugador">
+						<c:forEach items="${equipos}" var="equipo">
 							<tr>
-							<td>${jugador.posicion}</td>
-							<td>${jugador.nombre}</td>
-							<td>${jugador.edad}</td>
-							<td>${jugador.peso}</td>
-							<td>${jugador.altura}</td>
-							<td><form action="modificarJugador" method="POST" modelAttribute = "jugador">
-								<input type="hidden" name="id" value="${jugador.id}" id="id">
-								<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Editar</button>
-								</form>
-							</td>
-							<td><form action="eliminarJugador" method="POST" modelAttribute = "jugador">
-								<input type="hidden" name="id" value="${jugador.id}" id="id">
-								<button class="btn btn-lg btn-primary  font-weight-bold mb-2" type="submit">Eliminar</button>
+							<td>${equipo.nombre}</td>
+							<td>${equipo.partidosJugados}</td>
+							<td>${equipo.partidosGanados}</td>
+							<td>${equipo.partidosEmpatados}</td>
+							<td>${equipo.partidosPerdidos}</td>
+							<td>${equipo.valoracion}</td>
+							<td><form action="estadisticasJugadores" method="POST">
+								<input type="hidden" name="idEquipo" value="${equipo.id}" id="id">
+								<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Ver Jugadores</button>
 								</form>
 							</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<c:set var="jugadoresCantidad" value="${cantidadJugadores}"/>
-				<c:if test="${jugadoresCantidad < 5}">
-					<a class="btn btn-lg btn-primary float-right font-weight-bold mb-2" href="crearEquipo2" role="button">Agregar Jugador</a>
-				</c:if>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

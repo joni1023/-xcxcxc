@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
+import ar.edu.unlam.tallerweb1.modelo.Amonestacion;
+import ar.edu.unlam.tallerweb1.modelo.Expulsion;
+import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Service("ServicioJugador")
@@ -105,6 +108,33 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	public void eliminarJugador(Jugador jugador) {
 		servicioJugadorDao.eliminarJugador(jugador);
 		
+	}
+
+	@Override
+	public Integer goles(Jugador jugador) {
+		List<Gol> goles = servicioGol.golesJugador(jugador);
+		Integer cantidadGoles = 0;
+		
+		for (Gol gol : goles) {
+			cantidadGoles += gol.getCantidad();
+		}
+		return cantidadGoles;
+	}
+
+	@Override
+	public Integer amonestaciones(Jugador jugador) {
+		List<Amonestacion> amonestaciones = servicioAmonestacion.amonestacionesJugador(jugador);
+		Integer cantidadAmonestaciones = 0;
+		for (Amonestacion amonestacion : amonestaciones) {
+			cantidadAmonestaciones += amonestacion.getCantidad();
+		}
+		return cantidadAmonestaciones;
+	}
+
+	@Override
+	public Integer expulsiones(Jugador jugador) {
+		Integer expulsiones = servicioExpulsion.cantidadExpulsiones(jugador.getId());
+		return expulsiones;
 	}
 	
 }
