@@ -24,6 +24,9 @@ public class Jugador {
 	private Double altura;
 	private String posicion;
 	private Double valoracion;
+	private Integer cantidadGoles;
+	private Integer cantidadAmonestaciones;
+	private Integer cantidadExpulsiones;
 	
 	public Jugador () {
 		
@@ -38,6 +41,31 @@ public class Jugador {
 		this.valoracion = valoracion;
 	}
 	
+	
+	public Integer getCantidadGoles() {
+		return cantidadGoles;
+	}
+
+	public void setCantidadGoles(Integer cantidadGoles) {
+		this.cantidadGoles = cantidadGoles;
+	}
+
+	public Integer getCantidadAmonestaciones() {
+		return cantidadAmonestaciones;
+	}
+
+	public void setCantidadAmonestaciones(Integer cantidadAmonestaciones) {
+		this.cantidadAmonestaciones = cantidadAmonestaciones;
+	}
+
+	public Integer getCantidadExpulsiones() {
+		return cantidadExpulsiones;
+	}
+
+	public void setCantidadExpulsiones(Integer cantidadExpulsiones) {
+		this.cantidadExpulsiones = cantidadExpulsiones;
+	}
+
 	public Long getId() {
 		return id;
 	}

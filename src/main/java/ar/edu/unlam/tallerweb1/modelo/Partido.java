@@ -20,6 +20,24 @@ public class Partido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Boolean datosCargados;
+	private Integer golesLocal;
+	private Integer golesVisitante;
+
+	public Integer getGolesLocal() {
+		return golesLocal;
+	}
+
+	public void setGolesLocal(Integer golesLocal) {
+		this.golesLocal = golesLocal;
+	}
+
+	public Integer getGolesVisitante() {
+		return golesVisitante;
+	}
+
+	public void setGolesVisitante(Integer golesVisitante) {
+		this.golesVisitante = golesVisitante;
+	}
 
 	public Boolean getDatosCargados() {
 		return datosCargados;

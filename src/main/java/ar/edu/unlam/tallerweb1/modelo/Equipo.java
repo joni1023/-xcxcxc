@@ -23,7 +23,44 @@ public class Equipo {
 	private Long id;
 	private String nombre;
 	private Double valoracion;
+	private Integer partidosJugados;
+	private Integer partidosGanados;
+	private Integer partidosEmpatados;
+	private Integer partidosPerdidos;
 	
+	
+	public Integer getPartidosJugados() {
+		return partidosJugados;
+	}
+
+	public void setPartidosJugados(Integer partidosJugados) {
+		this.partidosJugados = partidosJugados;
+	}
+
+	public Integer getPartidosGanados() {
+		return partidosGanados;
+	}
+
+	public void setPartidosGanados(Integer partidosGanados) {
+		this.partidosGanados = partidosGanados;
+	}
+
+	public Integer getPartidosEmpatados() {
+		return partidosEmpatados;
+	}
+
+	public void setPartidosEmpatados(Integer partidosEmpatados) {
+		this.partidosEmpatados = partidosEmpatados;
+	}
+
+	public Integer getPartidosPerdidos() {
+		return partidosPerdidos;
+	}
+
+	public void setPartidosPerdidos(Integer partidosPerdidos) {
+		this.partidosPerdidos = partidosPerdidos;
+	}
+
 	public Long getId() {
 		return id;
 	}

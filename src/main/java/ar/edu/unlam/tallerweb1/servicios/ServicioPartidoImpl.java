@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.PartidoDao;
+import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
@@ -17,7 +18,9 @@ import ar.edu.unlam.tallerweb1.modelo.Partido;
 public class ServicioPartidoImpl implements ServicioPartido {
 	@Inject
 	private PartidoDao partidoDao;
-
+	@Inject
+	private ServicioEquipo servicioEquipo;
+	
 	@Override
 	public List<Partido> listaDePartidos() {		
 		return partidoDao.listaDePartidos();
@@ -42,7 +45,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	}
 
 	@Override
-	public List<Partido> listaDePartidosEquipoID(long id) {
+	public List<Partido> listaDePartidosEquipoID(Long id) {
 		
 		List <Partido> miLista = this.listaDePartidos();
 		List <Partido> miListanueva = new ArrayList <Partido> ();
@@ -85,6 +88,86 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	@Override
 	public List<Gol> listaGolesVisitante(Partido partido) {
 		return partidoDao.listaGolesVisitante(partido);
+	}
+	@Override
+	public Integer golesLocal(Long id) {
+		Partido partido = this.buscarPartido(id);
+		List<Gol> golesLocal = this.listaGolesLocal(partido);
+		Integer goles = 0;
+		for (Gol gol : golesLocal) {
+			goles = goles + gol.getCantidad();
+		}
+		
+		return goles;
+	}
+	@Override
+	public Integer golesVisitante(Long id) {
+		Partido partido = this.buscarPartido(id);
+		List<Gol> golesVisitante = this.listaGolesVisitante(partido);
+		Integer goles = 0;
+		for (Gol gol : golesVisitante) {
+			goles = goles + gol.getCantidad();
+		}
+		
+		return goles;
+	}
+
+
+	@Override
+	public Integer partidosJugados(Long id) {
+		Equipo equipo = servicioEquipo.buscarEquipo(id);
+		List<Partido> partidosJugados = this.listaDePartidosEquipoID(equipo.getId());
+		return partidosJugados.size();
+	}
+	@Override
+	public Integer partidosGanados(Long id) {
+		Equipo equipo = servicioEquipo.buscarEquipo(id);
+		List<Partido> partidosJugados = this.listaDePartidosEquipoID(equipo.getId());
+		Integer partidosGanados = 0;
+		for (Partido partido : partidosJugados) {
+			if(partido.getLocal().equals(equipo)) {
+				if(this.golesLocal(partido.getId()) > this.golesVisitante(partido.getId())) {
+					partidosGanados++;
+				}
+			}else if(partido.getVisitante().equals(equipo)) {
+				if(this.golesVisitante(partido.getId()) > this.golesLocal(partido.getId())) {
+					partidosGanados++;
+				}
+			}
+		}
+		return partidosGanados;
+	}
+	@Override
+	public Integer partidosEmpatados(Long id) {
+		Equipo equipo = servicioEquipo.buscarEquipo(id);
+		List<Partido> partidosJugados = this.listaDePartidosEquipoID(equipo.getId());
+		Integer partidosEmpatados = 0;
+		for (Partido partido : partidosJugados) {
+			if(this.golesLocal(partido.getId()) == this.golesVisitante(partido.getId())) {
+				partidosEmpatados++;
+			}
+		}
+		return partidosEmpatados;
+	}
+
+	@Override
+	public Integer partidosPerdidos(Long id) {
+		Equipo equipo = servicioEquipo.buscarEquipo(id);	
+		List<Partido> partidosJugados = this.listaDePartidosEquipoID(equipo.getId());
+		Integer partidosPerdidos = 0;
+		
+		for (Partido partido : partidosJugados) {
+			if(partido.getLocal().equals(equipo)) {
+				if(this.golesLocal(partido.getId()) < this.golesVisitante(partido.getId())) {
+					partidosPerdidos++;
+				}
+			}else if(partido.getVisitante().equals(equipo)) {
+				if(this.golesVisitante(partido.getId()) < this.golesLocal(partido.getId())) {
+					partidosPerdidos++;
+				}
+			}
+		}
+		return partidosPerdidos;
 	}
 
 

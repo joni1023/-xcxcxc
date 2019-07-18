@@ -20,18 +20,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
+                <c:if test="${esAdmin == true}">
+                	<li class="nav-item">
+                    <a class="nav-link" href="valoraciones">Valoraciones</a>
                 </li>
                 <li class="nav-item">
-                   	<a class="nav-link" href="miEquipo">Mi Equipo</a>
-            	</li>
-               	<li class="nav-item">
-                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
-               	</li>
-               	<li class="nav-item">
-                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                    <a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
                 </li>
+               </c:if>
+               <c:if test="${esAdmin == false}">
+               		<c:if test="${tieneEquipo == true}">
+		                <li class="nav-item">
+		                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
+		                </li>
+		                <li class="nav-item">
+		                   	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+		            	</li>
+		               	<li class="nav-item">
+		                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+		               	</li>
+		             </c:if>
+		             <c:if test="${tieneEquipo == false}">
+                		<li class="nav-item">
+                    		<a class="nav-link" href="crearEquipo">Crear Equipo</a>
+                		</li>
+                	</c:if>
+               	</c:if>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
@@ -41,7 +55,8 @@
 
 	<div class="container-fluid">
 		<div class="text-center my-5">
-			<h2>${miEquipo.nombre}</h2>
+			<h2>Estadisticas de Jugadores</h2>
+			<h5>${equipo.nombre}</h5>
 		</div>
 
 		<div class="row mt-5">
@@ -50,41 +65,26 @@
 				<table class="table table-bordered text-center">
 					<thead>
 						<tr>
-							<th scope="col">Posicion</th>
 							<th scope="col">Nombre</th>
-							<th scope="col">Edad</th>
-							<th scope="col">Peso</th>
-							<th scope="col">Altura</th>
-							<th scope="col">Modificar</th>
-							<th scope="col">Eliminar</th>
+							<th scope="col">Goles</th>
+							<th scope="col">Amonestaciones</th>
+							<th scope="col">Expulsiones</th>
+							<th scope="col">Valoracion</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${jugadores}" var="jugador">
 							<tr>
-							<td>${jugador.posicion}</td>
 							<td>${jugador.nombre}</td>
-							<td>${jugador.edad}</td>
-							<td>${jugador.peso}</td>
-							<td>${jugador.altura}</td>
-							<td><form action="modificarJugador" method="POST" modelAttribute = "jugador">
-								<input type="hidden" name="id" value="${jugador.id}" id="id">
-								<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Editar</button>
-								</form>
-							</td>
-							<td><form action="eliminarJugador" method="POST" modelAttribute = "jugador">
-								<input type="hidden" name="id" value="${jugador.id}" id="id">
-								<button class="btn btn-lg btn-primary  font-weight-bold mb-2" type="submit">Eliminar</button>
-								</form>
-							</td>
+							<td>${jugador.cantidadGoles}</td>
+							<td>${jugador.cantidadAmonestaciones}</td>
+							<td>${jugador.cantidadExpulsiones}</td>
+							<td>${jugador.valoracion}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<c:set var="jugadoresCantidad" value="${cantidadJugadores}"/>
-				<c:if test="${jugadoresCantidad < 5}">
-					<a class="btn btn-lg btn-primary float-right font-weight-bold mb-2" href="crearEquipo2" role="button">Agregar Jugador</a>
-				</c:if>
+				<a class="btn btn-lg btn-primary float-right font-weight-bold mb-2" href="estadisticas" role="button">Volver</a>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

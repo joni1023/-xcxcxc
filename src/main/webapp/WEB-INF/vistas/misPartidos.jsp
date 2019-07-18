@@ -29,6 +29,9 @@
                	<li class="nav-item">
                    	<a class="nav-link" href="misPartidos">Mis Partidos</a>
                	</li>
+               	<li class="nav-item">
+                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
                 </li>
@@ -41,10 +44,7 @@
 			<div class="col-md-4">
 				<div class="card w-100 mb-3">
 					<div class="card-body">
-						<h5 class="card-title text-center">${partido.local.nombre} - ${partido.visitante.nombre}</h5>
-						<form action="datosPartido" method="POST" class="text-center">
-							<input type="hidden" name="idPartido" id="idPartido" value="${partido.id}">
-						</form>
+						<h5 class="card-title text-center">${partido.local.nombre} ${partido.golesLocal} - ${partido.golesVisitante} ${partido.visitante.nombre}</h5>
 					</div>
 				</div>
 			</div>

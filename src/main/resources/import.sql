@@ -1,33 +1,52 @@
+/*Usuario*/
+insert into usuario(email,password,nombreUsuario,esAdmin) values("admin@admin.com","admin","Admin",1);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("mgallardo@river.com","muñecogallardo","M_Gallardo",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("galfaro@boca.com","alfaro123","G_Alfaro",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("sbeccacece@rojo.com","rojo666","S_Becaccece",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("ecoudet@racing.com","chacho123","E_Coudet",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("japizzi@cuervo.com","boedo123","JA_Pizzi",0);
 /* Equipo */
-insert into equipo (nombre) values ("River Plate");
-insert into equipo (nombre) values ("Boca Juniors");
-insert into equipo (nombre) values ("Independiente");
-insert into equipo (nombre) values ("Racing Club");
-
+insert into equipo (nombre,usuario_id) values ("River Plate",2);
+insert into equipo (nombre,usuario_id) values ("Boca Juniors",3);
+insert into equipo (nombre,usuario_id) values ("Independiente",4);
+insert into equipo (nombre,usuario_id) values ("Racing Club",5);
+insert into equipo (nombre,usuario_id) values ("San Lorenzo",6);
+/*Usuario-Equipo*/
+UPDATE `usuario` SET  `equipo_id` = '1' WHERE `usuario`.`id` = 2; 
+UPDATE `usuario` SET  `equipo_id` = '2' WHERE `usuario`.`id` = 3; 
+UPDATE `usuario` SET  `equipo_id` = '3' WHERE `usuario`.`id` = 4; 
+UPDATE `usuario` SET  `equipo_id` = '4' WHERE `usuario`.`id` = 5; 
+UPDATE `usuario` SET  `equipo_id` = '5' WHERE `usuario`.`id` = 6;
 /* Jugador */
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"juanArquero",1);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"matiasCampo",1);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,20,"pabloCampo",1);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.5,85,19,"ignacioCampo",1);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,55,18,"gastonCampo",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Franco Armani",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Javier Pinola",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,20,"Leo Ponzio",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.5,85,19,"Lucas Pratto",1);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,55,18,"Rafa Borre",1);
 
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.95,95,32,"juanArquero",2);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,85,28,"matiasCampo",2);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,85,31,"pabloCampo",2);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.5,89,29,"ignacioCampo",2);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,90,27,"gastonCampo",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.95,95,38,"Esteban Andrada",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,85,36,"Carlos Izquierdoz",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,85,31,"Nahitan Nandez",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.5,89,37,"Mauro Zarate",2);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,90,33,"Dario Benedetto",2);
 
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"juanArquero",3);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"matiasCampo",3);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,19,"pabloCampo",3);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"ignacioCampo",3);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,38,"gastonCampo",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Martin Campaña",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Fabricio Bustos",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,19,"Pablo Perez",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Martin Benitez",3);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,38,"Silvio Romero",3);
 
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"juanArquero",4);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"matiasCampo",4);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,19,"pabloCampo",4);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"ignacioCampo",4);
-insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,38,"gastonCampo",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,85,21,"Gabriel Arias",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.90,70,30,"Alejandro Donatti",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,21,"Marcelo Diaz",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,19,"Dario Cvitanich",4);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,75,28,"Lisandro Lopez",4);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Nicolas Navarro",5);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Fabricio Coloccini",5);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,35,"Fernando Belluschi",5);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Nicolas Blandi",5);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,19,"Adolfo Gaich",5);
 
 /* Valoracion por edad */
 /* Arquero */
@@ -58,7 +77,3 @@ INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y
 INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",3,3,4,6,8,6);
 
 insert into valoracionesgenerales (radioMedicion) values (2);
-/* usuarios */
-insert into usuario (email,esAdmin,nombreUsuario,password) values ('admin@admin',true,'admin','admin');
-insert into usuario (email,esAdmin,nombreUsuario,password,equipo_id) values ('equipo1@equipo1',false,'equipo1','equipo1',1);
-insert into usuario (email,esAdmin,nombreUsuario,password,equipo_id) values ('equipo2@equipo2',false,'equipo2','equipo2',2);

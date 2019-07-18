@@ -159,4 +159,9 @@ public class ServicioGolImpl implements ServicioGol {
 		golDao.guardarGol(gol);
 		
 	}
+
+	@Override
+	public List<Gol> golesJugador(Jugador jugador) {
+		return golDao.listaGolesJugador(jugador);
+	}
 }

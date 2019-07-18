@@ -25,14 +25,14 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	@Inject
 	ExpulsionDao expulsionDao;
 	@Override
-	public Double cantidadExpulsiones(Long id) {
+	public Integer cantidadExpulsiones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
 		List<Expulsion> expulsiones = expulsionDao.expulsionesJugador(miJugador);
-		Double cantidadExpulsiones = 0.0;
+		Integer cantidadExpulsiones = 0;
 		if(expulsiones.isEmpty()) {
-			return 0.0;
+			return 0;
 		} else {
-			cantidadExpulsiones = (double) expulsiones.size();
+			cantidadExpulsiones = expulsiones.size();
 			return cantidadExpulsiones;
 		}
 	}
@@ -40,7 +40,7 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	@Override
 	public Double promedioExpulsiones(Jugador jugador) {
 		List<Partido> listaDePartidos = partidoDao.listaDePartidos();	
-		Double cantidadExpulsiones = this.cantidadExpulsiones(jugador.getId());
+		Integer cantidadExpulsiones = this.cantidadExpulsiones(jugador.getId());
 		Double partidosJugados = 0.0;
 	
 		for (Partido partido : listaDePartidos) {
@@ -52,7 +52,7 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		if(partidosJugados == 0.0) {
 			return 0.0;
 		}else {
-			return cantidadExpulsiones / partidosJugados;
+			return (Double) (cantidadExpulsiones / partidosJugados);
 		}
 		
 	}

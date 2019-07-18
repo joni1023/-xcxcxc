@@ -18,14 +18,17 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="valoraciones">Valoraciones</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login">Salir</a>
-                </li>
+					<a class="nav-link" href="valoraciones">Valoraciones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="estadisticas">Estadisticas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login">Salir</a>
+				</li>
             </ul>
         </div>
    	</nav>
@@ -60,7 +63,7 @@
 								<input type="number" name="gol${count}Cantidad" min="0" class="form-control">
 								</td>
 								<td>
-								<input type="number" name="amonestacion${count}Cantidad" min="0" max="2" class="form-control">
+								<input type="number" name="amonestacion${count}Cantidad" min="0" max="2"class="form-control">
 								</td>
 								<td>
 								<input type="number" name="expulsion${count}Cantidad" min="0" max="1" class="form-control">

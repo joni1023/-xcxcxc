@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
@@ -14,5 +16,7 @@ public interface ServicioGol {
 	public Double golesEnContra(Long id);
 	
 	public void guardarGol(Gol gol);
+	
+	public List<Gol> golesJugador(Jugador jugador);
 	
 }

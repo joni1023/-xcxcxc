@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.EquipoDao;
+import ar.edu.unlam.tallerweb1.dao.PartidoDao;
 import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
@@ -25,7 +26,8 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 	
 	@Inject 
 	private ServicioValoracion servicioValoracion;
-	
+	@Inject
+	private PartidoDao partidoDao;
 	@Override
 	public Double valoracionEquipo(Long id) {
 		Double valoracion = 0.0;
@@ -100,7 +102,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 	public Equipo buscarEquipoNombre(String nombre) {
 		return equipoDao.buscarEquipoNombre(nombre);
 	}
-	
+
 
 }
 

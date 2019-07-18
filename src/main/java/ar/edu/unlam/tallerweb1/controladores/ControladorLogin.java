@@ -56,6 +56,7 @@ public class ControladorLogin {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if(usuarioBuscado != null) {
 			if(usuarioBuscado.getEsAdmin() == true) {
+				request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
 				return new ModelAndView("redirect:/homeAdmin");
 			}
 			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
