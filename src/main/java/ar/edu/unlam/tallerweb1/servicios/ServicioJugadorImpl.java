@@ -114,8 +114,4 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	public ServicioGol getServicioGol() {
 		return this.servicioGol;
 	}
-	
-	public void setServicioGol(ServicioGol servicioGol) {
-		this.servicioGol = servicioGol;
-	}
 }
