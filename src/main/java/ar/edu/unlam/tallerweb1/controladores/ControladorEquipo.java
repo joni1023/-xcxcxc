@@ -174,4 +174,30 @@ public class ControladorEquipo {
 		servicioEquipo.eliminarEquipo(id);
 		return "equipo";
 	}
+
+	// test
+	public ServicioEquipo getServicioEquipo() {
+		return servicioEquipo;
+	}
+
+	public void setServicioEquipo(ServicioEquipo servicioEquipo) {
+		this.servicioEquipo = servicioEquipo;
+	}
+
+	public ServicioJugador getServicioJugador() {
+		return servicioJugador;
+	}
+
+	public void setServicioJugador(ServicioJugador servicioJugador) {
+		this.servicioJugador = servicioJugador;
+	}
+
+	public ServicioLogin getServicioLogin() {
+		return servicioLogin;
+	}
+
+	public void setServicioLogin(ServicioLogin servicioLogin) {
+		this.servicioLogin = servicioLogin;
+	}
+	
 }

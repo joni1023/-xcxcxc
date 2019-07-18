@@ -78,4 +78,28 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		return amonestacionDao.amonestacionesJugador(jugador);
 	}
 
+	public JugadorDao getJugadorDao() {
+		return jugadorDao;
+	}
+
+	public void setJugadorDao(JugadorDao jugadorDao) {
+		this.jugadorDao = jugadorDao;
+	}
+
+	public PartidoDao getPartidoDao() {
+		return partidoDao;
+	}
+
+	public void setPartidoDao(PartidoDao partidoDao) {
+		this.partidoDao = partidoDao;
+	}
+
+	public AmonestacionDao getAmonestacionDao() {
+		return amonestacionDao;
+	}
+
+	public void setAmonestacionDao(AmonestacionDao amonestacionDao) {
+		this.amonestacionDao = amonestacionDao;
+	}
+
 }
