@@ -9,12 +9,6 @@
 	<title>Buscando Rival</title>
 </head>
 <body>
-<<<<<<< HEAD
-<h1>mis partidos</h1>
-<c:forEach items="${misPartidos}" var="partido">
-<p> id de partido: ${partido.id} local :  ${partido.local.nombre} vs visitante ${partido.visitante.nombre }</p>
-</c:forEach>
-=======
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
         <a class="navbar-brand" href="home">Buscando Rival</a>
@@ -59,6 +53,6 @@
 	
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
->>>>>>> c1d254f8eca32e74769b723fdd84109b4681fe3b
+
 </body>
 </html>

@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
-<<<<<<< HEAD
+
                 <c:set var="equipoBoolean" value="${tieneEquipo}"/>
                 <c:if test="${equipoBoolean == true}">
                 	<li class="nav-item">
@@ -33,11 +33,11 @@
                     	<a class="nav-link" href="crearEquipo">Crear Equipo</a>
                 	</li>
                 </c:if>
-=======
+
                 <li class="nav-item">
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
->>>>>>> c1d254f8eca32e74769b723fdd84109b4681fe3b
+
                 <li class="nav-item">
                     <a class="nav-link" href="miEquipo">Mi Equipo</a>
                 </li>
@@ -76,24 +76,13 @@
 		    	</div>
 		  	</div>
 		  	<div class="col-md-2 my-5">
-<<<<<<< HEAD
-		  	<p>mi puntuacion ${ miEquipo.valoracion} <p>
-		  	<p>Su puntuacion ${ rival.valoracion} <p>
-<%-- 		  		<form:form action="buscandoRival" method="POST" modelAttribute="equipo"> --%>
-<%-- 					<form:input path="id" id="id" type="text" class="form-control" value="${miEquipo.id}"/><br> --%>
-<!-- 					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Buscar Rival</button> -->
-<%-- 				</form:form> --%>
 					<form action="buscandoRival" method="post">
-					<input type="text" value="${miEquipo.id} " name="id1">
-					<input type="text" value="${rival.id}" name="id2" >
+					<input type="hidden" value="${miEquipo.id} " name="id1">
+					<input type="hidden" value="${rival.id}" name="id2" >
 					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit" >buscar</button>
 					</form>
-=======
-		  		<form action="buscandoRival" method="POST" modelAttribute="equipo">
-					<input name="id" id="id" type="hidden" class="form-control" value="${miEquipo.id}"/><br>
-					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Buscar Rival</button>
-				</form>
->>>>>>> c1d254f8eca32e74769b723fdd84109b4681fe3b
+
+
 			</div>
 		  	<div id="rival" class="col-md-3">
 		  		<h3>Equipo rival</h3>

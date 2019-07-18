@@ -58,3 +58,7 @@ INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y
 INSERT INTO valoracionpesoaltura (altura,menos60,entre60y70,entre70y80, entre80y90, entre90y100, mas100) VALUES ("mas190",3,3,4,6,8,6);
 
 insert into valoracionesgenerales (radioMedicion) values (2);
+/* usuarios */
+insert into usuario (email,esAdmin,nombreUsuario,password) values ('admin@admin',true,'admin','admin');
+insert into usuario (email,esAdmin,nombreUsuario,password,equipo_id) values ('equipo1@equipo1',false,'equipo1','equipo1',1);
+insert into usuario (email,esAdmin,nombreUsuario,password,equipo_id) values ('equipo2@equipo2',false,'equipo2','equipo2',2);
