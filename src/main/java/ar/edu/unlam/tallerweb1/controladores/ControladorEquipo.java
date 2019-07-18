@@ -106,6 +106,7 @@ public class ControladorEquipo {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 		ModelMap modelo = new ModelMap();
 		Equipo miEquipo = servicioEquipo.buscarEquipo(usuarioBuscado.getEquipo().getId());
+		miEquipo.setValoracion(servicioEquipo.valoracionEquipo(miEquipo.getId()));
 		Equipo equipo = new Equipo();
 		modelo.put("equipo", equipo);
 		modelo.put("miEquipo", miEquipo);

@@ -51,9 +51,9 @@
    	</nav>
    	
    	<div class="row mt-5">
-   		<div class ="col-md-4"></div>
-   		<div class ="col-md-4 text-center"><h4>¡Bienvenido ${usuario.nombreUsuario}, disfruta de nuestra aplicación!</h4></div>
-   		<div class ="col-md-4"></div>
+   		<div class ="col-md-3"></div>
+   		<div class ="col-md-6 text-center"><h4>¡Bienvenido ${usuario.nombreUsuario}, disfruta de nuestra aplicación!</h4></div>
+   		<div class ="col-md-3"></div>
    	</div>
    	
 	<script src="js/jquery-3.4.1.min.js"></script>
