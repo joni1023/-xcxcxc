@@ -17,6 +17,7 @@ import ar.edu.unlam.tallerweb1.modelo.Partido;
 @Service("ServicioAmonestacion")
 @Transactional
 public class ServicioAmonestacionImpl implements ServicioAmonestacion {
+	
 	@Inject
 	private JugadorDao jugadorDao;
 	@Inject
@@ -54,7 +55,7 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 		}
 		if(partidosJugados == 0.0) {
 			return 0.0;
-		}else {
+		} else {
 			return cantidadAmonestaciones / partidosJugados;
 		}
 	}
@@ -70,7 +71,6 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	@Override
 	public void guardarAmonestacion(Amonestacion amonestacion) {
 		amonestacionDao.guardarAmonestacion(amonestacion);
-		
 	}
 
 	@Override
@@ -101,5 +101,4 @@ public class ServicioAmonestacionImpl implements ServicioAmonestacion {
 	public void setAmonestacionDao(AmonestacionDao amonestacionDao) {
 		this.amonestacionDao = amonestacionDao;
 	}
-
 }

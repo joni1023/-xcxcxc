@@ -65,7 +65,7 @@ public class PartidoDaoImpl implements PartidoDao {
 	@Override
 	public Partido buscarPartido(Long id) {
 		return (Partido) sessionFactory.getCurrentSession().createCriteria(Partido.class)
-				.add(Restrictions.eq("id",id))
+				.add(Restrictions.eq("id", id))
 				.uniqueResult();
 	}
 
@@ -73,7 +73,7 @@ public class PartidoDaoImpl implements PartidoDao {
 	public List<Jugador> listaDeJugadoresLocal(Partido partido) {
 		List <Jugador> miListaDeJugadores = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
                 .createAlias("equipo", "equipo")
-				.add(Restrictions.eq("equipo.id",partido.getLocal().getId()))
+				.add(Restrictions.eq("equipo.id", partido.getLocal().getId()))
                 .list();
 
 			return miListaDeJugadores;
@@ -83,7 +83,7 @@ public class PartidoDaoImpl implements PartidoDao {
 	public List<Jugador> listaDeJugadoresVisitante(Partido partido) {
 		List <Jugador> miListaDeJugadores = sessionFactory.getCurrentSession().createCriteria(Jugador.class)
                 .createAlias("equipo", "equipo")
-				.add(Restrictions.eq("equipo.id",partido.getVisitante().getId()))
+				.add(Restrictions.eq("equipo.id", partido.getVisitante().getId()))
                 .list();
 
 			return miListaDeJugadores;
@@ -93,7 +93,7 @@ public class PartidoDaoImpl implements PartidoDao {
 	public List<Gol> listaGolesLocal(Partido partido) {
 		List<Gol> listaGoles = sessionFactory.getCurrentSession().createCriteria(Gol.class)
 				.createAlias("partido","partido")
-				.add(Restrictions.eq("partido.id",partido.getId()))
+				.add(Restrictions.eq("partido.id", partido.getId()))
 				.list();
 		
 		List<Gol> listaGolesLocal = new ArrayList<>();
@@ -109,7 +109,7 @@ public class PartidoDaoImpl implements PartidoDao {
 	public List<Gol> listaGolesVisitante(Partido partido) {
 		List<Gol> listaGoles = sessionFactory.getCurrentSession().createCriteria(Gol.class)
 				.createAlias("partido","partido")
-				.add(Restrictions.eq("partido.id",partido.getId()))
+				.add(Restrictions.eq("partido.id", partido.getId()))
 				.list();
 		List<Gol> listaGolesVisitante = new ArrayList<>();
 		for (Gol gol : listaGoles) {
@@ -119,6 +119,4 @@ public class PartidoDaoImpl implements PartidoDao {
 		}
 		return listaGolesVisitante;
 	}
-	
-	
 }

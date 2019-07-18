@@ -55,7 +55,7 @@
 
 	<div class="container-fluid">
 		<div class="text-center my-5">
-			<h2>Estadisticas de Jugadores</h2>
+			<h2>Estadísticas de Jugadores</h2>
 			<h5>${equipo.nombre}</h5>
 		</div>
 

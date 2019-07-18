@@ -138,7 +138,7 @@ public class ServicioGolImpl implements ServicioGol {
 							golesEnContra += gol.getCantidad();
 						}
 					}
-				}else if(partido.getVisitante().equals(equipo)) {
+				} else if(partido.getVisitante().equals(equipo)) {
 					List<Gol> goles = partidoDao.listaGolesLocal(partido);
 					if (goles == null) {
 						golesEnContra += 0.0;
@@ -157,7 +157,6 @@ public class ServicioGolImpl implements ServicioGol {
 	@Override
 	public void guardarGol(Gol gol) {
 		golDao.guardarGol(gol);
-		
 	}
 
 	@Override

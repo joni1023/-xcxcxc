@@ -20,16 +20,20 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
 
 @Controller
 public class ControladorEstadisticas {
+	
 	@Inject
 	ServicioLogin servicioLogin;
 	@Inject
+	
 	ServicioEquipo servicioEquipo;
 	@Inject
+	
 	ServicioPartido servicioPartido;
 	@Inject
+	
 	ServicioJugador servicioJugador;
 	
-	@RequestMapping(path="/estadisticas")
+	@RequestMapping(path = "/estadisticas")
 	public ModelAndView estadisticasEquipo(HttpServletRequest request) {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 		Boolean tieneEquipo = false;
@@ -45,12 +49,13 @@ public class ControladorEstadisticas {
 			equipo.setPartidosPerdidos(servicioPartido.partidosPerdidos(equipo.getId()));
 			equipo.setValoracion(servicioEquipo.valoracionEquipo(equipo.getId()));
 		}
-		ModelMap modelo = new ModelMap();
-		modelo.put("esAdmin",usuarioBuscado.getEsAdmin());
-		modelo.put("tieneEquipo", tieneEquipo);
-		modelo.put("equipos",equipos);
 		
-		return new ModelAndView("estadisticas" , modelo);
+		ModelMap modelo = new ModelMap();
+		modelo.put("esAdmin", usuarioBuscado.getEsAdmin());
+		modelo.put("tieneEquipo", tieneEquipo);
+		modelo.put("equipos", equipos);
+		
+		return new ModelAndView("estadisticas", modelo);
 	}
 	
 	@RequestMapping(path = "/estadisticasJugadores")
@@ -60,6 +65,7 @@ public class ControladorEstadisticas {
 		if(usuarioBuscado.getEquipo() != null) {
 			tieneEquipo = true;
 		}
+		
 		Equipo equipoBuscado = servicioEquipo.buscarEquipo(idEquipo);
 		List<Jugador> jugadores = servicioJugador.listarJugadoresPorEquipo(idEquipo);
 		for (Jugador jugador : jugadores) {
@@ -68,12 +74,13 @@ public class ControladorEstadisticas {
 			jugador.setCantidadExpulsiones(servicioJugador.expulsiones(jugador));
 			jugador.setValoracion(servicioJugador.valoracionJugador(jugador.getId()));
 		}
+		
 		ModelMap modelo = new ModelMap();
-		modelo.put("esAdmin",usuarioBuscado.getEsAdmin());
+		modelo.put("esAdmin", usuarioBuscado.getEsAdmin());
 		modelo.put("tieneEquipo", tieneEquipo);
-		modelo.put("jugadores",jugadores);
+		modelo.put("jugadores", jugadores);
 		modelo.put("equipo", equipoBuscado);
 		
-		return new ModelAndView("estadisticasJugadores" , modelo);
+		return new ModelAndView("estadisticasJugadores", modelo);
 	}
 }

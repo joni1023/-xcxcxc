@@ -9,5 +9,4 @@ public interface ServicioExpulsion {
 	public Double promedioExpulsiones(Jugador jugador);
 	public Double valoracionPorExpulsiones(Jugador jugador);
 	public void guardarExpulsion(Expulsion expulsion);
-	
 }

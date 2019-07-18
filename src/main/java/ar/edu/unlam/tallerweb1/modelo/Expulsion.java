@@ -16,6 +16,7 @@ public class Expulsion {
 	public Expulsion() {
 		
 	}
+	
 	public Expulsion(Jugador jugador, Partido partido) {
 		this.jugador = jugador;
 		this.partido = partido;

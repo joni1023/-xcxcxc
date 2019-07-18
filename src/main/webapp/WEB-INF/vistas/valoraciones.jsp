@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	<title>Tabla de valoraciones</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 
@@ -21,11 +21,17 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
+                    <a class="nav-link" href="homeAdmin">Inicio</a>
+                </li>
+				<li class="nav-item">
 					<a class="nav-link" href="valoraciones">Valoraciones</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
 				</li>
+				<li class="nav-item">
+                    <a class="nav-link" href="estadisticas">Estadísticas</a>
+                </li>
 				<li class="nav-item">
 					<a class="nav-link" href="login">Salir</a>
 				</li>
@@ -170,7 +176,7 @@
 				<table class="table table-bordered text-center">
 					<thead >
 					    <tr>
-					      <th scope="col">Rango de Medicion</th>
+					      <th scope="col">Rango de Medición</th>
 					      <th scope="col">Opción</th>
 					    </tr>
 					</thead>
@@ -191,8 +197,7 @@
 			<div class="col-md-2">
 			</div>
 		</div>
-		
 	</div>
-	<p> ${valorGeneral.radioMedicion}</p>
+	<p>${valorGeneral.radioMedicion}</p>
 </body>
 </html>

@@ -23,5 +23,4 @@ public interface ValoracionDao {
 	public void modificarTablaValoracionPesoAltura (ValoracionPesoAltura nuevaValoracionPesoAltura);
 	public void modificarTablaValoracionGeneral (ValoracionesGenerales nuevaValoracionGeneral);
 	public ValoracionPesoAltura valoracionPesoAlturaPorId(Long id);
-
 }

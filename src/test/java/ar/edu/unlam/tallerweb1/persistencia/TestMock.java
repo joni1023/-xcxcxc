@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.persistencia;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Assert;
@@ -29,19 +28,18 @@ import javax.management.modelmbean.ModelMBeanOperationInfo;
 
 public class TestMock {
 
-	
 	@Test
 	@Transactional
 	@Rollback (true)
 	public void TestQueNoRepiteRival() {
-		ServicioEquipo servicioEquipoMock= mock(ServicioEquipo.class);
-		ServicioJugador servicioJugadorMock=mock(ServicioJugador.class);
-		Long id1=null;
-		Long id2=1L;
+		ServicioEquipo servicioEquipoMock = mock(ServicioEquipo.class);
+		ServicioJugador servicioJugadorMock = mock(ServicioJugador.class);
+		Long id1 = null;
+		Long id2 = 1L;
 		Equipo miEquipoMock = mock(Equipo.class);
 		Equipo miEquipoRivalMock = mock(Equipo.class);
-		Double valoracion =null;
-		List <Jugador> listaJugadorMock= mock (List.class);
+		Double valoracion = null;
+		List <Jugador> listaJugadorMock = mock (List.class);
 		
 		ControladorEquipo controladorEquipo = new ControladorEquipo();
 		controladorEquipo.setServicioEquipo(servicioEquipoMock);
@@ -66,8 +64,6 @@ public class TestMock {
 		assertThat(modelo.getModelMap().get("miRival")).isEqualTo(null);
 		
 		assertThat(modelo.getModelMap().get("jugadores2")).isEqualTo(null);
-
-	
 	}
 	
 	@Test
@@ -75,22 +71,20 @@ public class TestMock {
 	@Rollback (true)
 	public void TestCantidadAmonestaciones() {
 		
-//		Long id=null;
-//		
-//		Jugador miJugadorMock = mock(Jugador.class);
-//		
-//		AmonestacionDao amonestacionDao = new AmonestacionDaoImpl();
-//		
-//		List <Amonestacion> listaAmonestacionMock= mock (List.class);
-//		
-//		ServicioAmonestacionImpl amonestacionmock=new ServicioAmonestacionImpl();
-//		amon.setAmonestacionDao(amonestacionDao);
-//		
-//		when(amonestacionDao.amonestacionesJugador(miJugadorMock)).thenReturn(listaAmonestacionMock);
-//			
-//		assertThat(amonestacionmock.cantidadAmonestaciones(miJugadorMock.getId()).isEqualTo("0.0");
-//		Assert.assertEquals(amonestacionmock.cantidadAmonestaciones(miJugadorMock.getId()));
+		/*Long id=null;
 		
+		Jugador miJugadorMock = mock(Jugador.class);
+		
+		AmonestacionDao amonestacionDao = new AmonestacionDaoImpl();
+		
+		List <Amonestacion> listaAmonestacionMock= mock (List.class);
+		
+		ServicioAmonestacionImpl amonestacionmock=new ServicioAmonestacionImpl();
+		amon.setAmonestacionDao(amonestacionDao);
+		
+		when(amonestacionDao.amonestacionesJugador(miJugadorMock)).thenReturn(listaAmonestacionMock);
+			
+		assertThat(amonestacionmock.cantidadAmonestaciones(miJugadorMock.getId()).isEqualTo("0.0");
+		Assert.assertEquals(amonestacionmock.cantidadAmonestaciones(miJugadorMock.getId()));*/
 	}
-
 }

@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -83,20 +82,19 @@ public class ControladorEquipo {
 
 	@RequestMapping(path = "/registrarJugadores", method = RequestMethod.POST)
 	public ModelAndView agregarJugadores(@ModelAttribute("jugador") Jugador jugador, HttpServletRequest request) {
-		Usuario usuarioBuscado = servicioLogin
-				.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
+		Usuario usuarioBuscado = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 		Equipo equipo = usuarioBuscado.getEquipo();
 		List<Jugador>listaDeJugadores = servicioJugador.listarJugadoresPorEquipo(equipo.getId());
 		
-		if(listaDeJugadores.size()<5 && listaDeJugadores.size() !=4) {
+		if(listaDeJugadores.size() < 5 && listaDeJugadores.size() != 4) {
 			jugador.setEquipo(equipo);
 			servicioJugador.agregarJugador(jugador);
 			return new ModelAndView("crearEquipo2");
-		}else if(listaDeJugadores.size() == 4) {
+		} else if(listaDeJugadores.size() == 4) {
 			jugador.setEquipo(equipo);
 			servicioJugador.agregarJugador(jugador);
 			return new ModelAndView("redirect:/home");
-		}else {
+		} else {
 			return new ModelAndView("redirect:/home");
 		}
 	}
@@ -176,7 +174,7 @@ public class ControladorEquipo {
 		return "equipo";
 	}
 
-	// test
+	// Test
 	public ServicioEquipo getServicioEquipo() {
 		return servicioEquipo;
 	}
@@ -200,5 +198,4 @@ public class ControladorEquipo {
 	public void setServicioLogin(ServicioLogin servicioLogin) {
 		this.servicioLogin = servicioLogin;
 	}
-	
 }

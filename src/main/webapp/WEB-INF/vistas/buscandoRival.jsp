@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	<title>Buscar Rival</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 	
@@ -45,7 +45,7 @@
                    	<a class="nav-link" href="misPartidos">Mis Partidos</a>
                	</li>
                	<li class="nav-item">
-                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                    <a class="nav-link" href="estadisticas">Estadísticas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
@@ -79,13 +79,11 @@
 		    	</div>
 		  	</div>
 		  	<div class="col-md-2 my-5">
-					<form action="buscandoRival" method="post">
-					<input type="hidden" value="${miEquipo.id} " name="id1">
+				<form action="buscandoRival" method="post">
+					<input type="hidden" value="${miEquipo.id}" name="id1">
 					<input type="hidden" value="${rival.id}" name="id2" >
-					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit" >buscar</button>
-					</form>
-
-
+					<button class="btn btn-lg btn-primary font-weight-bold mb-2" type="submit">Buscar Rival</button>
+				</form>
 			</div>
 		  	<div id="rival" class="col-md-3">
 		  		<h3>Equipo rival</h3>

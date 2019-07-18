@@ -19,6 +19,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto">
+                            <c:if test="${not empty error}">
+			   					<div class="alert alert-danger m-5" role="alert">${error}</div>
+			   			 	</c:if>
                                 <h2 class="main-heading text-primary text-center mb-4">Buscando Rival</h2>
                                 <form action="validar-login" method="POST" modelAttribute="usuario">
                                     <div class="form-label-group">
@@ -41,11 +44,6 @@
             </div>
         </div>
    	</div>
-   	
-   	<c:if test="${not empty error}">
-   		<h4><span>${error}</span></h4>
-   		<br>
-   	</c:if>
    	
 	<script src="js/jquery-3.4.1.min.js"></script>
    	<script src="js/bootstrap.min.js" type="text/javascript"></script>

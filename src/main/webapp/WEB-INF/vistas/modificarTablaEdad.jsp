@@ -7,15 +7,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	<title>Modificar los valores de la valoración de la tabla Edad</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
 		<a class="navbar-brand" href="homeAdmin">Buscando Rival</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
@@ -26,6 +24,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
 				</li>
+				<li class="nav-item">
+               		<a class="nav-link" href="estadistcas">Estadísticas</a>
+               	</li>
 				<li class="nav-item">
 					<a class="nav-link" href="login">Salir</a>
 				</li>

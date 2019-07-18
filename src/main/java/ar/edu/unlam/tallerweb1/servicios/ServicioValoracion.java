@@ -30,7 +30,7 @@ public interface ServicioValoracion {
 	
 	public Integer valoracionGeneralRadio();
 	
-	//admin
+	// Admin
 	public ValoracionEdad trearValoracionEdadPorId(Long id);
 	public void modificarTablaEdad(ValoracionEdad nuevaValoracion);
 	public ValoracionAltura traerValoracionAlturaPorID(Long id);

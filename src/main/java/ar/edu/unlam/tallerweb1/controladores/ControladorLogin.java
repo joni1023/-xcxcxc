@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioEquipo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
@@ -22,8 +21,6 @@ public class ControladorLogin {
 	// @Service o @Repository y debe estar en un paquete de los indicados en applicationContext.xml.
 	@Inject
 	private ServicioLogin servicioLogin;
-	@Inject
-	private ServicioEquipo servicioEquipo;
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET.
 	@RequestMapping("/login")
@@ -86,9 +83,9 @@ public class ControladorLogin {
 		if(usuarioBuscado.getEquipo() != null) {
 			tieneEquipo = true;
 		}
-		modelo.put("usuario",usuarioBuscado);
+		modelo.put("usuario", usuarioBuscado);
 		modelo.put("tieneEquipo", tieneEquipo);
-		return new ModelAndView("home" , modelo);
+		return new ModelAndView("home", modelo);
 	}
 	
 	@RequestMapping(path = "/homeAdmin", method = RequestMethod.GET)

@@ -1,8 +1,5 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +25,6 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioGol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioJugador;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ControladorPartido {
@@ -51,10 +46,6 @@ public class ControladorPartido {
 	
 	@RequestMapping(path = "/armandoPartido", method = RequestMethod.POST)
 	public ModelAndView armarPartido(Long local, Long visitante, HttpServletRequest request) {
-		// Equipo equipo1=servicioEquipo.buscarEquipo(equipo1ID);
-		// Equipo equipo2=servicioEquipo.buscarEquipo(equipo2ID);
-		// modelo.put("equipo1", equipo1);
-		// modelo.put("equipo2", equipo2);
 		Equipo EquipoLocal = servicioEquipo.buscarEquipo(local);
 		Equipo EquipoVisitante = servicioEquipo.buscarEquipo(visitante);
 		Partido partido = new Partido();
@@ -67,17 +58,17 @@ public class ControladorPartido {
 
 	@RequestMapping("misPartidos")
 	public ModelAndView misPartidos(HttpServletRequest request) {
-		ModelMap modelo=new ModelMap();
-		Usuario usuario=servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = servicioLogin.consultarUsuarioId((Long) request.getSession().getAttribute("idUsuario"));
 		Equipo equipo1 = servicioEquipo.buscarEquipo(usuario.getEquipo().getId());
-		modelo.put("local",equipo1);
+		modelo.put("local", equipo1);
 		List <Partido> misPartidos = servicioPartido.listaDePartidosEquipoID(equipo1.getId());
 		for (Partido partido : misPartidos) {
 			partido.setGolesLocal(servicioPartido.golesLocal(partido.getId()));
 			partido.setGolesVisitante(servicioPartido.golesVisitante(partido.getId()));
 		}
 		modelo.put("misPartidos", misPartidos);
-		return new ModelAndView("misPartidos",modelo);
+		return new ModelAndView("misPartidos", modelo);
 	}
 
 	@RequestMapping(path = "/cargarPartidos", method = RequestMethod.GET)
@@ -181,5 +172,4 @@ public class ControladorPartido {
 			return new ModelAndView("redirect:/homeAdmin");
 		}
 	}
-
 }

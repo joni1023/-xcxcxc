@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	<title>Editar Jugador</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 	
@@ -22,13 +22,16 @@
                     <a class="nav-link" href="home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="miEquipo">Mi Equipo</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="buscandoRival">Buscar Rival</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="estadisticas">Estadisticas</a>
+                   	<a class="nav-link" href="miEquipo">Mi Equipo</a>
+            	</li>
+               	<li class="nav-item">
+                   	<a class="nav-link" href="misPartidos">Mis Partidos</a>
+               	</li>
+               	<li class="nav-item">
+                    <a class="nav-link" href="estadisticas">Estadísticas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>

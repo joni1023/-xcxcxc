@@ -11,17 +11,17 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
-        <a class="navbar-brand" href="home">Buscando Rival</a>
+        <a class="navbar-brand" href="#!">Buscando Rival</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="home">Inicio</a>
-                </li>
                 <c:if test="${esAdmin == true}">
-                	<li class="nav-item">
+                <li class="nav-item">
+                    <a class="nav-link" href="homeAdmin">Inicio</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="valoraciones">Valoraciones</a>
                 </li>
                 <li class="nav-item">
@@ -30,6 +30,9 @@
                </c:if>
                <c:if test="${esAdmin == false}">
                		<c:if test="${tieneEquipo == true}">
+               			<li class="nav-item">
+                    		<a class="nav-link" href="home">Inicio</a>
+                		</li>
 		                <li class="nav-item">
 		                    <a class="nav-link" href="buscandoRival">Buscar Rival</a>
 		                </li>
@@ -47,7 +50,7 @@
                 	</c:if>
                	</c:if>
                	<li class="nav-item">
-               	<a class="nav-link" href="estadistcas">Estadisticas</a>
+               		<a class="nav-link" href="estadisticas">Estadísticas</a>
                	</li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Salir</a>
@@ -58,7 +61,7 @@
 
 	<div class="container-fluid">
 		<div class="text-center my-5">
-			<h2>Estadisticas de Equipos</h2>
+			<h2>Estadísticas de Equipos</h2>
 		</div>
 
 		<div class="row mt-5">

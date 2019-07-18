@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class ValoracionPesoAltura {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -85,7 +86,4 @@ public class ValoracionPesoAltura {
 	public void setMas100(Double mas100) {
 		this.mas100 = mas100;
 	}
-	
-	
-
 }

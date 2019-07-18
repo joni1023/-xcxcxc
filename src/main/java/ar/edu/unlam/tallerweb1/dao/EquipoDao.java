@@ -9,6 +9,7 @@ public interface EquipoDao {
 	public List<Equipo> listarEquipos();
 	
     public Equipo buscarEquipo(Long id);
+    
     public Equipo buscarEquipoNombre(String nombre);
 
     public void agregarEquipo(Equipo equipo);
@@ -16,5 +17,4 @@ public interface EquipoDao {
     public void editarEquipo(Equipo equipo);
    
     public void eliminarEquipo(Long id);
-	
 }

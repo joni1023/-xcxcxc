@@ -8,5 +8,6 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 public interface GolDao {
 	
 	public void guardarGol(Gol gol);
+	
 	public List<Gol> listaGolesJugador(Jugador jugador);
 }

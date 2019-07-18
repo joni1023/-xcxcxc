@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +17,7 @@ public class Gol {
 	public Gol() {
 		
 	}
+	
 	public Gol(Integer cantidad, Partido partido, Jugador jugador) {
 		this.cantidad = cantidad;
 		this.partido = partido;
@@ -39,6 +39,7 @@ public class Gol {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	@ManyToOne
 	Partido partido;
 	

@@ -43,11 +43,6 @@
         </div>
    	</div>
    	
-   	<c:if test="${not empty error}">
-   		<h4><span>${error}</span></h4>
-   		<br>
-   	</c:if>
-   	
 	<script src="js/jquery-3.4.1.min.js"></script>
    	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>

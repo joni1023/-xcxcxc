@@ -13,11 +13,14 @@ import ar.edu.unlam.tallerweb1.modelo.Equipo;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
+
 @Service("ServicioPartido")
 @Transactional
 public class ServicioPartidoImpl implements ServicioPartido {
+	
 	@Inject
 	private PartidoDao partidoDao;
+	
 	@Inject
 	private ServicioEquipo servicioEquipo;
 	
@@ -29,19 +32,16 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	@Override
 	public void crearPartido(Partido partido) {
 		partidoDao.crearPartido(partido);
-
 	}
 
 	@Override
 	public void elmiminarPartido(Partido partido) {
 		partidoDao.elmiminarPartido(partido);
-
 	}
 
 	@Override
 	public void modificarPartido(Partido partido) {
 		partidoDao.modificarPartido(partido);
-
 	}
 
 	@Override
@@ -50,9 +50,9 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		List <Partido> miLista = this.listaDePartidos();
 		List <Partido> miListanueva = new ArrayList <Partido> ();
 		for (Partido e:miLista) {
-			if(e.getLocal().getId()==id) {
+			if(e.getLocal().getId() == id) {
 				miListanueva.add(e);
-			}else if(e.getVisitante().getId()==id) {
+			}else if(e.getVisitante().getId() == id) {
 				miListanueva.add(e);
 			}
 		}
@@ -89,6 +89,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	public List<Gol> listaGolesVisitante(Partido partido) {
 		return partidoDao.listaGolesVisitante(partido);
 	}
+	
 	@Override
 	public Integer golesLocal(Long id) {
 		Partido partido = this.buscarPartido(id);
@@ -100,6 +101,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		
 		return goles;
 	}
+	
 	@Override
 	public Integer golesVisitante(Long id) {
 		Partido partido = this.buscarPartido(id);
@@ -112,13 +114,13 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		return goles;
 	}
 
-
 	@Override
 	public Integer partidosJugados(Long id) {
 		Equipo equipo = servicioEquipo.buscarEquipo(id);
 		List<Partido> partidosJugados = this.listaDePartidosEquipoID(equipo.getId());
 		return partidosJugados.size();
 	}
+	
 	@Override
 	public Integer partidosGanados(Long id) {
 		Equipo equipo = servicioEquipo.buscarEquipo(id);
@@ -129,7 +131,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 				if(this.golesLocal(partido.getId()) > this.golesVisitante(partido.getId())) {
 					partidosGanados++;
 				}
-			}else if(partido.getVisitante().equals(equipo)) {
+			} else if(partido.getVisitante().equals(equipo)) {
 				if(this.golesVisitante(partido.getId()) > this.golesLocal(partido.getId())) {
 					partidosGanados++;
 				}
@@ -137,6 +139,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		}
 		return partidosGanados;
 	}
+	
 	@Override
 	public Integer partidosEmpatados(Long id) {
 		Equipo equipo = servicioEquipo.buscarEquipo(id);
@@ -161,7 +164,7 @@ public class ServicioPartidoImpl implements ServicioPartido {
 				if(this.golesLocal(partido.getId()) < this.golesVisitante(partido.getId())) {
 					partidosPerdidos++;
 				}
-			}else if(partido.getVisitante().equals(equipo)) {
+			} else if(partido.getVisitante().equals(equipo)) {
 				if(this.golesVisitante(partido.getId()) < this.golesLocal(partido.getId())) {
 					partidosPerdidos++;
 				}
@@ -169,6 +172,4 @@ public class ServicioPartidoImpl implements ServicioPartido {
 		}
 		return partidosPerdidos;
 	}
-
-
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Lista de jugadores</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 

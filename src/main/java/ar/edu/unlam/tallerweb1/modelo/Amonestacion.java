@@ -17,6 +17,7 @@ public class Amonestacion {
 	public Amonestacion() {
 		
 	}
+	
 	public Amonestacion(Integer cantidad, Jugador jugador, Partido partido) {
 		this.cantidad = cantidad;
 		this.jugador = jugador;

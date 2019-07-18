@@ -13,6 +13,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Repository("expulsionDao")
 public class ExpulsionDaoImpl implements ExpulsionDao {
+	
 	@Inject
     private SessionFactory sessionFactory;
 	
@@ -30,5 +31,4 @@ public class ExpulsionDaoImpl implements ExpulsionDao {
 		
 		return expulsiones;
 	}
-
 }

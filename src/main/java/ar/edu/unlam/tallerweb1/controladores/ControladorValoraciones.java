@@ -95,7 +95,7 @@ public class ControladorValoraciones {
 		return new ModelAndView("redirect:/valoraciones");
 	}
 	
-	// modificar valores generales
+	// Modificar valores generales
 	@RequestMapping(path = "/modificarValoresGenerales", method = RequestMethod.POST)
 	public ModelAndView modificarValoracionGeneral(@ModelAttribute ("valoracionesGenerales") ValoracionesGenerales valoracionG) {
 		ModelMap modelo = new ModelMap();

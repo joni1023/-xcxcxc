@@ -159,13 +159,11 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 
 	@Override
 	public List<ValoracionPesoAltura> listaValoracionPesoAlturaTipo(String tipo) {
-		
 		return valoracionDao.listaValoracionPesoAlturaTipo(tipo);
 	}
 
 	@Override
 	public Integer valoracionGeneralRadio() {
-		
 		return valoracionDao.valoracionGeneral().getRadioMedicion();
 	}
 
@@ -177,7 +175,6 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	@Override
 	public void modificarTablaEdad(ValoracionEdad nuevaValoracion) {
 		valoracionDao.modificarTablaValoracionEdad(nuevaValoracion);
-		
 	}
 
 	@Override
@@ -188,7 +185,6 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	@Override
 	public void modificarTablaAltura(ValoracionAltura nuevaValoracion) {
 		valoracionDao.modificarTablaValoracionAltura(nuevaValoracion);
-		
 	}
 
 	@Override
@@ -199,7 +195,6 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	@Override
 	public void modificarTablaPesoAltura(ValoracionPesoAltura nuevaValoracion) {
 		valoracionDao.modificarTablaValoracionPesoAltura(nuevaValoracion);
-		
 	}
 
 	@Override
@@ -210,6 +205,5 @@ public class ServicioValoracionImpl implements ServicioValoracion {
 	@Override
 	public void modificarValoracionesGenerales(ValoracionesGenerales nuevoValor) {
 		valoracionDao.modificarTablaValoracionGeneral(nuevoValor);
-		
 	}	
 }

@@ -41,15 +41,17 @@ public class ControladorJugador {
 		ModelMap modelo = new ModelMap();
 		return new ModelAndView("valoracion", modelo);
 	}
-	@RequestMapping(path= "/modificarJugador" , method = RequestMethod.POST)
-	public ModelAndView editarJugador(@ModelAttribute("jugador") Jugador jugador, HttpServletRequest request) {
-	Jugador jugadorBuscado = servicioJugador.buscarJugadorID(jugador.getId());
-	ModelMap modelo = new ModelMap();
-	modelo.put("jugador", jugadorBuscado);
 	
-	return new ModelAndView("editarJugador",modelo);
+	@RequestMapping(path = "/modificarJugador", method = RequestMethod.POST)
+	public ModelAndView editarJugador(@ModelAttribute("jugador") Jugador jugador, HttpServletRequest request) {
+		Jugador jugadorBuscado = servicioJugador.buscarJugadorID(jugador.getId());
+		ModelMap modelo = new ModelMap();
+		modelo.put("jugador", jugadorBuscado);
+		
+		return new ModelAndView("editarJugador", modelo);
 	}
-	@RequestMapping(path ="/editarJugador" , method = RequestMethod.POST)
+	
+	@RequestMapping(path = "/editarJugador", method = RequestMethod.POST)
 	public ModelAndView jugadorEditado(@ModelAttribute("jugador")Jugador jugador, HttpServletRequest request) {
 		Jugador jugadorBuscado = servicioJugador.buscarJugadorID(jugador.getId());
 		jugadorBuscado.setNombre(jugador.getNombre());
@@ -59,7 +61,7 @@ public class ControladorJugador {
 		servicioJugador.editarJugador(jugadorBuscado);
 		return new ModelAndView("redirect:/miEquipo");
 	}
-	@RequestMapping(path= "/eliminarJugador" , method = RequestMethod.POST)
+	@RequestMapping(path = "/eliminarJugador", method = RequestMethod.POST)
 	public ModelAndView borrarJugador(@ModelAttribute("jugador") Jugador jugador, HttpServletRequest request) {
 		Jugador jugadorBuscado = servicioJugador.buscarJugadorID(jugador.getId());
 		servicioJugador.eliminarJugador(jugadorBuscado);

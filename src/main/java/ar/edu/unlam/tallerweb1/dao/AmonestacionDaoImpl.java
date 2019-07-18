@@ -13,6 +13,7 @@ import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
 @Repository("amonestacionDao")
 public class AmonestacionDaoImpl implements AmonestacionDao {
+	
 	@Inject
     private SessionFactory sessionFactory;
 	
@@ -30,5 +31,4 @@ public class AmonestacionDaoImpl implements AmonestacionDao {
 				
 		return amonestaciones;
 	}
-
 }

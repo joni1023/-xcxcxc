@@ -7,9 +7,32 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	<title>Modificar los valores de las Valoraciones Generales</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+		<a class="navbar-brand" href="homeAdmin">Buscando Rival</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="valoraciones">Valoraciones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
+				</li>
+				<li class="nav-item">
+               		<a class="nav-link" href="estadistcas">Estadísticas</a>
+               	</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login">Salir</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container-fluid">
 		<div class="text-center my-5">
@@ -24,7 +47,7 @@
 				<table class="table table-bordered text-center">
 					<thead >
 					    <tr>
-					      <th scope="col">Rango de Medicion</th>
+					      <th scope="col">Rango de Medición</th>
 					    </tr>
 					</thead>
 					<tbody>

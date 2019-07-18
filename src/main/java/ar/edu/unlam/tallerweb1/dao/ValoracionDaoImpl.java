@@ -22,7 +22,7 @@ public class ValoracionDaoImpl implements ValoracionDao {
 
 	@Override
 	public List<ValoracionEdad> valoracionEdadTabla() {
-		List<ValoracionEdad> misvalores =  sessionFactory.getCurrentSession().createCriteria(ValoracionEdad.class)
+		List<ValoracionEdad> misvalores = sessionFactory.getCurrentSession().createCriteria(ValoracionEdad.class)
 				.add(Restrictions.isNotNull("id"))
 				.list();
 		return misvalores;
@@ -93,7 +93,6 @@ public class ValoracionDaoImpl implements ValoracionDao {
 	@Override
 	public void modificarTablaValoracionEdad(ValoracionEdad nuevaValoracionEdad) {
 		sessionFactory.getCurrentSession().update(nuevaValoracionEdad);
-		
 	}
 
 	@Override

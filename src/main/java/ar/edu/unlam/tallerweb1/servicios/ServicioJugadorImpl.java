@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.JugadorDao;
 import ar.edu.unlam.tallerweb1.modelo.Amonestacion;
-import ar.edu.unlam.tallerweb1.modelo.Expulsion;
 import ar.edu.unlam.tallerweb1.modelo.Gol;
 import ar.edu.unlam.tallerweb1.modelo.Jugador;
 
@@ -43,29 +42,6 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		Jugador miJugador = servicioJugadorDao.buscarJugador(id);
 		Double valoracion = 0.0;
 		
-		/*if(miJugador.getClass() == JugadorArquero.class) {
-		Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-		Double valorGolesRecibidos = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
-		Double valorPorPorteriaImbatible = servicioGol.valoracionPorteriaImbatible(miJugador);
-		Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-		Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-		
-		valoracion = valorEdad + valorAltura + valorPesoAltura + valorGolesRecibidos + valorPorPorteriaImbatible + valorPromedioDeGol
-				+ valorPorAmonestaciones + valorPorExpulsiones;
-		
-		}else if(miJugador.getClass() == JugadorDeCampo.class) {
-			
-			Double valorEdad = this.valoracionPorEdad(miJugador);
-			Double valorPromedioDeGol = servicioGol.valoracionPorPromedioDeGol(miJugador);
-			Double valorAltura = this.valoracionPorAltura(miJugador);
-			Double valorAlturaPeso = this.valoracionPorAlturaYPeso(miJugador);
-			Double valorPorAmonestaciones = servicioAmonestacion.valoracionPorAmonestaciones(miJugador);
-			Double valorPorExpulsiones = servicioExpulsion.valoracionPorExpulsiones(miJugador);
-			
-			valoracion= valorEdad + valorPromedioDeGol + valorAltura + valorAlturaPeso + valorPorAmonestaciones + valorPorExpulsiones;
-		}*/
-
-		
 		/* Valoracion desde el servico valoracion tabla */
 		Double valorEdad = servicioValoracion.valoracionPorEdad(miJugador);
 		Double valorAltura = servicioValoracion.valoracionPorAltura(miJugador);
@@ -76,7 +52,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		if(miJugador.getPosicion().equals("Arquero")){
 			Double valorPorGolesEnContra = servicioGol.valoracionPorPromedioDeGolesEnContra(miJugador);
 			valoracion = valorPesoAltura + valorAltura + valorEdad + valorPromedioGol + valorPorAmonestaciones + valorPorExpulsiones + valorPorGolesEnContra;
-		}else {
+		} else {
 			valoracion = valorPesoAltura + valorAltura + valorEdad + valorPromedioGol + valorPorAmonestaciones + valorPorExpulsiones;
 		}
 		return valoracion;
@@ -89,8 +65,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
 
 	@Override
 	public void agregarJugador(Jugador jugador) {
-		servicioJugadorDao.agregarJugador(jugador);
-		
+		servicioJugadorDao.agregarJugador(jugador);	
 	}
 
 	@Override
@@ -101,13 +76,11 @@ public class ServicioJugadorImpl implements ServicioJugador {
 	@Override
 	public void editarJugador(Jugador jugador) {
 		servicioJugadorDao.editarJugador(jugador);
-		
 	}
 
 	@Override
 	public void eliminarJugador(Jugador jugador) {
 		servicioJugadorDao.eliminarJugador(jugador);
-		
 	}
 
 	@Override
@@ -137,4 +110,12 @@ public class ServicioJugadorImpl implements ServicioJugador {
 		return expulsiones;
 	}
 	
+	//TEST
+	public ServicioGol getServicioGol() {
+		return this.servicioGol;
+	}
+	
+	public void setServicioGol(ServicioGol servicioGol) {
+		this.servicioGol = servicioGol;
+	}
 }

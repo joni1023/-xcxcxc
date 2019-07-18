@@ -20,10 +20,13 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 	
 	@Inject
 	JugadorDao jugadorDao;
+	
 	@Inject
 	PartidoDao partidoDao;
+	
 	@Inject
 	ExpulsionDao expulsionDao;
+	
 	@Override
 	public Integer cantidadExpulsiones(Long id) {
 		Jugador miJugador = jugadorDao.buscarJugador(id);
@@ -51,12 +54,10 @@ public class ServicioExpulsionImpl implements ServicioExpulsion {
 		}
 		if(partidosJugados == 0.0) {
 			return 0.0;
-		}else {
+		} else {
 			return (Double) (cantidadExpulsiones / partidosJugados);
 		}
-		
 	}
-
 
 	@Override
 	public Double valoracionPorExpulsiones(Jugador jugador) {

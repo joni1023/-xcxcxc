@@ -31,6 +31,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
 	}
+	
 	@Override
 	public Usuario consultarUsuarioId(Long id) {
 
@@ -48,10 +49,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(usuario);
 	}
+	
 	@Override
 	public void editarUsuario(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(usuario);
 	}
-	
 }

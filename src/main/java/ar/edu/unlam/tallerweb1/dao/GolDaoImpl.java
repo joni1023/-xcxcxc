@@ -22,15 +22,13 @@ public class GolDaoImpl implements GolDao {
 		sessionFactory.getCurrentSession().save(gol);
 	}
 
-
 	@Override
 	public List<Gol> listaGolesJugador(Jugador jugador) {
 		List<Gol> goles = sessionFactory.getCurrentSession().createCriteria(Gol.class)
 				.createAlias("jugador","jugador")
-				.add(Restrictions.eq("jugador.id",jugador.getId()))
+				.add(Restrictions.eq("jugador.id", jugador.getId()))
 				.list();
 		
 		return goles;
 	}
-
 }

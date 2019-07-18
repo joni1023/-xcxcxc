@@ -24,7 +24,7 @@
 					<a class="nav-link" href="cargarPartidos">Cargar Partidos</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="estadisticas">Estadisticas</a>
+					<a class="nav-link" href="estadisticas">Estadísticas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="login">Salir</a>

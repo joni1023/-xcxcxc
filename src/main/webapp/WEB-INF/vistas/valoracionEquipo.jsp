@@ -5,13 +5,13 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Valoracion de Equipos</title>
+	<title>Buscando Rival</title>
 </head>
 <body>
 
-	<h1>Valoracion de Equipos</h1>
-	<c:forEach items="${equipos }" var="equipo">
-		<p>El equipo ${equipo.nombre} tiene una valoración de: ${equipo.valoracion} </p>
+	<h1>Valoración de Equipos</h1>
+	<c:forEach items="${equipos}" var="equipo">
+		<p>El equipo ${equipo.nombre} tiene una valoración de: ${equipo.valoracion}</p>
 	</c:forEach>
 </body>
 </html>

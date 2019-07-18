@@ -61,7 +61,7 @@ public class EquipoDaoImpl implements EquipoDao {
 	@Override
 	public Equipo buscarEquipoNombre(String nombre) {
 		Equipo miEquipoBuscado = (Equipo) sessionFactory.getCurrentSession().createCriteria(Equipo.class)
-				   .add(Restrictions.eq("nombre",nombre))
+				   .add(Restrictions.eq("nombre", nombre))
 				   .uniqueResult();
 
 		return miEquipoBuscado;
