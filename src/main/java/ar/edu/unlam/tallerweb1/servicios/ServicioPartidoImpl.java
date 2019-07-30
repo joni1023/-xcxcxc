@@ -28,7 +28,6 @@ public class ServicioPartidoImpl implements ServicioPartido {
 	public List<Partido> listaDePartidos() {		
 		return partidoDao.listaDePartidos();
 	}
-
 	@Override
 	public void crearPartido(Partido partido) {
 		partidoDao.crearPartido(partido);

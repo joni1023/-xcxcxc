@@ -5,18 +5,32 @@ insert into usuario(email,password,nombreUsuario,esAdmin) values("galfaro@boca.c
 insert into usuario(email,password,nombreUsuario,esAdmin) values("sbeccacece@rojo.com","rojo666","S_Becaccece",0);
 insert into usuario(email,password,nombreUsuario,esAdmin) values("ecoudet@racing.com","chacho123","E_Coudet",0);
 insert into usuario(email,password,nombreUsuario,esAdmin) values("japizzi@cuervo.com","boedo123","JA_Pizzi",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("equipo1@equipo.com","equipo1","EquipoOne",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("equipo2@equipo.com","equipo2","EquipoTwo",0);
+insert into usuario(email,password,nombreUsuario,esAdmin) values("equipo3@equipo.com","equipo3","EquipoThree",0);
+
+/*Torneo*/
+INSERT INTO `db`.`torneo` (`nombre`) VALUES ("Copa Libertadores");
+INSERT INTO `db`.`torneo` (`nombre`) VALUES ("Copa Sudamericana");
+
 /* Equipo */
-insert into equipo (nombre,usuario_id) values ("River Plate",2);
-insert into equipo (nombre,usuario_id) values ("Boca Juniors",3);
-insert into equipo (nombre,usuario_id) values ("Independiente",4);
-insert into equipo (nombre,usuario_id) values ("Racing Club",5);
-insert into equipo (nombre,usuario_id) values ("San Lorenzo",6);
+insert into equipo (nombre,usuario_id,torneo_id) values ("River Plate",2,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Boca Juniors",3,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Independiente",4,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Racing Club",5,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("San Lorenzo",6,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Equipo 1",7,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Equipo 2",8,1);
+insert into equipo (nombre,usuario_id,torneo_id) values ("Equipo 3",9,2);
 /*Usuario-Equipo*/
 UPDATE `usuario` SET  `equipo_id` = '1' WHERE `usuario`.`id` = 2; 
 UPDATE `usuario` SET  `equipo_id` = '2' WHERE `usuario`.`id` = 3; 
 UPDATE `usuario` SET  `equipo_id` = '3' WHERE `usuario`.`id` = 4; 
 UPDATE `usuario` SET  `equipo_id` = '4' WHERE `usuario`.`id` = 5; 
 UPDATE `usuario` SET  `equipo_id` = '5' WHERE `usuario`.`id` = 6;
+UPDATE `usuario` SET  `equipo_id` = '6' WHERE `usuario`.`id` = 7; 
+UPDATE `usuario` SET  `equipo_id` = '7' WHERE `usuario`.`id` = 8; 
+UPDATE `usuario` SET  `equipo_id` = '8' WHERE `usuario`.`id` = 9;
 /* Jugador */
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Franco Armani",1);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Javier Pinola",1);
@@ -47,6 +61,24 @@ insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,35,"Fernando Belluschi",5);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Nicolas Blandi",5);
 insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,19,"Adolfo Gaich",5);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Jugador 11",6);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Jugador 12",6);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,35,"Jugador 13",6);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Jugador 14",6);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,19,"Jugador 15",6);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Jugador 21",7);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Jugador 22",7);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,35,"Jugador 23",7);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Jugador 24",7);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,19,"Jugador 25",7);
+
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Arquero",1.88,95,21,"Jugador 31",8);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.75,70,25,"Jugador 32",8);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.8,75,35,"Jugador 33",8);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.58,85,29,"Jugador 34",8);
+insert into jugador (posicion,altura,peso,edad,nombre,equipo_id) values("Campo",1.65,95,19,"Jugador 35",8);
 
 /* Valoracion por edad */
 /* Arquero */

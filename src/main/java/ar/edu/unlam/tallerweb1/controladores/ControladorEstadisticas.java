@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,14 +25,14 @@ public class ControladorEstadisticas {
 	
 	@Inject
 	ServicioLogin servicioLogin;
-	@Inject
 	
+	@Inject
 	ServicioEquipo servicioEquipo;
-	@Inject
 	
+	@Inject
 	ServicioPartido servicioPartido;
-	@Inject
 	
+	@Inject
 	ServicioJugador servicioJugador;
 	
 	@RequestMapping(path = "/estadisticas")
@@ -49,7 +51,7 @@ public class ControladorEstadisticas {
 			equipo.setPartidosPerdidos(servicioPartido.partidosPerdidos(equipo.getId()));
 			equipo.setValoracion(servicioEquipo.valoracionEquipo(equipo.getId()));
 		}
-		
+		Collections.sort(equipos);
 		ModelMap modelo = new ModelMap();
 		modelo.put("esAdmin", usuarioBuscado.getEsAdmin());
 		modelo.put("tieneEquipo", tieneEquipo);
@@ -74,6 +76,7 @@ public class ControladorEstadisticas {
 			jugador.setCantidadExpulsiones(servicioJugador.expulsiones(jugador));
 			jugador.setValoracion(servicioJugador.valoracionJugador(jugador.getId()));
 		}
+		
 		
 		ModelMap modelo = new ModelMap();
 		modelo.put("esAdmin", usuarioBuscado.getEsAdmin());

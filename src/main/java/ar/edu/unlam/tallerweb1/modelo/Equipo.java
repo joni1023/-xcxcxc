@@ -1,13 +1,16 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Equipo {
+public class Equipo implements Comparable<Equipo> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,10 +77,33 @@ public class Equipo {
 	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
-
+	
+	@Override
+	public int compareTo(Equipo o) {
+		if(valoracion < o.valoracion) {
+			return 1;
+		}
+		if(valoracion > o.valoracion) {
+			return -1;
+		}
+		return 0;
+	}
+	
 	@OneToOne
 	Usuario usuario;
 	
+	@ManyToOne
+	Torneo torneo;
+	
+	
+	public Torneo getTorneo() {
+		return torneo;
+	}
+
+	public void setTorneo(Torneo torneo) {
+		this.torneo = torneo;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

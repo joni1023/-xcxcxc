@@ -21,4 +21,8 @@ public interface ServicioEquipo {
     public void editarEquipo(Equipo equipo);
    
     public void eliminarEquipo(Long id);
+    
+    public List<Equipo> listarEquiposPorTorneo(Long id);
+    
+    public void editarEquipoTorneo(Equipo equipo);
 }

@@ -17,4 +17,8 @@ public interface EquipoDao {
     public void editarEquipo(Equipo equipo);
    
     public void eliminarEquipo(Long id);
+    
+    public void editarEquipoTorneo(Equipo equipo);
+    
+    public List<Equipo> listarEquiposPorTorneo(Long id);
 }

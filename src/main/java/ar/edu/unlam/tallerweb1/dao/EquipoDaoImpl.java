@@ -66,4 +66,20 @@ public class EquipoDaoImpl implements EquipoDao {
 
 		return miEquipoBuscado;
 	}
+	
+	@Override
+
+    public List<Equipo> listarEquiposPorTorneo(Long id){
+		List<Equipo> listaDeEquipos = sessionFactory.getCurrentSession().createCriteria(Equipo.class)
+									.createAlias("torneo", "torneoJoin")
+									.add(Restrictions.eq("torneoJoin.id", id))
+									.list();
+		
+		return listaDeEquipos;
+	}
+	
+	@Override
+	public void editarEquipoTorneo(Equipo equipo) {
+			
+	}
 }

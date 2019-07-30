@@ -98,4 +98,14 @@ public class ServicioEquipoImpl implements ServicioEquipo{
 	public Equipo buscarEquipoNombre(String nombre) {
 		return equipoDao.buscarEquipoNombre(nombre);
 	}
+	
+	@Override
+    public List<Equipo> listarEquiposPorTorneo(Long id){
+		return equipoDao.listarEquiposPorTorneo(id);
+	}
+	
+	@Override
+	public void editarEquipoTorneo(Equipo equipo) {
+		return equipoDao.editarEquipoTorneo(equipo);	
+	}
 }
